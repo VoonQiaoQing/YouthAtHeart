@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YouthAtHeart.Models;
+using YouthAtHeart.Services;
 
 namespace YouthAtHeart
 {
@@ -24,6 +26,9 @@ namespace YouthAtHeart
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddSession();
+            services.AddTransient<TestService>();
+            services.AddDbContext<YouthAtHeartContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

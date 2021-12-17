@@ -10,5 +10,16 @@ namespace YouthAtHeart.Models
 {
     public class YouthAtHeartContext: DbContext
     {
+        private readonly IConfiguration _config;
+        public YouthAtHeartContext(IConfiguration configuration)
+        {
+            _config = configuration;
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            string connectionString = _config.GetConnectionString("MyConn");
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+        public DbSet<Test> Test { get; set; }
     }
 }

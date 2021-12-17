@@ -5,21 +5,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YouthAtHeart.Models;
+using YouthAtHeart.Services;
 
 namespace YouthAtHeart.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        [BindProperty]
+        public List<Test> alltest { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        private readonly ILogger<IndexModel> _logger;
+        private TestService _svc;
+
+        public IndexModel(ILogger<IndexModel> logger, TestService service)
         {
             _logger = logger;
+            _svc = service;
         }
 
         public void OnGet()
         {
-
+            alltest = _svc.GetAllTest();
         }
     }
 }

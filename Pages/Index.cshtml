@@ -4,13 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Test for Backup</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p> This change is made by Xiaoli</p>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.alltest[0].Id)</th>
+            <th>@Html.DisplayNameFor(model => model.alltest[0].test)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.alltest != null)
+            {
 
-<div>
-    <p>this is jaslina</p>
-    <p>rfjb3rkhgbiu34u</p>
-</div>
+                @foreach (var item in Model.alltest)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.test</td>
+                        <td>
+                            <a asp-page="/Detail" asp-route-id="@item.Id">View</a>
+                            <a asp-page="/Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-page="/Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
