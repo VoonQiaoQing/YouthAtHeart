@@ -21,5 +21,8 @@ namespace YouthAtHeart.Models
             optionsBuilder.UseSqlServer(connectionString);
         }
         public DbSet<Test> Test { get; set; }
+        public DbSet<HomeInfo> HomeInfo { get; set; }
+        public DbSet<WorkshopInfo> WorkshopInfo { get; set; }
+
     }
 }
