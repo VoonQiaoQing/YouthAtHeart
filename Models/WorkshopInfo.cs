@@ -62,7 +62,7 @@ namespace YouthAtHeart.Models
 
         public DateTime dateUpdated { get; set; }
 
-        [Required, Key]
+        [Required]
         public string teacherId { get; set; }
     }
 }
