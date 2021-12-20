@@ -17,6 +17,7 @@ namespace YouthAtHeart.Services
         public List<Test> GetAllTest() {
             List<Test> AllTest = _context.Test.ToList();
             return AllTest;
+
         }
 
     }
