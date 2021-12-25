@@ -3,34 +3,3 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.alltest[0].Id)</th>
-            <th>@Html.DisplayNameFor(model => model.alltest[0].test)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{ if (Model.alltest != null)
-            {
-
-                @foreach (var item in Model.alltest)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.test</td>
-                        <td>
-                            <a asp-page="/Detail" asp-route-id="@item.Id">View</a>
-                            <a asp-page="/Edit" asp-route-id="@item.Id">Edit</a>
-                            <a asp-page="/Delete" asp-route-id="@item.Id">Delete</a>
-                            <a asp-page="/Test" asp-route-id="@item.Id">Im js testing - Jaslina</a>
-
-                        </td>
-                    </tr>
-                }
-            }
-        }
-    </tbody>
-</table>
