@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -31,8 +32,11 @@ namespace YouthAtHeart.Pages
         public void OnGet()
         {
             Guid guid = Guid.NewGuid();
-            CreateAWorkshop.wsId = guid.ToString();
-            WorkshopId = CreateAWorkshop.wsId;
+            string guidTostring = guid.ToString();
+
+            //CreateAWorkshop.wsId = guidTostring;
+            //WorkshopId = CreateAWorkshop.wsId;
+            //WorkshopId = guid.ToString();
         }
 
         public IActionResult OnPost()
@@ -45,7 +49,7 @@ namespace YouthAtHeart.Pages
 
                     //HttpContext.Session.SetString("SSName", MyEmployee.Name);
                     //HttpContext.Session.SetString("SSDept", MyEmployee.Department.ToString());
-                    return RedirectToPage("Confirm");
+                    return RedirectToPage("WorkshopListing");
                 }
 
                 else

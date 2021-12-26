@@ -32,6 +32,16 @@ namespace YouthAtHeart.Services
             {
                 return false;
             }
+
+            Guid guid = Guid.NewGuid();
+            //string guidTostring = guid.ToString();
+
+            //CreateAWorkshop.wsId = guidTostring;
+            //WorkshopId = CreateAWorkshop.wsId;
+            //WorkshopId = guid.ToString();
+
+            newworkshop.wsId = guid.ToString();
+
             _context.Add(newworkshop);
             _context.SaveChanges();
             return true;

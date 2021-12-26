@@ -2,14 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 using System.ComponentModel.DataAnnotations;
 
 namespace YouthAtHeart.Models
 {
     public class WorkshopInfo
     {
+        //private static string guidToStr;
+
+        public WorkshopInfo()
+        {
+            Guid guid = Guid.NewGuid();
+            wsId = guid.ToString("D");
+
+            wsRating = 0;
+
+            dateCreated = DateTime.Now;
+
+            teacherId = "Temp Value";
+        }
+
         [Required, Key]
         public string wsId { get; set; }
+            //= guidToStr;
 
         [Required(ErrorMessage = "No cover image uploaded.")]
         public string wsCoverImage { get; set; }
@@ -62,7 +78,6 @@ namespace YouthAtHeart.Models
 
         public DateTime dateUpdated { get; set; }
 
-        [Required]
         public string teacherId { get; set; }
     }
 }

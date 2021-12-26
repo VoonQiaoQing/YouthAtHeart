@@ -15,6 +15,13 @@ namespace YouthAtHeart.Pages
         [BindProperty]
         public List<WorkshopInfo> allworkshops { get; set; }
 
+        [BindProperty]
+        public string noworkshops { get; set; }
+
+        public List<WorkshopInfo> notbinded_allworkshops { get; set; }
+
+
+
         private readonly ILogger<WorkshopListingModel> _logger;
         private WorkshopInfoService _svc;
 
@@ -27,8 +34,22 @@ namespace YouthAtHeart.Pages
         public void OnGet()
         {
             //ERROR SHOULD BE HERE
-
             allworkshops = _svc.GetAllWorkshops();
+            //foreach (var item in allworkshops)
+            //{
+
+            //}
+
+            //if(notbinded_allworkshops.Count == 0)
+            //{
+            //    notbinded_allworkshops.Append("")
+            //    allworkshops =;
+            //}
+            //else {
+            //    allworkshops = notbinded_allworkshops;
+            //}
+
+            //allworkshops = _svc.GetAllWorkshops();
             //Guid guid = Guid.NewGuid();
         }
 

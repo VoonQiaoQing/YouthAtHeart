@@ -13,8 +13,6 @@
     <div><label class="text-danger">@Model.MyMessage</label></div>
     <div asp-validation-summary="All" class="text-danger"></div>
 
-    <div><label class="text-danger">@Model.WorkshopId</label></div>
-
     <div>
         <label class="col-sm-2 col-form-label">CoverImage:</label>
         <input asp-for="CreateAWorkshop.wsCoverImage" />
@@ -36,7 +34,7 @@
 
     <div>
         <label class="col-sm-2 col-form-label">Main Information:</label>
-        <input asp-for="CreateAWorkshop.wsName" />
+        <input asp-for="CreateAWorkshop.wsMainInfo" />
         <span asp-validation-for="CreateAWorkshop.wsMainInfo" class="text-danger"></span>
     </div>
 

@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        @{ if (Model.allworkshops != null)
+        @{ if (Model.allworkshops != null & Model.allworkshops.Count != 0)
             {
 
                 @foreach (var item in Model.allworkshops)
@@ -31,6 +31,10 @@
                         </td>
                     </tr>
                 }
+            }
+            else
+            {
+                <tr> No workshops. </tr>
             }
         }
     </tbody>
