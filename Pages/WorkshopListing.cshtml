@@ -4,7 +4,7 @@
 }
 
 <p>
-    <a asp-page="CreateWorkshop">Create New Employee</a>
+    <a asp-page="CreateWorkshop">Create a New Workshop</a>
 </p>
 
 <table class="table">
@@ -25,9 +25,9 @@
                         <td>@item.wsId</td>
                         <td>@item.wsName</td>
                         <td>
-                            <a asp-page="/Detail" asp-route-id="@item.wsId">View</a>
-                            <a asp-page="/Edit" asp-route-id="@item.wsId">Edit</a>
-                            <a asp-page="/Delete" asp-route-id="@item.wsId">Delete</a>
+                            <a asp-page="/ViewWorkshop" asp-route-id="@item.wsId">View</a>
+                            <a asp-page="/EditWorkshop" asp-route-id="@item.wsId">Edit</a>
+                            <a asp-page="/DeleteWorkshop" asp-route-id="@item.wsId">Delete</a>
                         </td>
                     </tr>
                 }
