@@ -20,5 +20,7 @@ namespace YouthAtHeart.Models
         [Required(ErrorMessage ="Please enter your password")]
         public string password { get; set; }
 
+        [Required(ErrorMessage ="Your password does not match")]
+        public string confirmPass { get; set; }
     }
 }
