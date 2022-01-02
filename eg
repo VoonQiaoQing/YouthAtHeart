@@ -1,0 +1,32 @@
+[33me5d6b49[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: commit: test
+[33m1e63827[m HEAD@{1}: reset: moving to 1e63827e532fceddb071506ea6b1d9c903e8c091
+[33md878861[m HEAD@{2}: reset: moving to d878861f36aa8117e435685116ee47c21f1caeb0
+[33md878861[m HEAD@{3}: revert: Revert "create workshop"
+[33m1454fe9[m HEAD@{4}: reset: moving to 1454fe9ac0f2b8b150d081c7ab45d3bb6d6371d4
+[33m1454fe9[m HEAD@{5}: reset: moving to 1454fe9ac0f2b8b150d081c7ab45d3bb6d6371d4
+[33m1454fe9[m HEAD@{6}: reset: moving to 1454fe9ac0f2b8b150d081c7ab45d3bb6d6371d4
+[33m1454fe9[m HEAD@{7}: reset: moving to 1454fe9ac0f2b8b150d081c7ab45d3bb6d6371d4
+[33m1454fe9[m HEAD@{8}: reset: moving to 1454fe9ac0f2b8b150d081c7ab45d3bb6d6371d4
+[33m1c9cb3e[m HEAD@{9}: commit: update
+[33m392c6ca[m HEAD@{10}: revert: Revert "create workshop"
+[33m1454fe9[m HEAD@{11}: commit: create workshop
+[33m2d0d5a3[m HEAD@{12}: pull --progress --no-edit --no-stat --recurse-submodules=no origin: Merge made by the 'recursive' strategy.
+[33m57ee9ed[m HEAD@{13}: commit: database work
+[33m27f83ec[m HEAD@{14}: commit: database
+[33m545e878[m HEAD@{15}: commit: remove key
+[33m88ecac0[m HEAD@{16}: commit: data models and services
+[33m8e23e95[m HEAD@{17}: commit: setting correct database
+[33m88b99d6[m HEAD@{18}: commit: connection string
+[33m6a29233[m HEAD@{19}: commit (merge): database
+[33m1e8f6ce[m HEAD@{20}: commit: database
+[33mb1599c3[m HEAD@{21}: checkout: moving from master to master
+[33mb1599c3[m HEAD@{22}: checkout: moving from backup to master
+[33md4c1c6c[m[33m ([m[1;31morigin/backup[m[33m, [m[1;32mbackup[m[33m)[m HEAD@{23}: commit: making db halfway
+[33mb2ffea0[m HEAD@{24}: commit: Test for Backup
+[33mb1599c3[m HEAD@{25}: checkout: moving from master to backup
+[33mb1599c3[m HEAD@{26}: checkout: moving from backup to master
+[33mb1599c3[m HEAD@{27}: checkout: moving from master to backup
+[33mb1599c3[m HEAD@{28}: commit: Test Again
+[33m80839b6[m HEAD@{29}: commit: Testing
+[33ma6609f5[m HEAD@{30}: commit: Add project files.
+[33me4c5d3d[m HEAD@{31}: commit (initial): Add .gitignore and .gitattributes.

@@ -1,0 +1,114 @@
+﻿@page
+@model YouthAtHeart.Pages.CreateWorkshopModel
+@{
+}
+
+@{
+    ViewData["Title"] = "Create Workshop";
+}
+
+<h1>Create Employee</h1>
+
+<form method="post">
+    <div><label class="text-danger">@Model.MyMessage</label></div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">CoverImage:</label>
+        <input asp-for="CreateAWorkshop.wsCoverImage" />
+        <span asp-validation-for="CreateAWorkshop.wsCoverImage" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">EnvImage:</label>
+        <input asp-for="CreateAWorkshop.wsEnvImage" />
+        <span asp-validation-for="CreateAWorkshop.wsEnvImage" class="text-danger"></span>
+
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Name:</label>
+        <input asp-for="CreateAWorkshop.wsName" />
+        <span asp-validation-for="CreateAWorkshop.wsName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Main Information:</label>
+        <input asp-for="CreateAWorkshop.wsMainInfo" />
+        <span asp-validation-for="CreateAWorkshop.wsMainInfo" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Extra Information:</label>
+        <input asp-for="CreateAWorkshop.wsName" />
+        <span asp-validation-for="CreateAWorkshop.wsExtraInfo" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Workshop Type:</label>
+        @Html.DropDownList("CreateAWorkshop.wsType", new SelectList(Enum.GetValues(typeof(Models.WorkshopType))), "--Select an option--")
+        <span asp-validation-for="CreateAWorkshop.wsType" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Location:</label>
+        @Html.DropDownList("CreateAWorkshop.wsLocationType", new SelectList(Enum.GetValues(typeof(Models.LocationType))), "--Select an option--")
+        <span asp-validation-for="CreateAWorkshop.wsLocationType" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Location Details:</label>
+        <input asp-for="CreateAWorkshop.wsLocationDetails" />
+        <span asp-validation-for="CreateAWorkshop.wsLocationDetails" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Lesson Schedule:</label>
+        <input asp-for="CreateAWorkshop.wsLessonSchedule" />
+        <span asp-validation-for="CreateAWorkshop.wsLessonSchedule" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Registration Start Date:</label>
+        <input asp-for="CreateAWorkshop.regStartDate" />
+        <span asp-validation-for="CreateAWorkshop.regStartDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Registration End Date:</label>
+        <input asp-for="CreateAWorkshop.regEndDate" />
+        <span asp-validation-for="CreateAWorkshop.regEndDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">First Lesson Date:</label>
+        <input asp-for="CreateAWorkshop.firstLesDate" />
+        <span asp-validation-for="CreateAWorkshop.firstLesDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Last Lesson Date:</label>
+        <input asp-for="CreateAWorkshop.endLesDate" />
+        <span asp-validation-for="CreateAWorkshop.endLesDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Price:</label>
+        <input id="Salary" asp-for="CreateAWorkshop.wsPrice" />
+        <span asp-validation-for="CreateAWorkshop.wsPrice" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Total Attendees:</label>
+        <input id="Salary" asp-for="CreateAWorkshop.wsTotalAttendees" />
+        <span asp-validation-for="CreateAWorkshop.wsTotalAttendees" class="text-danger"></span>
+    </div>
+
+    <div class="col-sm-10">
+        <input id="create" type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

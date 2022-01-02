@@ -1,0 +1,41 @@
+﻿@page
+@model YouthAtHeart.Pages.WorkshopListingModel
+@{
+}
+
+<p>
+    <a asp-page="CreateWorkshop">Create a New Workshop</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.allworkshops[0].wsId)</th>
+            <th>@Html.DisplayNameFor(model => model.allworkshops[0].wsName)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allworkshops != null & Model.allworkshops.Count != 0)
+            {
+
+                @foreach (var item in Model.allworkshops)
+                {
+                    <tr>
+                        <td>@item.wsId</td>
+                        <td>@item.wsName</td>
+                        <td>
+                            <a asp-page="/ViewWorkshop" asp-route-id="@item.wsId">View</a>
+                            <a asp-page="/EditWorkshop" asp-route-id="@item.wsId">Edit</a>
+                            <a asp-page="/DeleteWorkshop" asp-route-id="@item.wsId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr> No workshops. </tr>
+            }
+        }
+    </tbody>
+</table>
