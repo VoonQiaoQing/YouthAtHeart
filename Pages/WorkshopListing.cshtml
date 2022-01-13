@@ -3,6 +3,11 @@
 @{
 }
 
+<!-- https://codewithmukesh.com/blog/jquery-datatable-in-aspnet-core/ -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
 <p>
     <a asp-page="CreateWorkshop">Create a New Workshop</a>
 </p>
@@ -30,37 +35,42 @@
 {
     <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
     <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/customerDatatable.js"></script>
+
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.allworkshops[0].wsId)</th>
-            <th>@Html.DisplayNameFor(model => model.allworkshops[0].wsName)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{ if (Model.allworkshops != null & Model.allworkshops.Count != 0)
-            {
 
-                @foreach (var item in Model.allworkshops)
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.allworkshops[0].wsId)</th>
+                <th>@Html.DisplayNameFor(model => model.allworkshops[0].wsName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ if (Model.allworkshops != null & Model.allworkshops.Count != 0)
                 {
-                    <tr>
-                        <td>@item.wsId</td>
-                        <td>@item.wsName</td>
-                        <td>
-                            <a asp-page="/ViewWorkshop" asp-route-id="@item.wsId">View</a>
-                            <a asp-page="/EditWorkshop" asp-route-id="@item.wsId">Edit</a>
-                            <a asp-page="/DeleteWorkshop" asp-route-id="@item.wsId">Delete</a>
-                        </td>
-                    </tr>
+
+                    @foreach (var item in Model.allworkshops)
+                    {
+                        <tr>
+                            <td>@item.wsId</td>
+                            <td>@item.wsName</td>
+                            <td>
+                                <a asp-page="/ViewWorkshop" asp-route-id="@item.wsId">View</a>
+                                <a asp-page="/EditWorkshop" asp-route-id="@item.wsId">Edit</a>
+                                <a asp-page="/DeleteWorkshop" asp-route-id="@item.wsId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr> No workshops. </tr>
                 }
             }
-            else
-            {
-                <tr> No workshops. </tr>
-            }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>*@
