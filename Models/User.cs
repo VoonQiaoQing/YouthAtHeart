@@ -6,21 +6,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace YouthAtHeart.Models
 {
-    public class Registration
+    public class User
     {
         [Required, Key]
         public string userId { get; set; }
 
-        [Required(ErrorMessage ="Please enter your username")]
+        [Required(ErrorMessage = "Please enter your username")]
         public string username { get; set; }
 
-        [Required(ErrorMessage ="Please enter your email")]
+        [Required(ErrorMessage = "Please enter your email")]
         public string email { get; set; }
 
-        [Required(ErrorMessage ="Please enter your password")]
+        [Required(ErrorMessage = "Please enter your password")]
         public string password { get; set; }
 
-        [Required(ErrorMessage ="Your password does not match")]
+        [Required(ErrorMessage = "Your password does not match")]
         public string confirmPass { get; set; }
     }
 }

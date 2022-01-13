@@ -33,6 +33,7 @@ namespace YouthAtHeart
             services.AddControllers();
             services.AddTransient<TestService>();
             services.AddTransient<WorkshopInfoService>();
+            services.AddTransient<UserService>();
             services.AddDbContext<YouthAtHeartContext>();
         }
 
