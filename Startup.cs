@@ -25,8 +25,10 @@ namespace YouthAtHeart
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddRazorPages();
             services.AddSession();
+            services.AddControllers();
             services.AddTransient<TestService>();
             services.AddTransient<WorkshopInfoService>();
             services.AddDbContext<YouthAtHeartContext>();
@@ -56,6 +58,7 @@ namespace YouthAtHeart
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
