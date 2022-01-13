@@ -9,5 +9,6 @@ namespace YouthAtHeart.Models
     public class Questions
     {
         public string Question { get; set; }
+        private string Answer { get; set; }
     }
 }
