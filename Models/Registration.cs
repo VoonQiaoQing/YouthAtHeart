@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace YouthAtHeart.Models
 {
     public class Registration
     {
+        [BindProperty]
         [Required, Key]
         public string userId { get; set; }
 
