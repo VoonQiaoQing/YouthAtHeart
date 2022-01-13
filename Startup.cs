@@ -29,6 +29,7 @@ namespace YouthAtHeart
             services.AddSession();
             services.AddTransient<TestService>();
             services.AddTransient<WorkshopInfoService>();
+            services.AddTransient<UserService>();
             services.AddDbContext<YouthAtHeartContext>();
         }
 
