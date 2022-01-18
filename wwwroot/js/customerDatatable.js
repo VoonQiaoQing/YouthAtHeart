@@ -4,7 +4,8 @@
         "serverSide": true,
         "filter": true,
         "ajax": {
-            "url": "/api/customer",
+            "url":'api/Workshop2',
+            //DemoGrid/LoadData
             "type": "POST",
             "datatype": "json"
         },
@@ -14,12 +15,11 @@
             "searchable": false
         }],
         "columns": [
-            { "data": "id", "name": "Id", "autoWidth": true },
-            { "data": "firstName", "name": "First Name", "autoWidth": true },
-            { "data": "lastName", "name": "Last Name", "autoWidth": true },
-            { "data": "contact", "name": "Country", "autoWidth": true },
-            { "data": "email", "name": "Email", "autoWidth": true },
-            { "data": "dateOfBirth", "name": "Date Of Birth", "autoWidth": true },
+            { "data": "wsId", "name": "wsId", "autoWidth": true },
+            { "data": "wsName", "name": "First Name", "autoWidth": true },
+            { "data": "wsMainInfo", "name": "Last Name", "autoWidth": true },
+            { "data": "wsExtraInfo", "name": "Contact", "autoWidth": true },
+            { "data": "wsType", "name": "Email", "autoWidth": true },
             {
                 "render": function (data, row) { return "<a href='#' class='btn btn-danger' onclick=DeleteCustomer('" + row.id + "'); >Delete</a>"; }
             },

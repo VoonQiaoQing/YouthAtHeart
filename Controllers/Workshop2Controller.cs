@@ -3,22 +3,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Datatables.ServerSide.Data;
 using Microsoft.AspNetCore.Http;
 using System.Linq.Dynamic.Core;
 using YouthAtHeart.Models;
+using YouthAtHeart.Services;
 
-namespace Datatables.ServerSide.Controllers
+namespace YouthAtHeart.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class Workshop2Controller : ControllerBase
     {
+
         private readonly YouthAtHeartContext context;
+
         public Workshop2Controller(YouthAtHeartContext context)
         {
             this.context = context;
         }
+
+
+//        [HttpGet]
+ //       public IEnumerable<WorkshopInfo> GetWorkshops()
+ //       {
+ //           return _svc.GetAllWorkshops();
+  //      }
+
+
         [HttpPost]
         public IActionResult GetCustomers()
         {
@@ -33,17 +44,17 @@ namespace Datatables.ServerSide.Controllers
                 int pageSize = length != null ? Convert.ToInt32(length) : 0;
                 int skip = start != null ? Convert.ToInt32(start) : 0;
                 int recordsTotal = 0;
-                var customerData = (from tempcustomer in context.Customers select tempcustomer);
+                var customerData = (from tempcustomer in context.WorkshopInfo select tempcustomer);
                 if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
                 {
                     customerData = customerData.OrderBy(sortColumn + " " + sortColumnDirection);
                 }
                 if (!string.IsNullOrEmpty(searchValue))
                 {
-                    customerData = customerData.Where(m => m.FirstName.Contains(searchValue)
-                                                || m.LastName.Contains(searchValue)
-                                                || m.Contact.Contains(searchValue)
-                                                || m.Email.Contains(searchValue));
+                    customerData = customerData.Where(m => m.wsName.Contains(searchValue)
+                                                || m.wsMainInfo.Contains(searchValue)
+                                                || m.wsExtraInfo.Contains(searchValue)
+                                                || m.wsType.Contains(searchValue));
                 }
                 recordsTotal = customerData.Count();
                 var data = customerData.Skip(skip).Take(pageSize).ToList();
@@ -52,7 +63,7 @@ namespace Datatables.ServerSide.Controllers
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

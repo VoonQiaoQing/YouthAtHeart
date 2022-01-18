@@ -27,7 +27,8 @@ namespace YouthAtHeart
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<YouthAtHeartContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("MyConn"),
+                b => b.MigrationsAssembly(typeof(YouthAtHeartContext).Assembly.FullName)));
             services.AddRazorPages();
             services.AddSession();
             services.AddControllers();
