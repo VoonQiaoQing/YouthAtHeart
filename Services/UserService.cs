@@ -25,7 +25,7 @@ namespace YouthAtHeart.Services
             return _context.User.Any(e => e.userId == id);
         }
 
-        private bool AddUser(User newuser)
+        public bool AddUser(User newuser)
         {
             if (UserExits(newuser.userId)) 
             {

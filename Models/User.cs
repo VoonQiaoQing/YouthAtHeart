@@ -8,6 +8,7 @@ namespace YouthAtHeart.Models
 {
     public class User
     {
+        
         [Required, Key]
         public string userId { get; set; }
 
