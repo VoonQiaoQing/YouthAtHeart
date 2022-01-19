@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using YouthAtHeart.Models;
 
@@ -9,7 +10,7 @@ namespace YouthAtHeart.Services
 {
     public class UserService
     {
-        private Models.YouthAtHeartContext _context;
+        private readonly  Models.YouthAtHeartContext _context;
         public UserService(Models.YouthAtHeartContext context)
         {
             _context = context;
@@ -20,14 +21,14 @@ namespace YouthAtHeart.Services
             AllUsers = _context.User.ToList();
             return AllUsers;
         }
-        private bool UserExits(string id)
+        public bool UserExits(string name)
         {
-            return _context.User.Any(e => e.userId == id);
+            return _context.User.Any(e => e.username == name);
         }
 
         public bool AddUser(User newuser)
         {
-            if (UserExits(newuser.userId)) 
+            if (UserExits(newuser.username)) 
             {
                 return false;
             }
@@ -38,9 +39,9 @@ namespace YouthAtHeart.Services
             return true;
         }
 
-        public User GetUserbyId(string id)
+        public User GetUserbyId(string name)
         {
-            User user = (User)_context.User.Where(e => e.userId == id);
+            User user = _context.User.Where(e => e.username == name).FirstOrDefault();
             return user;
         }
 
@@ -55,7 +56,7 @@ namespace YouthAtHeart.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExits(user.userId))
+                if (!UserExits(user.username))
                 {
                     return false;
                 }
@@ -76,7 +77,7 @@ namespace YouthAtHeart.Services
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExits(user.userId))
+                if (!UserExits(user.username))
                 {
                     return false;
                 }

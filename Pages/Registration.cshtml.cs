@@ -21,6 +21,8 @@ namespace YouthAtHeart.Pages
         [BindProperty]
         public string MyMessage { get; set; }
         [BindProperty]
+        public string Password1 { get; set; }
+        [BindProperty]
         public string Password2 { get; set; }
         public void OnGet()
         {
@@ -30,7 +32,7 @@ namespace YouthAtHeart.Pages
         {
             if (ModelState.IsValid)
             {
-                if (MyUser.password == Password2)
+                if (Password1 == Password2)
                 {
                     if (_svc.AddUser(MyUser))
                     {

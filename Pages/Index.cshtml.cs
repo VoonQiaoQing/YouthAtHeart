@@ -16,7 +16,7 @@ namespace YouthAtHeart.Pages
         public List<Test> alltest { get; set; }
 
         private readonly ILogger<IndexModel> _logger;
-        private TestService _svc;
+        private readonly TestService _svc;
 
         public IndexModel(ILogger<IndexModel> logger, TestService service)
         {
