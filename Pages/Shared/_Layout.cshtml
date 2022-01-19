@@ -1,19 +1,7 @@
-﻿<!DOCTYPE html>
-
-<style>
-    #changecolorforbackground {
-        background-color: lightblue;
-    }
-    #changecolorfornav {
-        background-color: white;
-    }
-
-</style>
-
-
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,9 +9,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body id="changecolorforbackground">
+<body>
     <header>
-        <nav  id="changecolorfornav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">YouthAtHeart</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,7 +19,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav ">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
@@ -42,32 +30,45 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/WorkshopListing">Book for a Workshop</a>
-                                <a class="dropdown-item" href="/WorkshopListing">My workshops</a>
+                                <a class="dropdown-item" href="/MyWorkshops">My workshops</a>
                             </div>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/FAQ">FAQ</a>
+                            <a class="nav-link navbar-light" asp-area="" asp-page="/FAQ">FAQ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Registration">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Login">Sign In</a>
-                        </li>
+                        @try
+                        {
+                            if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("SSName")))
+                            {
+                                <li class="nav-item" id="profile">
+                                    <a class="nav-link navbar-light" asp-page="/Profile">Profile</a>
+                                </li>
+                                <li class="nav-item" id="log_out">
+                                    <a class="nav-link navbar-light" asp-page="/Logout">Logout</a>
+                                </li>
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            <li class="nav-item" id="register">
+                                <a class="nav-link navbar-light" asp-page="/Registration">Register</a>
+                            </li>
+                            <li class="nav-item" id="login">
+                                <a class="nav-link navbar-light" asp-page="/Login">Login</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div>
-        <div class="container">
-            <main role="main" class="pb-3" id="changecolorforbackground">
-                @RenderBody()
-            </main>
-        </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-
 
     <footer class="border-top footer text-muted">
         <div class="container">
