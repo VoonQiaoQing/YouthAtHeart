@@ -17,10 +17,10 @@ namespace YouthAtHeart.Models
         [Required(ErrorMessage = "Please enter your email")]
         public string email { get; set; }
 
-        [Required(ErrorMessage = "Please enter your password")]
+        [Required(ErrorMessage = "Please enter your password")] // make strong password requirements
         public string password { get; set; }
 
-        // [Required(ErrorMessage = "Your password does not match")]
-       //  public string confirmPass { get; set; }
+        //[Required(ErrorMessage = "Your password does not match")]
+        // public string confirmPass { get; set; }
     }
 }

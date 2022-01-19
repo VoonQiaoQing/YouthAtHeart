@@ -18,11 +18,14 @@ ViewData["Title"] = "Registration";
     </div>
     <div class="password">
         <asp:Label runat="server" Text="Label">Password: </asp:Label>
-        <input id="Password1" type="password" />
+        <input id="Password1" type="password" asp-for="MyUser.password" />
     </div>
     <div class="confirm-pass">
         <asp:Label runat="server" Text="Label">Confirm Password: </asp:Label>
         <input id="Password2" type="password" />
+    </div>
+    <div>
+        <input id="register" type="submit" value="Register" class="btn btn-primary" />
     </div>
 
 </form>
