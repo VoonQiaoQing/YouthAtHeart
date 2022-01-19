@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#workshopDatatable").DataTable({
+    $("#workshopDatatable").removeAttr('width').DataTable({
         "processing": true,
         "serverSide": true,
         "filter": true,
@@ -9,38 +9,62 @@
             "type": "POST",
             "datatype": "json"
         },
+        scrollY: "300px",
+        scrollX: "500px",
         "columnDefs": [{
-            "targets": [0],
+            "targets": [0, 19],
             "visible": false,
             "searchable": false
         }],
+
         "columns": [
-            { "data": "wsId"        , "name": "wsId", "autoWidth": true },
-            { "data": "wsCoverImage", "name": "wsCoverImage", "autoWidth": true },
-            { "data": "wsEnvImage"  , "name": "wsEnvImage", "autoWidth": true },
-            { "data": "wsName"      , "name": "wsName", "autoWidth": true },
-            { "data": "wsMainInfo", "name": "wsMainInfo", "autoWidth": true },
+            //{ "data": "wsId", "name": "wsId", "autoWidth": true },
+            { "data": "wsId", "name": "wsId" },
+            { "data": "wsCoverImage", "name": "wsCoverImage" },
+            { "data": "wsEnvImage", "name": "wsEnvImage" },
+            { "data": "wsName", "name": "wsName" },
+            { "data": "wsMainInfo", "name": "wsMainInfo" },
 
-            { "data": "wsExtraInfo", "name": "wsExtraInfo", "autoWidth": true },
-            { "data": "wsType"           , "name": "wsType", "autoWidth": true },
-            { "data": "wsLocationType"   , "name": "wsLocationType", "autoWidth": true },
-            { "data": "wsLocationDetails", "name": "wsLocationDetails", "autoWidth": true },
-            { "data": "wsLessonSchedule", "name": "wsLessonSchedule", "autoWidth": true },
+            { "data": "wsExtraInfo", "name": "wsExtraInfo" },
+            { "data": "wsType", "name": "wsType" },
+            { "data": "wsLocationType", "name": "wsLocationType" },
+            { "data": "wsLocationDetails", "name": "wsLocationDetails" },
+            { "data": "wsLessonSchedule", "name": "wsLessonSchedule" },
 
-            { "data": "regStartDate", "name": "regStartDate", "autoWidth": true },
-            { "data": "regEndDate", "name": "regEndDate", "autoWidth": true },
-            { "data": "firstLesDate", "name": "firstLesDate", "autoWidth": true },
-            { "data": "endLesDate"  , "name": "endLesDate", "autoWidth": true },
-            { "data": "wsPrice", "name": "wsPrice", "autoWidth": true },
+            { "data": "regStartDate", "name": "regStartDate" },
+            { "data": "regEndDate", "name": "regEndDate" },
+            { "data": "firstLesDate", "name": "firstLesDate" },
+            { "data": "endLesDate", "name": "endLesDate" },
+            { "data": "wsPrice", "name": "wsPrice" },
 
-            { "data": "wsTotalAttendees", "name": "wsTotalAttendees", "autoWidth": true },
-            { "data": "wsRating"        , "name": "wsRating", "autoWidth": true },
-            { "data": "dateCreated"     , "name": "dateCreated", "autoWidth": true },
-            { "data": "dateUpdated"     , "name": "dateUpdated", "autoWidth": true },
-            { "data": "teacherId", "name": "teacherId", "autoWidth": true },
+            { "data": "wsTotalAttendees", "name": "wsTotalAttendees" },
+            { "data": "wsRating", "name": "wsRating" },
+            { "data": "dateCreated", "name": "dateCreated" },
+            { "data": "dateUpdated", "name": "dateUpdated" },
+            { "data": "teacherId", "name": "teacherId" },
             {
-                "render": function (data, row) { return "<a href='#' class='btn btn-danger' onclick=DeleteCustomer('" + row.id + "'); >Delete</a>"; }
+                "data": "wsId",
+                "render": function (data, row) {
+                    return '<a class="btn btn-success" href="/WorkshopListing/Delete/' + data + '">Delete</a>';
+                    //return '<p><a asp-page="/EditWorkshop" asp-route-id="@' + data + '">Edit</a></p>';
+                }
             },
-        ]
+            {
+                "data": "wsId",
+                "render": function (data, row)
+                {
+                    return '<a class="btn btn-success" href="/WorkshopListing/Edit/' + data + '">Edit</a>';
+                }
+            },
+        ],
+        fixedColumns: true
     });
 });
+
+//        <p><a class='btn btn-success' asp-page="CreateWorkshop">Create a New Workshop</a></p>
+
+//"<a href='#' class='btn btn-danger' onclick=UpdateWorkshop('" + row.wsId + "'); >Delete</a>"
+
+/*		<a href="../prod/song/updatesong/${row.song_uuid}">
+			<i class="fa fa-edit"></i>
+		</a>*/

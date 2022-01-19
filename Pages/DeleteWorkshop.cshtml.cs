@@ -9,16 +9,16 @@ using YouthAtHeart.Services;
 
 namespace YouthAtHeart.Pages
 {
-    public class EditWorkshopModel : PageModel
+    public class DeleteWorkshopModel : PageModel
     {
         private readonly WorkshopInfoService _svc;
-        public EditWorkshopModel(WorkshopInfoService service) //constructor: same name as class
+        public DeleteWorkshopModel(WorkshopInfoService service) //constructor: same name as class
         {
             _svc = service; //service object is automatically created when object of CreateModel is created
         }
 
         [BindProperty]
-        public WorkshopInfo EditAWorkshop { get; set; }
+        public WorkshopInfo DeleteAWorkshop { get; set; }
 
         public IActionResult OnGet(string id)
         {
@@ -26,21 +26,21 @@ namespace YouthAtHeart.Pages
             {
                 return NotFound();
             }
-            EditAWorkshop = _svc.GetWorkshopById(id);
-            if (EditAWorkshop == null)
+            DeleteAWorkshop = _svc.GetWorkshopById(id);
+            if (DeleteAWorkshop == null)
             {
                 return NotFound();
             }
             return Page();
         }
-
-        public IActionResult OnPost()
+        public IActionResult OnPost(string id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
-            if (_svc.UpdateWorkshop(EditAWorkshop) == true)
+            DeleteAWorkshop = _svc.GetWorkshopById(id);
+            if (_svc.DeleteWorkshop(DeleteAWorkshop) == true)
             {
                 return RedirectToPage("WorkshopListing");
             }

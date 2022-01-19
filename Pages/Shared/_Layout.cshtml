@@ -1,5 +1,19 @@
 ﻿<!DOCTYPE html>
+
+<style>
+    #changecolorforbackground {
+        background-color: lightblue;
+    }
+    #changecolorfornav {
+        background-color: white;
+    }
+
+</style>
+
+
 <html lang="en">
+
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +21,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body id="changecolorforbackground">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav  id="changecolorfornav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">YouthAtHeart</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -28,7 +42,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/WorkshopListing">Book for a Workshop</a>
-                                <a class="dropdown-item" href="/MyWorkshops">My workshops</a>
+                                <a class="dropdown-item" href="/WorkshopListing">My workshops</a>
                             </div>
                         </li>
 
@@ -46,11 +60,14 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div>
+        <div class="container">
+            <main role="main" class="pb-3" id="changecolorforbackground">
+                @RenderBody()
+            </main>
+        </div>
     </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
