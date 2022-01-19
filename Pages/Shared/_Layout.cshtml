@@ -1,6 +1,17 @@
 ﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
+
+<style>
+    #changecolorforbackground {
+        background-color: lightblue;
+    }
+
+    #changecolorfornav {
+        background-color: white;
+    }
+</style>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,9 +20,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body id="changecolorforbackground">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav id="changecolorfornav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">YouthAtHeart</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -65,7 +76,7 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" id="changecolorforbackground">
             @RenderBody()
         </main>
     </div>
