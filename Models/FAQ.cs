@@ -10,5 +10,6 @@ namespace YouthAtHeart.Models
     {
         public string Question { get; set; }
         private string Answer { get; set; }
+        public string Email { get; set; }
     }
 }
