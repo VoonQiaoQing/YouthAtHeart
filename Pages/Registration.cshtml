@@ -8,11 +8,13 @@ ViewData["Title"] = "Registration";
 <form method="post" class="signup">
     <div class="name">
         <asp:Label runat="server" Text="Label">Username: </asp:Label>
-        <input id="Username" type="text" />
+        <input id="Username" type="text" asp-for="MyUser.username"/>
+        <span asp-validation-for="MyUser.username" class="text-danger"></span>
     </div>
     <div class="email">
         <asp:Label runat="server" Text="Label">Email: </asp:Label>
-        <input id="Email" type="email" />
+        <input id="Email" type="email" asp-for="MyUser.email" />
+        <span asp-validation-for="MyUser.email" class="text-danger"></span>
     </div>
     <div class="password">
         <asp:Label runat="server" Text="Label">Password: </asp:Label>
@@ -24,3 +26,6 @@ ViewData["Title"] = "Registration";
     </div>
 
 </form>
+@section Scripts{
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
