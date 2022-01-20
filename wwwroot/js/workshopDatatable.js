@@ -20,6 +20,12 @@
         "columns": [
             //{ "data": "wsId", "name": "wsId", "autoWidth": true },
             { "data": "wsId", "name": "wsId" },
+/*            {
+                "data": { wsId: "wsId", wsCoverImage: "wsCoverImage", wsEnvImage: "wsEnvImage" },
+                "render": function (data, row) {
+                    return '<div class="card" style="width: 18rem;"><img class="card-img-top" src = "..." alt = "Card image cap" ><div class="card-body"><h5 class="card-title">' + data.wsId + '</h5><p class="card-text">Some quick example text to build on the card title and make up the bulk of the card content.</p><a href="#" class="btn btn-primary">Go somewhere</a></div></div >';
+                }
+            },*/
             { "data": "wsCoverImage", "name": "wsCoverImage" },
             { "data": "wsEnvImage", "name": "wsEnvImage" },
             { "data": "wsName", "name": "wsName" },
@@ -45,7 +51,7 @@
             {
                 "data": "wsId",
                 "render": function (data, row) {
-                    return '<a class="btn btn-danger" href="/WorkshopListing/Delete/' + data + '">Book</a>';
+                    return '<a class="btn btn-danger" href="/WorkshopListing/Delete/' + data + '">Delete</a>';
                     //return '<p><a asp-page="/EditWorkshop" asp-route-id="@' + data + '">Edit</a></p>';
                 }
             },

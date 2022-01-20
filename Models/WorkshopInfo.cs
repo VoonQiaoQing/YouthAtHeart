@@ -29,9 +29,12 @@ namespace YouthAtHeart.Models
 
         [Required(ErrorMessage = "No cover image uploaded.")]
         public string wsCoverImage { get; set; }
+        public byte[] wsCoverImageData { get; set; }
 
         [Required(ErrorMessage = "No workshop environment image uploaded.")]
         public string wsEnvImage { get; set; }
+
+        public byte[] wsEnvImageData { get; set; }
 
         [Required(ErrorMessage = "Please insert name.")]
         public string wsName { get; set; }
