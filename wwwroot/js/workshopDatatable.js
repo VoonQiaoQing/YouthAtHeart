@@ -45,7 +45,7 @@
             {
                 "data": "wsId",
                 "render": function (data, row) {
-                    return '<a class="btn btn-success" href="/WorkshopListing/Delete/' + data + '">Delete</a>';
+                    return '<a class="btn btn-danger" href="/WorkshopListing/Delete/' + data + '">Book</a>';
                     //return '<p><a asp-page="/EditWorkshop" asp-route-id="@' + data + '">Edit</a></p>';
                 }
             },
@@ -54,6 +54,12 @@
                 "render": function (data, row)
                 {
                     return '<a class="btn btn-success" href="/WorkshopListing/Edit/' + data + '">Edit</a>';
+                }
+            },
+            {
+                "data": "wsId",
+                "render": function (data, row) {
+                    return '<a class="btn btn-primary" href="/WorkshopListing/Book/' + data + '">Book</a>';
                 }
             },
         ],
