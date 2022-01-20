@@ -11,8 +11,8 @@ namespace YouthAtHeart.Pages
 {
     public class EditWorkshopModel : PageModel
     {
-        private readonly Services.WorkshopInfoService _svc;
-        public EditWorkshopModel(Services.WorkshopInfoService service) //constructor: same name as class
+        private readonly WorkshopInfoService _svc;
+        public EditWorkshopModel(WorkshopInfoService service) //constructor: same name as class
         {
             _svc = service; //service object is automatically created when object of CreateModel is created
         }

@@ -1,0 +1,14 @@
+﻿@page "/WorkshopListing/Delete/{id}"
+@model YouthAtHeart.Pages.DeleteWorkshopModel
+@{
+}
+<h1>Delete Workshop</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <form method="post">
+        <input type="hidden" asp-for="DeleteAWorkshop.wsId" />
+        <input type="submit" value="Submit" class="btn btn-danger" />
+        <a asp-page="./WorkshopListing">Back to List</a>
+    </form>
+</div>

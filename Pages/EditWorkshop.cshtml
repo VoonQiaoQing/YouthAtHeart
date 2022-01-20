@@ -1,14 +1,19 @@
-﻿@page
+﻿@page "/WorkshopListing/Edit/{id}"
 @model YouthAtHeart.Pages.EditWorkshopModel
 @{
     ViewData["Title"] = "Edit Workshop";
 }
-}
-<h1>Create Employee</h1>
+
+<h1>Edit Workshop</h1>
 
 <form method="post">
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div>
+        <input type="hidden" asp-for="EditAWorkshop.wsId" />
+        <span asp-validation-for="EditAWorkshop.wsId" class="text-danger"></span>
+    </div>
 
     <div>
         <label class="col-sm-2 col-form-label">CoverImage:</label>
@@ -37,7 +42,7 @@
 
     <div>
         <label class="col-sm-2 col-form-label">Extra Information:</label>
-        <input asp-for="EditAWorkshop.wsName" />
+        <input asp-for="EditAWorkshop.wsExtraInfo" />
         <span asp-validation-for="EditAWorkshop.wsExtraInfo" class="text-danger"></span>
     </div>
 
@@ -102,7 +107,7 @@
     </div>
 
     <div class="col-sm-10">
-        <input id="update" type="submit" value="Update" class="btn btn-primary" />
+        <input id="update" type="submit" value="Submit" class="btn btn-primary" />
     </div>
 </form>
 @section Scripts {
