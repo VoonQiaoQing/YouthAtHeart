@@ -48,10 +48,13 @@
                         <li class="nav-item">
                             <a class="nav-link navbar-light" asp-area="" asp-page="/FAQ">FAQ</a>
                         </li>
-                        @try
-                        {
-                            if (!String.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("SSName")))
+                        @{
+                            var sessionName = new Byte[20];
+                            string userName = "Guest";
+                            bool usernameCond = Context.Session.TryGetValue("userName", out sessionName);
+                            if (usernameCond)
                             {
+                                userName = System.Text.Encoding.UTF8.GetString(sessionName);
                                 <li class="nav-item" id="profile">
                                     <a class="nav-link navbar-light" asp-page="/Profile">Profile</a>
                                 </li>
@@ -59,15 +62,16 @@
                                     <a class="nav-link navbar-light" asp-page="/Logout">Logout</a>
                                 </li>
                             }
-                        }
-                        catch (Exception)
-                        {
-                            <li class="nav-item" id="register">
-                                <a class="nav-link navbar-light" asp-page="/Registration">Register</a>
-                            </li>
-                            <li class="nav-item" id="login">
-                                <a class="nav-link navbar-light" asp-page="/Login">Login</a>
-                            </li>
+                            else
+                            {
+                                <li class="nav-item" id="register">
+                                    <a class="nav-link navbar-light" asp-page="/Registration">Register</a>
+                                </li>
+                                <li class="nav-item" id="login">
+                                    <a class="nav-link navbar-light" asp-page="/Login">Login</a>
+                                </li>
+                            }
+
                         }
 
                     </ul>

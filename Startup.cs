@@ -32,6 +32,7 @@ namespace YouthAtHeart
                 b => b.MigrationsAssembly(typeof(YouthAtHeartContext).Assembly.FullName)));
             services.AddRazorPages();
             services.AddSession();
+            services.AddMvc();
             services.AddControllers();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<TestService>();
@@ -57,6 +58,7 @@ namespace YouthAtHeart
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
