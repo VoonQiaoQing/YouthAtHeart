@@ -7,9 +7,15 @@
     ViewData["Title"] = "Create Workshop";
 }
 
+<style>
+    input {
+
+    }
+</style>
+
 <h1>Create Workshop</h1>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div><label class="text-danger">@Model.MyMessage</label></div>
     <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -20,10 +26,29 @@
     </div>
 
     <div>
+        <label class="col-sm-2 col-form-label">CoverImageData:</label>
+        <input type="file" asp-for="CreateAWorkshop.wsCoverImageData" />
+        <span asp-validation-for="CreateAWorkshop.wsCoverImageData" class="text-danger"></span>
+        @*        <button type="submit">Upload File(s)</button>*@
+    </div>
+
+    @*    <input type="file" id="file1"
+               name="file1"
+               multiple="multiple" />
+        <button type="submit">Upload File(s)</button>*@
+
+    <div>
         <label class="col-sm-2 col-form-label">EnvImage:</label>
         <input asp-for="CreateAWorkshop.wsEnvImage" />
         <span asp-validation-for="CreateAWorkshop.wsEnvImage" class="text-danger"></span>
 
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">EnvImageData:</label>
+        <input type="file" asp-for="CreateAWorkshop.wsEnvImageData" />
+        <span asp-validation-for="CreateAWorkshop.wsEnvImageData" class="text-danger"></span>
+        @*        <button type="submit">Upload File(s)</button>*@
     </div>
 
     <div>
