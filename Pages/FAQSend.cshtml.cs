@@ -13,20 +13,20 @@ namespace YouthAtHeart.Pages
 {
     public class FAQSendModel : PageModel
     {
-        [BindProperty]
-        public FAQ MyQuestion { get; set; }
-        private readonly ILogger<IndexModel> _logger;
-        private FAQService _svc;
-        public FAQSendModel(ILogger<IndexModel> logger, FAQService service)
-        {
-            _svc = service;
-            _logger = logger;
-        }
+
         [BindProperty]
         public FAQ MyQuestions { get; set; }
-        
+        [BindProperty]
+        public FAQ MyQuestion { get; set; }
+        private readonly Services.FAQService _svc;
+        public FAQSendModel(FAQService service)
+        {
+            _svc = service;
+        }
+
         public void OnGet()
         {
+
         }
         public IActionResult onPost()
         {
