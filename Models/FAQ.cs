@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YouthAtHeart.Models
 {
-    public class Questions
+    public class FAQ
     {
         public string Question { get; set; }
         private string Answer { get; set; }

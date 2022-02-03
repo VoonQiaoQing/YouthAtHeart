@@ -24,6 +24,6 @@ namespace YouthAtHeart.Models
         public DbSet<HomeInfo> HomeInfo { get; set; }
         public DbSet<WorkshopInfo> WorkshopInfo { get; set; }
         public DbSet<User> User { get; set; }
-
+        public DbSet<FAQ> FAQs { get; set; }
     }
 }
