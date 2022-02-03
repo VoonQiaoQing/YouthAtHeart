@@ -40,6 +40,7 @@ namespace YouthAtHeart
             services.AddTransient<UserService>();
             services.AddDbContext<YouthAtHeartContext>();
             services.AddScoped<UserService>();
+            services.AddTransient<FAQService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using YouthAtHeart.Models;
 using Microsoft.Extensions.Logging;
 using YouthAtHeart.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace YouthAtHeart.Pages
 {
@@ -21,10 +22,24 @@ namespace YouthAtHeart.Pages
             _svc = service;
             _logger = logger;
         }
-
-
+        [BindProperty]
+        public FAQ MyQuestions { get; set; }
+        
         public void OnGet()
         {
+        }
+        public IActionResult onPost()
+        {
+            if (ModelState.IsValid)
+            {
+                if (_svc.AddQuestion(MyQuestions))
+                {
+                    HttpContext.Session.SetString("SSEmail", MyQuestion.Email);
+                    HttpContext.Session.SetString("SSQuestion", MyQuestion.Question);
+                    return RedirectToPage("FAQConfirmation");
+                }
+            }
+            return Page();
         }
     }
 }

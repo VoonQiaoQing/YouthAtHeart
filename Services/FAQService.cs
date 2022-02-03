@@ -32,6 +32,10 @@ namespace YouthAtHeart.Services
             _context.SaveChanges();
             return true;
         }
-
+        public FAQ GetFAQbyQuestion(string Qn)
+        {
+            FAQ theQuestion = _context.FAQs.Where(e => e.Question == Qn).FirstOrDefault();
+            return theQuestion;
+        }
     }
 }

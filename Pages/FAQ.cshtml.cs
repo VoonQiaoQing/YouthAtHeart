@@ -11,7 +11,7 @@ namespace YouthAtHeart.Pages
     public class FAQModel : PageModel
     {
         [BindProperty]
-        public List<Questions> AllQuestions { get; set; }
+        public List<FAQ> AllQuestions { get; set; }
         public void OnGet()
         {
         }
