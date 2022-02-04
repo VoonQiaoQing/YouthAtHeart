@@ -11,7 +11,9 @@ namespace YouthAtHeart.Models
     {
         [Key]
         public int UID { get;set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Question { get; set; }
         private string Answer { get; set; }
         

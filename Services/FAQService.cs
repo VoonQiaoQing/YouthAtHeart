@@ -15,12 +15,12 @@ namespace YouthAtHeart.Services
         }
         public List<FAQ> GetAllQuestion()
         {
-            List<FAQ> AllFAQ = _context.FAQs.ToList();
+            List<FAQ> AllFAQ = _context.FAQ.ToList();
             return AllFAQ;
         }
         private bool FAQExist(string qn)
         {
-            return _context.FAQs.Any(e => e.Question == qn);
+            return _context.FAQ.Any(e => e.Question == qn);
         }
         public bool AddQuestion (FAQ newQuestion)
         {
@@ -34,7 +34,7 @@ namespace YouthAtHeart.Services
         }
         public FAQ GetFAQbyQuestion(string Qn)
         {
-            FAQ theQuestion = _context.FAQs.Where(e => e.Question == Qn).FirstOrDefault();
+            FAQ theQuestion = _context.FAQ.Where(e => e.Question == Qn).FirstOrDefault();
             return theQuestion;
         }
     }

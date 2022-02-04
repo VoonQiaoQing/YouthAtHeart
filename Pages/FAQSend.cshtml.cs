@@ -16,8 +16,6 @@ namespace YouthAtHeart.Pages
 
         [BindProperty]
         public FAQ MyQuestions { get; set; }
-        [BindProperty]
-        public FAQ MyQuestion { get; set; }
         private readonly Services.FAQService _svc;
         public FAQSendModel(FAQService service)
         {
@@ -34,8 +32,8 @@ namespace YouthAtHeart.Pages
             {
                 if (_svc.AddQuestion(MyQuestions))
                 {
-                    HttpContext.Session.SetString("SSEmail", MyQuestion.Email);
-                    HttpContext.Session.SetString("SSQuestion", MyQuestion.Question);
+                    HttpContext.Session.SetString("SSEmail", MyQuestions.Email);
+                    HttpContext.Session.SetString("SSQuestion", MyQuestions.Question);
                     return RedirectToPage("FAQConfirmation");
                 }
             }
