@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using YouthAtHeart.Models;
 using YouthAtHeart.Services;
+using Google.Cloud.Translation.V2;
 
 namespace YouthAtHeart.Pages
 {
@@ -34,7 +35,20 @@ namespace YouthAtHeart.Pages
         public void OnGet()
         {
             //ERROR SHOULD BE HERE
+/*            var client = TranslationClient.Create();
+            List<WorkshopInfo> sampleArray = null;
+
+            foreach (var item in _svc.GetAllWorkshops())
+            {
+                var response = client.TranslateText(item.wsName, LanguageCodes.ChineseSimplified, LanguageCodes.English);
+                var reponseReply = response.TranslatedText;
+                item.wsName = reponseReply;
+                sampleArray.Add(item);
+            }
+            allworkshops = sampleArray;*/
             allworkshops = _svc.GetAllWorkshops();
+
+
             //foreach (var item in allworkshops)
             //{
 
