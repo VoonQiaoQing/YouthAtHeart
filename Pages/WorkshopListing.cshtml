@@ -3,13 +3,81 @@
 @{
 }
 
+<style>
+
+    .btn {
+        @* background-color: #1c4450;*@ 
+        border: none;
+        outline: none;
+        color: white;
+        margin: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
 <!-- https://codewithmukesh.com/blog/jquery-datatable-in-aspnet-core/ -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/script.js"></script> -->
 
+<div id="google_translate_element"></div>
+
+<div class="buttons">
+    <button class="btn" style="background-color: #1c4450;" id="increase">Increase Font Size</button>
+    <button class="btn" style="background-color: #1c4450;" id="decrease">Decrease Font Size</button>
+    <button class="btn" style="background-color: #1c4450;" id="reset">Reset</button>
+</div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#increase').click(function () {
+            modifyFontSize('increase');
+        });
+        $('#decrease').click(function () {
+            modifyFontSize('decrease');
+        });
+        $('#reset').click(function () {
+            modifyFontSize('reset');
+        })
+        function modifyFontSize(action) {
+            var divElement = $('.demo');
+            var currentFontSize = parseInt(divElement.css('font-size'));
+            if (action == 'increase')
+                currentFontSize += 3;
+            else if (action == 'decrease')
+                currentFontSize -= 3;
+            else
+                currentFontSize = 16;
+            divElement.animate({ 'fontSize': currentFontSize }, 300);
+        }
+    });
+</script>
 
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<div style="width:700px;">
+<div class="demo" style="width:700px;">
     <div class="container" style="width: 1700px;">
         <br />
         <div style="width:90%; margin:0 auto;">
@@ -23,7 +91,7 @@
                     <tr>
 
                         <th>wsId</th>
-@*                        <th></th>*@
+                        @*                        <th></th>*@
                         <th>wsCoverImage</th>
                         <th>wsEnvImage</th>
                         <th>wsName</th>
@@ -53,7 +121,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
                 </tbody>
             </table>
         </div>
