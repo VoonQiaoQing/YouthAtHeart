@@ -68,6 +68,12 @@
                     return '<a class="btn btn-primary" href="/WorkshopListing/Book/' + data + '">Book</a>';
                 }
             },
+            {
+                "data": "wsId",
+                "render": function (data, row) {
+                    return '';
+                }
+            },
         ],
         fixedColumns: true
     });
