@@ -1,0 +1,100 @@
+﻿@model YouthAtHeart.Models.Booking
+@{
+}
+
+<style>
+    input {
+    }
+</style>
+
+<h1>Create Booking</h1>
+@ViewData["message"].ToString()
+
+<form method="post" action="~/CreateBooking" enctype="multipart/form-data">
+    <div><label class="text-danger">@Model.BookingId</label></div>
+    <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
+    <div>
+        <label class="col-sm-2 col-form-label">Customer ID:</label>
+        <input type="text" name="CustomerId" />
+    </div>
+    @*   <div>
+            <label class="col-sm-2 col-form-label">Created Date:</label>
+            <input type="text" name="CreatedDate" />
+        </div>*@
+    <div>
+        <label class="col-sm-2 col-form-label">First Name:</label>
+        <input type="text" name="FirstName" value="@Model.FirstName" />
+        <br /><div class="text-danger">
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Last Name:</label>
+        <input type="text" name="LastName" value="@Model.LastName" />
+        @Html.ValidationMessageFor(model => model.LastName)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Phone Number:</label>
+        <input type="text" name="PhoneNumber" value="@Model.PhoneNumber" />
+        @Html.ValidationMessageFor(model => model.PhoneNumber)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Email:</label>
+        <input type="text" name="Email" value="@Model.Email" />
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Number of Attendees:</label>
+        <input type="text" name="NumberOfAttendees" value="@Model.NumberOfAttendees" />
+        @Html.ValidationMessageFor(model => model.NumberOfAttendees)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Booking Amount:</label>
+        <input type="text" name="BookingAmount" value="@Model.BookingAmount" />
+        @Html.ValidationMessageFor(model => model.BookingAmount)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Payment Status:</label>
+        <input type="text" name="PaymentStatus" value="@Model.PaymentStatus" />
+        @Html.ValidationMessageFor(model => model.PaymentStatus)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Remarks:</label>
+        <input type="text" name="Remarks" />
+
+    </div>
+
+    <hr />
+    <h5>
+        Payment Details:
+    </h5>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Name on Card:</label>
+        <input type="text" name="NameOnCard" value="@Model.NameOnCard" />
+        @Html.ValidationMessageFor(model => model.NameOnCard)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Card Number:</label>
+        <input type="text" name="CardNumber" value="@Model.CardNumber" />
+        @Html.ValidationMessageFor(model => model.CardNumber)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">CVV:</label>
+        <input type="text" name="Cvv" value="@Model.Cvv" />
+        @Html.ValidationMessageFor(model => model.Cvv)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Card Expiry Date:</label>
+        <input type="text" name="ExpiryDate" value="@Model.ExpiryDate" />
+        @Html.ValidationMessageFor(model => model.ExpiryDate)
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Comments:</label>
+        <input type="text" name="Comments" />
+
+    </div>
+
+    <button type="submit">Save</button>
+
+</form>

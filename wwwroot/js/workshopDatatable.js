@@ -65,7 +65,7 @@
             {
                 "data": "wsId",
                 "render": function (data, row) {
-                    return '<a class="btn btn-primary" href="/WorkshopListing/Book/' + data + '">Book</a>';
+                    return '<a class="btn btn-primary" href="AddBooking?WorkshopId=' + data + '">Book</a>';
                 }
             },
             {
