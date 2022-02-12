@@ -105,7 +105,35 @@
                     teacherId: "teacherId",
                 },
                 "render": function (data, row) {
-                    return '';
+                    return '<div class="col-sm-7">' +
+                        '<div class="card text-dark bg-light">' +
+                        '<div class="card-header bg-primary text-warning"><div>' + data.regStartDate + '</div><h4 class="text-center">' + data.wsName + '</h4></div>' +
+                                    '<div class="container">' +
+                        '<div class="card-body" style="float: left;">' +
+                        '<p class="card-text text-left"><img src="/Image/' + data.wsCoverImage + '" style="width:150px; height: 120px;"></p>' +
+                        '<i class="fas fa-info-circle" style="font-size:18px"> ' + data.wsPresentAttendees + "/" + data.wsTotalAttendees + '</i>' +
+                                    '</div>' +
+                                    '<div class="card-body">' +
+                                    '<div id="MainInfo">MainInfo' + data.wsMainInfo + '</div>' +
+                                    '<div>' +
+                                        '<div style="float: left; padding-right: 20px;">' +
+                                        '<i id="Location" class="fas fa-map-marker-alt" style="font-size:18px"> ' + data.wsLocationType + '</i>' +
+                                        '<i id="Rating" class="fa fa-star-o" style="font-size:18px">' + data.wsRating + '</i>' +
+                                        '<div id="LocationDetails"> ' + data.wsLocationDetails +'</div>' +
+                                    '</div>' +
+                                    '<div id="LessonSchedule" style="width:150px; float: left;">' + data.wsLessonSchedule +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div style="height: 70px;" class="card-footer bg-primary border-warning text-center">' +
+                        '<a style="float: right;" class="btn btn-primary" href="/WorkshopListing/Book/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book</i></a>' +
+                        '<a style="float: right;" href="#" class="btn btn-warning">Details</a>' +
+                        '<a style="float: right;" class="btn btn-danger" href="/WorkshopListing/Delete/' + data.wsId + '">Delete</a>' +
+                        '<a style="float: right;" class="btn btn-success" href="/WorkshopListing/Edit/' + data.wsId + '">Edit</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
                 }
             },
 
