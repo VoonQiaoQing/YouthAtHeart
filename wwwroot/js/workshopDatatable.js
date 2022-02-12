@@ -72,8 +72,8 @@
                         '</div>' +
                         '</div>' +
                         '<div style="height: 70px;" class="card-footer bg-primary border-warning text-center">' +
-                        '<a style="float: right;" class="btn btn-primary" href="/WorkshopListing/Book/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book</i></a>' +
-                        '<a style="float: right;" class="btn btn-warning" href="#">Details</a>' +
+                        '<a style="float: right;" class="btn btn-primary" href="/AddBooking/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book </i></a>' +
+                        '<a style="float: right;" href="#" class="btn btn-warning">Details</a>' +
                         '<a style="float: right;" class="btn btn-danger" href="/WorkshopListing/Delete/' + data.wsId + '">Delete</a>' +
                         '<a style="float: right;" class="btn btn-success" href="/WorkshopListing/Edit/' + data.wsId + '">Edit</a>' +
                         '<a style="float: right;" class="btn btn-primary" href="#">Manage Bookings</a>' +
