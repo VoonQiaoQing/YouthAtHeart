@@ -9,7 +9,46 @@
 
 <style>
     input {
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 5px;
+        margin: 5px;
+        width: 305px;
+        transition: width 0.4s ease-in-out;
+    }
 
+    input:focus {
+        width: 30%;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button {
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+    }
+
+    .button:hover {
+        background-color: #4CAF50;
+        color: white;
     }
 </style>
 
@@ -20,120 +59,106 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div>
-        <label class="col-sm-2 col-form-label">CoverImage:</label>
-        <input asp-for="CreateAWorkshop.wsCoverImage" />
-        <span asp-validation-for="CreateAWorkshop.wsCoverImage" class="text-danger"></span>
+        <label class="col-sm-2 col-form-label"><strong>Cover Image</strong></label><br />
+        <div style="padding-left: 10px;"><img id="imagePreview1" alt="your image" width="100" height="100" /></div><br />
+        <input class="imageField" onchange="document.getElementById('imagePreview1').src = window.URL.createObjectURL(this.files[0])" type="file" id="CoverImage" asp-for="CoverImage" />
+
+        <br />
+        <label class="col-sm-2 col-form-label"><strong>Environment Image</strong></label><br />
+        <div style="padding-left: 10px;"><img id="imagePreview2" alt="your image" width="100" height="100" /></div><br />
+        <input class="imageField" onchange="document.getElementById('imagePreview2').src = window.URL.createObjectURL(this.files[0])" type="file" id="EnvImage" asp-for="EnvImage" />
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">CoverImageData:</label>
-        <input type="file" asp-for="CreateAWorkshop.wsCoverImageData" />
-        <span asp-validation-for="CreateAWorkshop.wsCoverImageData" class="text-danger"></span>
-        @*        <button type="submit">Upload File(s)</button>*@
-    </div>
-
-    @*    <input type="file" id="file1"
-               name="file1"
-               multiple="multiple" />
-        <button type="submit">Upload File(s)</button>*@
-
-    <div>
-        <label class="col-sm-2 col-form-label">EnvImage:</label>
-        <input asp-for="CreateAWorkshop.wsEnvImage" />
-        <span asp-validation-for="CreateAWorkshop.wsEnvImage" class="text-danger"></span>
-
-    </div>
-
-    <div>
-        <label class="col-sm-2 col-form-label">EnvImageData:</label>
-        <input type="file" asp-for="CreateAWorkshop.wsEnvImageData" />
-        <span asp-validation-for="CreateAWorkshop.wsEnvImageData" class="text-danger"></span>
-        @*        <button type="submit">Upload File(s)</button>*@
-    </div>
-
-    <div>
-        <label class="col-sm-2 col-form-label">Name:</label>
+        <label class="col-sm-2 col-form-label"><strong>Name</strong></label><br />
         <input asp-for="CreateAWorkshop.wsName" />
         <span asp-validation-for="CreateAWorkshop.wsName" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Main Information:</label>
-        <input asp-for="CreateAWorkshop.wsMainInfo" />
+        <label class="col-sm-2 col-form-label"><strong>Main Information</strong></label><br />
+        <input style="height: 100px;" asp-for="CreateAWorkshop.wsMainInfo" />
         <span asp-validation-for="CreateAWorkshop.wsMainInfo" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Extra Information:</label>
+        <label class="col-sm-2 col-form-label"><strong>Extra Information</strong></label><br />
         <input asp-for="CreateAWorkshop.wsName" />
         <span asp-validation-for="CreateAWorkshop.wsExtraInfo" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Workshop Type:</label>
+        <label class="col-sm-2 col-form-label"><strong>Workshop Type:</strong></label><br />
         @Html.DropDownList("CreateAWorkshop.wsType", new SelectList(Enum.GetValues(typeof(Models.WorkshopType))), "--Select an option--")
         <span asp-validation-for="CreateAWorkshop.wsType" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Location:</label>
+        <label class="col-sm-2 col-form-label"><strong>Location</strong></label><br />
         @Html.DropDownList("CreateAWorkshop.wsLocationType", new SelectList(Enum.GetValues(typeof(Models.LocationType))), "--Select an option--")
         <span asp-validation-for="CreateAWorkshop.wsLocationType" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Location Details:</label>
+        <label class="col-sm-2 col-form-label"><strong>Location Details</strong></label><br />
         <input asp-for="CreateAWorkshop.wsLocationDetails" />
         <span asp-validation-for="CreateAWorkshop.wsLocationDetails" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Lesson Schedule:</label>
+        <label class="col-sm-2 col-form-label"><strong>Total No. of Lessons</strong></label><br />
+        <input id="Salary" asp-for="CreateAWorkshop.wsNoOfLessons" />
+        <span asp-validation-for="CreateAWorkshop.wsNoOfLessons" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label"><strong>Lesson Schedule</strong></label><br />
         <input asp-for="CreateAWorkshop.wsLessonSchedule" />
         <span asp-validation-for="CreateAWorkshop.wsLessonSchedule" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Registration Start Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>Registration Start Date</strong></label><br />
         <input asp-for="CreateAWorkshop.regStartDate" />
         <span asp-validation-for="CreateAWorkshop.regStartDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Registration End Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>Registration End Date</strong></label><br />
         <input asp-for="CreateAWorkshop.regEndDate" />
         <span asp-validation-for="CreateAWorkshop.regEndDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">First Lesson Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>First Lesson Date</strong></label><br />
         <input asp-for="CreateAWorkshop.firstLesDate" />
         <span asp-validation-for="CreateAWorkshop.firstLesDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Last Lesson Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>Last Lesson Date</strong></label><br />
         <input asp-for="CreateAWorkshop.endLesDate" />
         <span asp-validation-for="CreateAWorkshop.endLesDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Price:</label>
+        <label class="col-sm-2 col-form-label"><strong>Price</strong></label><br />
         <input id="Salary" asp-for="CreateAWorkshop.wsPrice" />
         <span asp-validation-for="CreateAWorkshop.wsPrice" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Total Attendees:</label>
+        <label class="col-sm-2 col-form-label"><strong>Total Attendees</strong></label><br />
         <input id="Salary" asp-for="CreateAWorkshop.wsTotalAttendees" />
         <span asp-validation-for="CreateAWorkshop.wsTotalAttendees" class="text-danger"></span>
     </div>
-
+    <br />
     <div class="col-sm-10">
-        <input id="create" type="submit" value="Create" class="btn btn-primary" />
+        <input class="button" id="create" type="submit" value="Create" />
     </div>
 </form>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
 
