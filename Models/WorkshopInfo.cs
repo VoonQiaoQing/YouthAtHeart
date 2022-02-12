@@ -50,6 +50,9 @@ namespace YouthAtHeart.Models
         [Required(ErrorMessage = "Please insert location details.")]
         public string wsLocationDetails { get; set; }
 
+        [Required(ErrorMessage = "Please insert No. of lessons you will conduct.")]
+        public int wsNoOfLessons { get; set; }
+
         [Required(ErrorMessage = "Please insert lesson schedule.")]
         public string wsLessonSchedule { get; set; }
 

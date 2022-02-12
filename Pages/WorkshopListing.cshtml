@@ -46,23 +46,9 @@
         height: 0px;
         margin: 0 auto;
     }
-    #Location, #MainInfo, #LessonSchedule {
-        width: 250px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    #Rating {
-        width: 250px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    #LocationDetails {
-        width: 250px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
+    .MainInfo, #LessonSchedule, #Text {
+        width: 33%;
+        word-wrap: break-word;
     }
 
 </style>
@@ -80,8 +66,6 @@
     <div class="container" style="width: 1700px;">
         <br />
         <div style="width:90%; margin:0 auto;">
-
-            @*        <a class="btn btn-success" href="/CreateWorkshop">Delete</a>*@
             <p>
                 <a class='btn btn-success' asp-page="CreateWorkshop">Create a New Workshop</a>
             </p>
@@ -89,34 +73,7 @@
                 <thead>
                     <tr>
                         <th>wsId</th>
-                        @*                        <th>wsCoverImage</th>
-                            <th>wsEnvImage</th>
-                            <th>wsName</th>
-                            <th>wsMainInfo</th>*@
-                        @*
-                            <th>wsExtraInfo</th>
-                            <th>wsType</th>
-                            <th>wsLocationType</th>
-                            <th>wsLocationDetails</th>
-                            <th>wsLessonSchedule</th>
-
-                            <th>regStartDate</th>
-                            <th>regEndDate</th>
-                            <th>firstLesDate</th>
-                            <th>endLesDate</th>
-                            <th>wsPrice</th>
-
-                            <th>wsTotalAttendees</th>
-                            <th>wsRating</th>
-                            <th>dateCreated</th>
-                            <th>dateUpdated</th>
-                            <th>teacherId</th>*@
-
-                        @*                        <th></th>
-                            <th></th>
-                            <th></th>*@
                         <th></th>
-
                     </tr>
                 </thead>
                 <tbody>
