@@ -36,7 +36,7 @@ namespace YouthAtHeart.Controllers
                 int pageSize = length != null ? Convert.ToInt32(length) : 0;
                 int skip = start != null ? Convert.ToInt32(start) : 0;
                 int recordsTotal = 0;
-                var customerData = (from tempcustomer in context.WorkshopInfo select tempcustomer);
+                var customerData = (from workshop in context.WorkshopInfo select workshop);
                 if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDirection)))
                 {
                     customerData = customerData.OrderBy(sortColumn + " " + sortColumnDirection);
@@ -52,6 +52,19 @@ namespace YouthAtHeart.Controllers
                                                 || m.wsLessonSchedule.Contains(searchValue)
                                                 );
                 }
+
+                if (!string.IsNullOrEmpty(searchValue))
+                {
+                    customerData = customerData.Where(m => m.wsName.Contains(searchValue)
+                                                || m.wsMainInfo.Contains(searchValue)
+                                                || m.wsExtraInfo.Contains(searchValue)
+                                                || m.wsType.Contains(searchValue)
+                                                || m.wsLocationType.Contains(searchValue)
+                                                || m.wsLocationDetails.Contains(searchValue)
+                                                || m.wsLessonSchedule.Contains(searchValue)
+                                                );
+                }
+
                 recordsTotal = customerData.Count();
                 var data = customerData.Skip(skip).Take(pageSize).ToList();
                 var jsonData = new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data };
