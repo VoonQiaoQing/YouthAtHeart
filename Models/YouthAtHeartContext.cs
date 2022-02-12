@@ -23,6 +23,7 @@ namespace YouthAtHeart.Models
         public DbSet<Test> Test { get; set; }
         public DbSet<HomeInfo> HomeInfo { get; set; }
         public DbSet<WorkshopInfo> WorkshopInfo { get; set; }
+        public DbSet<Booking> Booking { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<FAQ> FAQ { get; set; }
     }
