@@ -106,6 +106,12 @@
     </div>
 
     <div>
+        <label class="col-sm-2 col-form-label"><strong>Total No. of Lessons</strong></label><br />
+        <input id="Salary" asp-for="CreateAWorkshop.wsNoOfLessons" />
+        <span asp-validation-for="CreateAWorkshop.wsNoOfLessons" class="text-danger"></span>
+    </div>
+
+    <div>
         <label class="col-sm-2 col-form-label"><strong>Lesson Schedule</strong></label><br />
         <input asp-for="CreateAWorkshop.wsLessonSchedule" />
         <span asp-validation-for="CreateAWorkshop.wsLessonSchedule" class="text-danger"></span>
