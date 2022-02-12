@@ -38,7 +38,14 @@ namespace YouthAtHeart
             services.AddTransient<TestService>();
             services.AddTransient<WorkshopInfoService>();
             services.AddTransient<UserService>();
-            services.AddDbContext<YouthAtHeartContext>();
+            services.AddDbContext<YouthAtHeartContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("MyConn"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure();
+                    });
+            });
             services.AddScoped<UserService>();
             services.AddTransient<FAQService>();
         }

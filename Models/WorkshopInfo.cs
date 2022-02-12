@@ -16,25 +16,22 @@ namespace YouthAtHeart.Models
             Guid guid = Guid.NewGuid();
             wsId = guid.ToString("D");
 
-            wsRating = 0;
-
-            dateCreated = DateTime.Now;
+            wsRatingAvg = 0;
+            wsRatingTotal = 0;
 
             teacherId = "Temp Value";
+            
+            wsPresentAttendees = 0;
+
+            dateCreated = DateTime.Now;
+            dateUpdated = DateTime.Now;
         }
 
         [Required, Key]
         public string wsId { get; set; }
-            //= guidToStr;
-
-        [Required(ErrorMessage = "No cover image uploaded.")]
         public string wsCoverImage { get; set; }
-        public byte[] wsCoverImageData { get; set; }
 
-        [Required(ErrorMessage = "No workshop environment image uploaded.")]
         public string wsEnvImage { get; set; }
-
-        public byte[] wsEnvImageData { get; set; }
 
         [Required(ErrorMessage = "Please insert name.")]
         public string wsName { get; set; }
@@ -56,29 +53,30 @@ namespace YouthAtHeart.Models
         [Required(ErrorMessage = "Please insert lesson schedule.")]
         public string wsLessonSchedule { get; set; }
 
-        [Required(ErrorMessage = "Please choose start registration date."), DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please choose start registration date."), DataType(DataType.DateTime)]
         public DateTime regStartDate { get; set; }
 
-        [Required(ErrorMessage = "Please choose end registration date."), DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please choose end registration date."), DataType(DataType.DateTime)]
         public DateTime regEndDate { get; set; }
 
-        [Required(ErrorMessage = "Please choose date of first lesson."), DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please choose date of first lesson."), DataType(DataType.DateTime)]
         public DateTime firstLesDate { get; set; }
 
-        [Required(ErrorMessage = "Please choose date of last lesson."), DataType(DataType.Date)]
+        [Required(ErrorMessage = "Please choose date of last lesson."), DataType(DataType.DateTime)]
         public DateTime endLesDate { get; set; }
 
-        [Required(ErrorMessage = "Please insert lesson price.")]
+        [Required(ErrorMessage = "Please insert lesson price."), DataType(DataType.Currency)]
         public Double wsPrice { get; set; }
+
+        public int wsPresentAttendees { get; set; }
 
         [Required(ErrorMessage = "Please insert total attendees no.")]
         public int wsTotalAttendees { get; set; }
 
-        [Required(ErrorMessage = "Please insert workshop rating.")]
-        public Double wsRating { get; set; }
+        public Double wsRatingAvg { get; set; }
+        public Double wsRatingTotal { get; set; }
 
         public DateTime dateCreated { get; set; }
-
         public DateTime dateUpdated { get; set; }
 
         public string teacherId { get; set; }
