@@ -2,99 +2,137 @@
 @{
 }
 
-<style>
-    input {
-    }
-</style>
-
 <h1>Create Booking</h1>
+
 @ViewData["message"].ToString()
 
-<form method="post" action="~/CreateBooking" enctype="multipart/form-data">
-    <div><label class="text-danger">@Model.BookingId</label></div>
-    <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
-    <div>
-        <label class="col-sm-2 col-form-label">Customer ID:</label>
-        <input type="text" name="CustomerId" />
+<div class="col-sm-6 float-left">
+    @Model.workshopInfo.wsName
+    <div class="col-sm-5 p-2 float-left" style="height: 100vh;overflow-y:scroll">
+
+
+        <table class="w-100">
+            <tbody>
+
+
+                <tr>
+                    <td class="p-0">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td colspan="2" class="p-0 text-center">
+                                    <img class="img-thumbnail " src="../images/@Model.workshopInfo.wsCoverImage" style="width:150px;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b> @Model.workshopInfo.wsName</b></td>
+                                <td> Teacher:<b> @Model.workshopInfo.teacherId</b></td>
+                            </tr>
+                            <tr>
+                                <td> Location: <b> @Model.workshopInfo.wsLocationType</b></td>
+                                <td> Workshop Schedule:<b> @Model.workshopInfo.wsLessonSchedule</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"> Location Details:  <b>@Model.workshopInfo.wsLocationDetails</b></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="1">SessionCost :<b> @String.Format("{0:C}", Model.workshopInfo.wsPrice)</b></td>
+                                <td colspan="1"></td>
+
+
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+
     </div>
-    @*   <div>
-            <label class="col-sm-2 col-form-label">Created Date:</label>
-            <input type="text" name="CreatedDate" />
-        </div>*@
-    <div>
-        <label class="col-sm-2 col-form-label">First Name:</label>
-        <input type="text" name="FirstName" value="@Model.FirstName" />
-        <br /><div class="text-danger">
-            @Html.ValidationMessageFor(model => model.FirstName)
+
+
+</div>
+<div class="col-sm-6 float-left">
+    <form method="post" action="">
+        <div class="col-sm-12 pt-3 float-left row">
+            <div class="col-sm-4">
+                <div class="form-group float-left">
+                    <label for="FirstName" class="control-label float-left">First Name </label>
+                    <input type="text" name="FirstName" maxlength="70" class="FirstName form-control " required placeholder="First Name" value="@Model.FirstName" />
+                    <small class="form-text text-danger d-none errMsg FirstNameErr">
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </small>
+
+                </div>
+            </div>
+            <div class="col-sm-4 float-left">
+                <div class="form-group ">
+                    <label for="LastName" class="control-label float-left">Last Name </label>
+                    <input type="text" name="LastName" maxlength="70" class="LastName form-control " required placeholder="Last Name" value="@Model.LastName" />
+                    <small class="form-text text-danger d-none errMsg LastNameErr">
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </small>
+                </div>
+            </div>
+            <div class="col-sm-4 float-left">
+                <div class="form-group ">
+                    <label for="FirstName" class="control-labelfloat-left">Number of attendees </label>
+                    <select class="form-control NumberOfAttendees" id="NumberOfAttendees">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <small class="form-text text-danger d-none errMsg NumberOfAttendeesErr">
+                        @Html.ValidationMessageFor(model => model.NumberOfAttendees)
+                    </small>
+                </div>
+            </div>
+
+            <div class="col-sm-12 row">
+                <div class="col-sm-4 float-left">
+                    <div class="form-group float-left">
+                        <label for="PhoneNumber" class="control-label">Phone number </label>
+                        <input type="number" name="PhoneNumber" maxlength="13" class="form-control  float-left PhoneNumber" required placeholder="Phone Number" value="@Model.PhoneNumber" />
+                        <small class="form-text text-danger d-none errMsg PhoneNumberErr">
+                            @Html.ValidationMessageFor(model => model.PhoneNumber)
+                        </small>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 float-left">
+                    <div class="form-group float-left">
+                        <label for="Email" class="control-label">E-mail Address </label>
+                        <input type="email" name="Email" maxlength="150" class="form-control Email float-left" required placeholder="Email" value="@Model.Email" />
+                        <small class="form-text text-danger d-none errMsg EmailErr">
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </small>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 row">
+                <div class="col-sm-8">
+                    <div class="form-group  w-100 float-left">
+                        <label for="Remarks" class="control-label">Remarks </label>
+                        <textarea type="text" name="Remarks" maxlength="230" class="form-control Remarks float-left" required placeholder="Remarks" value="@Model.Remarks"></textarea>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Last Name:</label>
-        <input type="text" name="LastName" value="@Model.LastName" />
-        @Html.ValidationMessageFor(model => model.LastName)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Phone Number:</label>
-        <input type="text" name="PhoneNumber" value="@Model.PhoneNumber" />
-        @Html.ValidationMessageFor(model => model.PhoneNumber)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Email:</label>
-        <input type="text" name="Email" value="@Model.Email" />
-        @Html.ValidationMessageFor(model => model.Email)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Number of Attendees:</label>
-        <input type="text" name="NumberOfAttendees" value="@Model.NumberOfAttendees" />
-        @Html.ValidationMessageFor(model => model.NumberOfAttendees)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Booking Amount:</label>
-        <input type="text" name="BookingAmount" value="@Model.BookingAmount" />
-        @Html.ValidationMessageFor(model => model.BookingAmount)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Payment Status:</label>
-        <input type="text" name="PaymentStatus" value="@Model.PaymentStatus" />
-        @Html.ValidationMessageFor(model => model.PaymentStatus)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Remarks:</label>
-        <input type="text" name="Remarks" />
 
-    </div>
+        <div class="col-sm-12 mt-3 row">
+            <div class="col-sm-4">
+                <button type="submit" class=" btn btn-primary proceedToPayment">Proceed to Payment</button>
+            </div>
+        </div>
 
-    <hr />
-    <h5>
-        Payment Details:
-    </h5>
 
-    <div>
-        <label class="col-sm-2 col-form-label">Name on Card:</label>
-        <input type="text" name="NameOnCard" value="@Model.NameOnCard" />
-        @Html.ValidationMessageFor(model => model.NameOnCard)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Card Number:</label>
-        <input type="text" name="CardNumber" value="@Model.CardNumber" />
-        @Html.ValidationMessageFor(model => model.CardNumber)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">CVV:</label>
-        <input type="text" name="Cvv" value="@Model.Cvv" />
-        @Html.ValidationMessageFor(model => model.Cvv)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Card Expiry Date:</label>
-        <input type="text" name="ExpiryDate" value="@Model.ExpiryDate" />
-        @Html.ValidationMessageFor(model => model.ExpiryDate)
-    </div>
-    <div>
-        <label class="col-sm-2 col-form-label">Comments:</label>
-        <input type="text" name="Comments" />
+        <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
 
-    </div>
-
-    <button type="submit">Save</button>
-
-</form>
+    </form>
+</div>

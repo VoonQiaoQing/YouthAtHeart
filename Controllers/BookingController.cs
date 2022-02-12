@@ -15,10 +15,11 @@ namespace YouthAtHeart.Controllers
         {
             this.context = context;
         }
-        [Route("AddBooking")]
+        [Route("AddBooking/{WorkshopId}")]
         public IActionResult AddBooking(string WorkshopId)
         {
-            Booking newbooking = new Booking();
+            Booking newbooking = new Booking() ;
+            newbooking.workshopInfo = context.WorkshopInfo.Where(x=>x.wsId.Equals(WorkshopId)).FirstOrDefault();
             newbooking.WorkshopId = WorkshopId;
             ViewData["message"] = "";
             return View("~/Pages/CreateBooking.cshtml",newbooking);
