@@ -20,6 +20,14 @@ namespace YouthAtHeart.Models
             string connectionString = _config.GetConnectionString("MyConn");
             optionsBuilder.UseSqlServer(connectionString);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(x => x.userId);
+                entity.Property(x => x.userId).ValueGeneratedOnAdd();
+            });
+        }
         public DbSet<Test> Test { get; set; }
         public DbSet<HomeInfo> HomeInfo { get; set; }
         public DbSet<WorkshopInfo> WorkshopInfo { get; set; }

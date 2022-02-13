@@ -56,25 +56,33 @@ namespace YouthAtHeart.Pages
                 }
                 else
                 {
-                    if (!_svc.UserExits(user.username))
+                    if(user.role == null)
                     {
-                        MyMessage = "This user did not have an account yet.";
-                        return Page();
+                        MyMessage = "Please fill in all field.";
                     }
                     else
                     {
-                        if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
+                        if (!_svc.UserExits(user.username))
                         {
-                            HttpContext.Session.SetString("userName", user.username);
-                            // var sessionId = HttpContext.Session.Id;
-                            //HttpContext.Session.SetString("SSRole", user.role.ToString());
-                            return RedirectToPage("Index");
+                            MyMessage = "This user did not have an account yet.";
+                            return Page();
                         }
                         else
                         {
-                            MyMessage = "Invalid username or password";
+                            if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
+                            {
+                                HttpContext.Session.SetString("userName", user.username);
+                                // var sessionId = HttpContext.Session.Id;
+                                HttpContext.Session.SetString("SSRole", user.role.ToString());
+                                return RedirectToPage("Index");
+                            }
+                            else
+                            {
+                                MyMessage = "Invalid username or password";
+                            }
                         }
                     }
+                    
                 }
             }
             return Page();

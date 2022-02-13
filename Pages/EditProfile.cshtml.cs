@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using YouthAtHeart.Services;
 using YouthAtHeart.Models;
+using System;
+using Microsoft.AspNetCore.Http;
 
 namespace YouthAtHeart.Pages
 {
@@ -14,13 +16,20 @@ namespace YouthAtHeart.Pages
         }
         [BindProperty]
         public User user { get; set; }
-        public IActionResult OnGet(string name)
+        [BindProperty]
+        public string MyMessage { get; set; }
+        public IActionResult OnGet(string id)
         {
-            if (name == null)
+            if(id == null)
             {
                 return NotFound();
             }
-            user = _svc.GetUserbyId(name);
+            user = _svc.GetUserbyId(id);
+            //user.userId = Guid.NewGuid().ToString();
+            if (!String.IsNullOrEmpty(HttpContext.Session.GetString("SSRole")))
+            {
+                user.role = HttpContext.Session.GetString("SSRole");
+            }
             if (user == null)
             {
                 return NotFound();
@@ -29,10 +38,14 @@ namespace YouthAtHeart.Pages
         }
         public IActionResult OnPost()
         {
+            
             if (!ModelState.IsValid)
             {
-                return Page();
+                MyMessage = "Error";
+                //return Page();
             }
+            string age = user.age.ToString();
+            user.age = age;
 
             if (_svc.UpdateUser(user) == true)
             {

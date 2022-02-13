@@ -14,7 +14,7 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=" " class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <label asp-for="MyUser.username"></label>
+                                <label asp-for="MyUser.role">@Model.MyUser.role</label>
                                @*@<p class="text-secondary mb-1">Full Stack Developer</p>
                                 <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                                 <button class="btn btn-primary">Follow</button>
@@ -26,13 +26,15 @@
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
+                    <h3 class="mb-0">My Information</h3>
                     <div class="card-body">
+                        <form method="post">
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                               <label asp-for="MyUser.username"></label>
+                               <label asp-for="MyUser.username">@Model.MyUser.username</label>
                             </div>
                         </div>
                         <hr>
@@ -41,23 +43,95 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <label asp-for="MyUser.email"></label>
+                                <label asp-for="MyUser.email">@Model.MyUser.email</label>
                             </div>
                         </div>
                         <hr>
+                         <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Age</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <label asp-for="MyUser.age">@Model.MyUser.age</label>
+                            </div>
+                        </div>
+                         <hr>
+                         <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Preferred</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <label asp-for="MyUser.preferred">@Model.MyUser.preferred</label>
+                            </div>
+                        </div>
                        
                         
                         
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info " target="_self" asp-page="/EditProfile" asp-route-id="MyUser.email">Edit</a>
+                                <a class="btn btn-info " target="_self" asp-page="/EditProfile" asp-route-id="@Model.MyUser.username">Edit</a>
+                                <a class="btn btn-info" target="_self" asp-page="/DeleteAcc" asp-route-id="@Model.MyUser.username">Delete</a>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
 
-                @*@<div class="row gutters-sm">
+
+                @*<div class="card mb-3">
+                    <h6 class="mb-0">My Activity</h6>
+                    <div class="card-body">
+                        <form method="post">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                               <label asp-for="MyUser.username">@Model.MyUser.username</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <label asp-for="MyUser.email">@Model.MyUser.email</label>
+                            </div>
+                        </div>
+                        <hr>
+                         <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Age</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <label asp-for="MyUser.age">@Model.MyUser.age</label>
+                            </div>
+                        </div>
+                         <hr>
+                         <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Preferred</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <label asp-for="MyUser.preferred">@Model.MyUser.preferred</label>
+                            </div>
+                        </div>
+                       
+                        
+                        
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a class="btn btn-info " target="_self" asp-page="/EditProfile" asp-route-id="@Model.MyUser.username">Edit</a>
+                                <a class="btn btn-info" target="_self" asp-page="/DeleteAcc" asp-route-id="@Model.MyUser.username">Delete</a>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>@**@
+
+                <div class="row gutters-sm">
                     <div class="col-sm-6 mb-3">
                         <div class="card h-100">
                             <div class="card-body">
@@ -112,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                </div> *@
+                </div> 
 
 
 

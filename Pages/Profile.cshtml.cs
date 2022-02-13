@@ -24,6 +24,10 @@ namespace YouthAtHeart.Pages
             if (id != null)
             {
                 MyUser = _svc.GetUserbyId(id);
+                if (!String.IsNullOrEmpty(HttpContext.Session.GetString("SSRole")))
+                {
+                    MyUser.role = HttpContext.Session.GetString("SSRole");
+                }
                 return Page();
             }
             else

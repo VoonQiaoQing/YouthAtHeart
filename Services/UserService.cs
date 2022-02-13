@@ -47,7 +47,6 @@ namespace YouthAtHeart.Services
 
         public bool UpdateUser(User user)
         {
-            
             _context.Attach(user).State = EntityState.Modified;
             try
             {
