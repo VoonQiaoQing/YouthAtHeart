@@ -64,7 +64,7 @@
                         '<div>' +
                         '<div style="float: left; padding-right: 20px;"><br />' +
                         '<i id="Location" class="fas fa-map-marker-alt" style="width:15px; font-size:18px"></i> ' + data.wsLocationType + '<br />' +
-                        '<i id="Rating" class="fa fa-star-o" style="width:20px; font-size:18px"></i>' + data.wsRatingAvg + '(' + data.wsRatingAvg + ')' + '<br />' +
+                        '<i id="Rating" class="fa fa-star-o" style="width:20px; font-size:18px"></i>' + data.wsRatingAvg + '(' + data.wsRatingTotal + ')' + '<br />' +
                         '<i id="NoOfLessons" class="fas fa-user-circle" style="width:20px; font-size:18px"></i>' + data.wsNoOfLessons + ' Lessons' + '<br />' +
                         '</div>' +
                         '<div id="LessonSchedule" style="white-space: normal; width: 250px;" float: right;"><strong>Lessons: </strong><br />' + data.wsLessonSchedule +
