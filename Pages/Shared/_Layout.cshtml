@@ -66,7 +66,7 @@
                             {
                                 userName = System.Text.Encoding.UTF8.GetString(sessionName);
                                 <li class="nav-item" id="profile">
-                                    <a class="nav-link navbar-light" asp-page="/Profile">Profile</a>
+                                    <a class="nav-link navbar-light" asp-page="/Profile" asp-route-id=userName>Profile</a>
                                 </li>
                                 <li class="nav-item" id="log_out">
                                     <a class="nav-link navbar-light" asp-page="/Logout">Logout</a>
@@ -79,6 +79,9 @@
                                 </li>
                                 <li class="nav-item" id="login">
                                     <a class="nav-link navbar-light" asp-page="/Login">Login</a>
+                                </li>
+                                <li class="nav-item" id="adminLogin">
+                                <a class="nav-link navbar-light" asp-page="/AdminLogin">Admin Login</a>
                                 </li>
                             }
 
