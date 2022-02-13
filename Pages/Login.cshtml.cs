@@ -45,7 +45,7 @@ namespace YouthAtHeart.Pages
                         if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
                         {
                             HttpContext.Session.SetString("userName", user.username);
-                            HttpContext.Session.SetString("SSRole", user.role.ToString());
+                            HttpContext.Session.SetString("SSRole", _svc.GetUserbyId(user.username).role.ToString());
                             return RedirectToPage("Index");
                         }
                         else
