@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace YouthAtHeart.Controllers
         [Route("AddBooking/{WorkshopId}")]
         public IActionResult AddBooking(string WorkshopId)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Redirect("~/Login");
             Booking newbooking = new Booking();
             newbooking.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(WorkshopId)).FirstOrDefault();
             newbooking.WorkshopId = WorkshopId;
@@ -45,6 +49,9 @@ namespace YouthAtHeart.Controllers
         [Route("AddBooking")]
         public IActionResult CreateBooking(Booking newbooking)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Redirect("~/Login");
             WorkshopInfo workshop = null;
             if (newbooking != null)
             {
@@ -82,6 +89,9 @@ namespace YouthAtHeart.Controllers
         [Route("AllBookings/{wsId}")]
         public IActionResult AllBookings(string wsId)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Redirect("~/Login");
             IList<Booking> allbookings = null;
             ViewBag.WorkshopId = wsId;
             if (!string.IsNullOrEmpty(wsId))
@@ -95,6 +105,9 @@ namespace YouthAtHeart.Controllers
         [Route("EditBooking/{bookingId}")]
         public IActionResult EditBooking(string bookingId)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Redirect("~/Login");
             Booking updatebooking = context.Booking.Where(x => x.BookingId.Equals(bookingId)).FirstOrDefault();
             updatebooking.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(updatebooking.WorkshopId)).FirstOrDefault();
             updatebooking.WorkshopId = updatebooking.WorkshopId;
@@ -106,6 +119,9 @@ namespace YouthAtHeart.Controllers
         [Route("EditBooking")]
         public IActionResult EditBooking(Booking updatedbookingdetails)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Redirect("~/Login");
             if (updatedbookingdetails != null)
             {
                 updatedbookingdetails.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(updatedbookingdetails.WorkshopId)).FirstOrDefault();
@@ -144,6 +160,9 @@ namespace YouthAtHeart.Controllers
         [Route("ViewBooking/{bookingId}")]
         public IActionResult ViewBooking(string bookingId)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Redirect("~/Login");
             Booking viewbooking = context.Booking.Where(x => x.BookingId.Equals(bookingId)).FirstOrDefault();
             viewbooking.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(viewbooking.WorkshopId)).FirstOrDefault();
             viewbooking.WorkshopId = viewbooking.WorkshopId;
@@ -154,6 +173,9 @@ namespace YouthAtHeart.Controllers
         [Route("DeleteBooking/{bookingId}")]
         public JsonResult DeleteBooking(string bookingId)
         {
+            var userRole = HttpContext.Session.GetString("SSRole");
+            if (userRole == null && userRole != "admin")
+                return Json ("~/Login");
             Booking viewbooking = context.Booking.Where(x => x.BookingId.Equals(bookingId)).FirstOrDefault();
             if (viewbooking != null)
             {
