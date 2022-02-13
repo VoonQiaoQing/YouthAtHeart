@@ -1,0 +1,93 @@
+﻿@model IList<YouthAtHeart.Models.Booking>
+
+<style>
+
+    .btn {
+        @* background-color: #1c4450;*@
+        border: none;
+        outline: none;
+        color: white;
+        margin: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .table {
+        border-bottom: 0px !important;
+    }
+
+    .table th, .table td {
+        border: 1px !important;
+    }
+
+    .fixed-table-container {
+        border: 0px !important;
+    }
+
+    th {
+@*        width: 1000px;*@
+        height: 0px;
+        margin: 0 auto;
+    }
+    .MainInfo, #LessonSchedule, #Text {
+        width: 33%;
+        word-wrap: break-word;
+    }
+    .col-row {
+        border: 1px solid black;
+        border-radius: 6px;
+        padding: 8px;
+        margin-bottom: 4px;
+    }
+</style>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-8 float-left">
+            <h5 class="float-left">Total Bookings for this Workshop</h5>
+        </div>
+        <div class="col-sm-2 float-left">
+            <a class='btn btn-info float-right' href="~/AddBooking/@Model.FirstOrDefault().WorkshopId">Add Booking</a>
+        </div>
+    </div>
+    <div class="row">
+
+
+        @{
+            if (Model != null)
+            {
+                int i = 1;
+                @foreach (YouthAtHeart.Models.Booking pagedetails in Model)
+                {
+                    <div class="col-row w-100">
+                        <div class="col-sm-8 float-left">
+                            <span>Booking @i: @pagedetails.FirstName  @pagedetails.LastName  </span>
+                        </div>
+                        <div class="col-sm-4 float-right">
+                            <a class='btn btn-info' href="~/AddBooking/@Model.FirstOrDefault().BookingId">View</a>
+                            <a class='btn btn-warning' href="~/AddBooking/@Model.FirstOrDefault().BookingId">Edit</a>
+                            <a class='btn btn-danger' href="~/AddBooking/@Model.FirstOrDefault().BookingId">Delete</a>
+
+                        </div>
+                    </div>
+                    i++;
+                }
+            }
+        }
+    </div>
+</div>
+
+

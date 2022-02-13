@@ -13,8 +13,8 @@
             "type": "POST",
             "datatype": "json"
         },
-/*        scrollY: "300px",
-        scrollX: "500px",*/
+        /*        scrollY: "300px",
+                scrollX: "500px",*/
         "columnDefs": [{
             "targets": [0],
             "visible": false,
@@ -54,26 +54,27 @@
                     return '<div class="col-sm-12">' +
                         '<div class="card text-dark bg-light">' +
                         '<div class="card-header bg-primary text-warning"><div>' + '<p id="' + data.wsId + '">' + countDown(data.wsId, data.regEndDate) + '</p>' + '</div><h4 class="text-center">' + data.wsName + '</h4></div>' +
-                                    '<div class="container">' +
+                        '<div class="container">' +
                         '<div class="card-body" style="float: left;">' +
                         '<p class="card-text text-left"><img src="/Image/' + data.wsCoverImage + '" style="width:150px; height: 120px;"></p>' +
                         '<i class="fas fa-info-circle" style="font-size:18px"> ' + data.wsPresentAttendees + "/" + data.wsTotalAttendees + '</i>' +
-                                    '</div>' +
-                                    '<div class="card-body" >' +
-                                    '<div><p class="MainInfo" style="white-space: normal; width: 350px;">MainInfo' + data.wsMainInfo + '</p></div>' +
-                                    '<div>' +
-                                        '<div style="float: left; padding-right: 20px;"><br />' +
-                                        '<i id="Location" class="fas fa-map-marker-alt" style="width:15px; font-size:18px"></i> ' + data.wsLocationType + '<br />' +
-                                        '<i id="Rating" class="fa fa-star-o" style="width:20px; font-size:18px"></i>' + data.wsRating  + '<br />' +
-                                        '<i id="NoOfLessons" class="fas fa-user-circle" style="width:20px; font-size:18px"></i>' + data.wsNoOfLessons + ' Lessons'  + '<br />' +
-                                    '</div>' +
-                                    '<div id="LessonSchedule" style="white-space: normal; width: 250px;" float: right;"><strong>Lessons: </strong><br />' + data.wsLessonSchedule +
-                                '</div>' +
-                            '</div>' +
+                        '</div>' +
+                        '<div class="card-body" >' +
+                        '<div><p class="MainInfo" style="white-space: normal; width: 350px;">MainInfo' + data.wsMainInfo + '</p></div>' +
+                        '<div>' +
+                        '<div style="float: left; padding-right: 20px;"><br />' +
+                        '<i id="Location" class="fas fa-map-marker-alt" style="width:15px; font-size:18px"></i> ' + data.wsLocationType + '<br />' +
+                        '<i id="Rating" class="fa fa-star-o" style="width:20px; font-size:18px"></i>' + data.wsRating + '<br />' +
+                        '<i id="NoOfLessons" class="fas fa-user-circle" style="width:20px; font-size:18px"></i>' + data.wsNoOfLessons + ' Lessons' + '<br />' +
+                        '</div>' +
+                        '<div id="LessonSchedule" style="white-space: normal; width: 250px;" float: right;"><strong>Lessons: </strong><br />' + data.wsLessonSchedule +
+                        '</div>' +
+                        '</div>' +
                         '</div>' +
                         '</div>' +
                         '<div style="height: 70px;" class="card-footer bg-primary border-warning text-center">' +
                         '<a style="float: right;" class="btn btn-primary" href="/AddBooking/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book </i></a>' +
+                        '<a style="float: right;" class="btn btn-primary" href="/AllBookings/' + data.wsId + '"><i class="fas fa-shopping-cart">View Bookings </i></a>' +
                         '<a style="float: right;" class="btn btn-warning" href="/WorkshopListing/' + data.wsId + '/Details" >Details</a>' +
                         '<a style="float: right;" class="btn btn-danger" href="/WorkshopListing/Delete/' + data.wsId + '">Delete</a>' +
                         '<a style="float: right;" class="btn btn-success" href="/WorkshopListing/Edit/' + data.wsId + '">Edit</a>' +

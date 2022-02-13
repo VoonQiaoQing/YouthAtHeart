@@ -8,44 +8,61 @@
 
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
+<a style="float: left;" class="btn btn-primary" href="/WorkshopListing"><i>Back</i></a>
+<br />
+<br />
 <p id="demo"></p>
 <div class="col-sm-14">
     <div class="card text-dark bg-light">
-        <div class="card-header bg-primary text-warning"><div>11:11:11</div><h4 class="text-center">Our Services</h4></div>
+        <div class="card-header bg-primary text-warning"><h4 class="text-center">@Model.WorkshopDetail.wsName</h4></div>
         <div class="container">
             <div class="card-body" style="float: left;">
                 <p class="card-text text-left">
-                <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsCoverImage" style="width:150px; height: 120px;"></p>
+                <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsCoverImage" style="width:200px; height: 150px;"></p>
+                <strong>What the Workshop look like!</strong>
+                <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsEnvImage" style="width: 200px; height: 150px; "></p>
                 </p>
-                <h6 class="card-title">11/25</h6>
+                <h6 class="card-title">
+                    <i class="fas fa-info-circle" style="font-size:18px">@Model.WorkshopDetail.wsPresentAttendees/@Model.WorkshopDetail.wsTotalAttendees</i>
+                </h6>
             </div>
 
+            <div class="card-body" style="float: left; height: 400px;">
+                <div style="width: 400px;">
+                    <strong>Main Information: </strong><br />
+                    @Model.WorkshopDetail.wsMainInfo
+                </div>
+                <br />
+                <div style="width: 400px;">
+                    <strong>Extra Information: </strong><br />
+                    @Model.WorkshopDetail.wsExtraInfo
+                </div>
+            </div>
             <div class="card-body">
-                <div>
-                    afbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabe
+                <div style="width:350px; float:left; ">
+                    <strong>Registration Date: </strong><br />
+                    <p>@Model.WorkshopDetail.regStartDate - @Model.WorkshopDetail.regEndDate</p>
+                </div><br />
 
-                </div>
-                <div>
-                    <div style="float: left; padding-right: 20px;">
-                        <div>
-                            Woodlands
-                        </div>
-                        <div>
-                            4.8(827)
-                        </div>
-                        <div>
-                            2 Lessons
-                        </div>
-                    </div>
-                    <div style="width:150px; float: left;">
-                        afbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabeafbaoebabe
+                <div style="width:350px; float: left;">
+                    <strong>Location: </strong>
+                    <p>@Model.WorkshopDetail.wsLocationType</p>
+                </div><br />
 
-                    </div>
-                </div>
+                <div style="width:350px; float: left;">
+                    <strong>Location Details: </strong><br />
+                    <p>@Model.WorkshopDetail.wsLocationDetails</p>
+                </div><br />
+
+                <div style="width:350px; float: left;">
+                    <strong>@Model.WorkshopDetail.wsNoOfLessons Lessons: </strong><br />
+                    <p>@Model.WorkshopDetail.wsLocationDetails</p>
+                </div><br />
+            </div>
+
+            </div>
+            <div class="card-footer bg-primary border-warning text-center">
+                <a style="float: right;" class="btn btn-primary" href="/AddBooking/@Model.WorkshopDetail.wsId"><i class="fas fa-shopping-cart"> Book </i></a>
             </div>
         </div>
-        <div class="card-footer bg-primary border-warning text-center">
-            <a style="float: right;" class="btn btn-primary" href="/AddBooking/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book </i></a>
-        </div>
-    </div>
 </div>
