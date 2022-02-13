@@ -27,7 +27,7 @@
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
-                                       
+
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="email" id="email" class="form-control" asp-for="MyUser.email" />
                                             <label class="form-label" for="email">Your Email</label>
@@ -35,7 +35,7 @@
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
-                                       
+
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="Password1" class="form-control" asp-for="MyUser.password" />
                                             <label class="form-label" for="Password1">Password</label>
@@ -43,11 +43,17 @@
                                     </div>
 
                                     <div class="d-flex flex-row align-items-center mb-4">
-                                        
+
                                         <div class="form-outline flex-fill mb-0">
                                             <input type="password" id="Password2" class="form-control" />
                                             <label class="form-label" for="Password2">Confirm your password</label>
                                         </div>
+                                    </div>
+                                    <div class=" align-items-center mb-5">
+                                        <label class="form-label">Register as:</label>
+                                        <br />
+                                        <input type="radio" name="role" value="Student"> Student
+                                        <input type="radio" name="role" value="Teacher"> Teacher
                                     </div>
 
                                     <div class="form-check d-flex justify-content-center mb-5">

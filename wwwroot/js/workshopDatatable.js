@@ -73,7 +73,7 @@
                         '</div>' +
                         '</div>' +
                         '<div style="height: 70px;" class="card-footer bg-primary border-warning text-center">' +
-                        '<a style="float: right;" class="btn btn-primary" href="/AddBooking/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book </i></a>' +
+                        '<a style="float: right;" class="btn btn-primary" href="/UserAddBooking/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book </i></a>' +
                         '<a style="float: right;" class="btn btn-warning" href="/WorkshopListing/' + data.wsId + '/Details" >Details</a>' +
                         '</div>' +
                         '</div>' +
