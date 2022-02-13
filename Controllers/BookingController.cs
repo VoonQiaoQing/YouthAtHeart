@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using YouthAtHeart.Models;
 
 namespace YouthAtHeart.Controllers
@@ -84,6 +83,7 @@ namespace YouthAtHeart.Controllers
         public IActionResult AllBookings(string wsId)
         {
             IList<Booking> allbookings = null;
+            ViewBag.WorkshopId = wsId;
             if (!string.IsNullOrEmpty(wsId))
             {
                 allbookings = context.Booking.Where(x => x.WorkshopId.Equals(wsId)).ToList();
@@ -92,7 +92,78 @@ namespace YouthAtHeart.Controllers
             return View("~/Pages/AllBookings.cshtml", allbookings);
         }
 
+        [Route("EditBooking/{bookingId}")]
+        public IActionResult EditBooking(string bookingId)
+        {
+            Booking updatebooking = context.Booking.Where(x => x.BookingId.Equals(bookingId)).FirstOrDefault();
+            updatebooking.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(updatebooking.WorkshopId)).FirstOrDefault();
+            updatebooking.WorkshopId = updatebooking.WorkshopId;
+            ViewData["message"] = "";
+            return View("~/Pages/EditBooking.cshtml", updatebooking);
+        }
 
+        [HttpPost]
+        [Route("EditBooking")]
+        public IActionResult EditBooking(Booking updatedbookingdetails)
+        {
+            if (updatedbookingdetails != null)
+            {
+                updatedbookingdetails.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(updatedbookingdetails.WorkshopId)).FirstOrDefault();
+            }
+            ViewData["message"] = "";
+            if (string.IsNullOrEmpty(updatedbookingdetails.FirstName) || string.IsNullOrEmpty(updatedbookingdetails.LastName) || string.IsNullOrEmpty(updatedbookingdetails.Email) || string.IsNullOrEmpty(updatedbookingdetails.PhoneNumber) || string.IsNullOrEmpty(updatedbookingdetails.Comments))
+            {
+                ViewData["message"] = "Invalid input";
+            }
+            else if (updatedbookingdetails.PhoneNumber.Length < 10)
+            {
+                ViewData["message"] = "Invalid phone number";
+            }
+            else if (!this.IsValidEmail(updatedbookingdetails.Email))
+            {
+                ViewData["message"] = "Invalid Email";
+            }
+            else
+            {
+                Booking toUpdate = context.Booking.Where(x => x.BookingId.Equals(updatedbookingdetails.BookingId)).FirstOrDefault();
+                toUpdate.FirstName = updatedbookingdetails.FirstName;
+                toUpdate.LastName = updatedbookingdetails.LastName;
+                toUpdate.PhoneNumber = updatedbookingdetails.PhoneNumber;
+                toUpdate.Email = updatedbookingdetails.Email;
+                toUpdate.Comments = updatedbookingdetails.Comments;
+
+
+                context.Booking.Update(toUpdate);
+                context.SaveChanges();
+                ViewData["message"] = "Booking has been updated successfully.";
+            }
+
+            return View("~/Pages/EditBooking.cshtml", updatedbookingdetails);
+        }
+
+        [Route("ViewBooking/{bookingId}")]
+        public IActionResult ViewBooking(string bookingId)
+        {
+            Booking viewbooking = context.Booking.Where(x => x.BookingId.Equals(bookingId)).FirstOrDefault();
+            viewbooking.workshopInfo = context.WorkshopInfo.Where(x => x.wsId.Equals(viewbooking.WorkshopId)).FirstOrDefault();
+            viewbooking.WorkshopId = viewbooking.WorkshopId;
+            ViewData["message"] = "";
+            return View("~/Pages/ViewBooking.cshtml", viewbooking);
+        }
+
+        [Route("DeleteBooking/{bookingId}")]
+        public JsonResult DeleteBooking(string bookingId)
+        {
+            Booking viewbooking = context.Booking.Where(x => x.BookingId.Equals(bookingId)).FirstOrDefault();
+            if (viewbooking != null)
+            {
+                context.Remove(viewbooking);
+                context.SaveChanges();
+
+                return Json(new { status = true, message = "Booking deleted successfully." });
+            }
+            return Json(new { status = false, message = "There is an error in deleting this booking. Please try again." });
+        }
 
         public IActionResult Index()
         {
