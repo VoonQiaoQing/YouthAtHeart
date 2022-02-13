@@ -60,7 +60,7 @@
 
 
     <div class="col-sm-8 float-left">
-        <form method="post" action="~/ViewBooking">
+ 
             @ViewData["message"].ToString()
             <input type="hidden" name="BookingId" value="@Model.BookingId" />
             <input type="hidden" name="CreatedDate" value="@Model.CreatedDate" />
@@ -70,7 +70,7 @@
                 <div class="col-sm-5">
                     <div class="form-group float-left">
                         <label for="FirstName" class="control-label float-left">First Name </label>
-                        <input type="text" name="FirstName" maxlength="70" class="FirstName form-control " required placeholder="First Name" value="@Model.FirstName" />
+                        <input type="text" name="FirstName" maxlength="70" class="FirstName form-control " required placeholder="First Name" value="@Model.FirstName" disabled="disabled"/>
                         <small class="form-text text-danger d-none errMsg FirstNameErr">
                         </small>
 
@@ -79,7 +79,7 @@
                 <div class="col-sm-5 float-left">
                     <div class="form-group ">
                         <label for="LastName" class="control-label float-left">Last Name </label>
-                        <input type="text" name="LastName" maxlength="70" class="LastName form-control " required placeholder="Last Name" value="@Model.LastName" />
+                        <input type="text" name="LastName" maxlength="70" class="LastName form-control " required placeholder="Last Name" value="@Model.LastName" 
                         <small class="form-text text-danger d-none errMsg LastNameErr">
                         </small>
                     </div>
@@ -88,7 +88,7 @@
                 <div class="col-sm-2 float-left">
                     <div class="form-group ">
                         <label for="FirstName" class="control-label float-left">No.of.attendees </label>
-                        <select class="form-control  NumberOfAttendees" name="NumberOfAttendees" id="NumberOfAttendees">
+                        <select class="form-control  NumberOfAttendees" name="NumberOfAttendees" id="NumberOfAttendees" disabled="disabled">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -104,18 +104,16 @@
                 <div class="col-sm-5 float-left">
                     <div class="form-group ">
                         <label for="PhoneNumber" class="control-label">Phone number </label>
-                        <input type="number" name="PhoneNumber" maxlength="13" class="form-control  float-left PhoneNumber" required placeholder="Phone Number" value="@Model.PhoneNumber" />
-                        <small class="form-text text-danger d-none errMsg PhoneNumberErr">
-                        </small>
+                        <input type="number" name="PhoneNumber" maxlength="13" class="form-control  float-left PhoneNumber" required placeholder="Phone Number" value="@Model.PhoneNumber" disabled="disabled"/>
+                      
 
                     </div>
                 </div>
                 <div class="col-sm-6 float-left">
                     <div class="form-group float-left">
                         <label for="Email" class="control-label">E-mail Address </label>
-                        <input type="email" name="Email" maxlength="150" class="form-control Email float-left" required placeholder="Email" value="@Model.Email" />
-                        <small class="form-text text-danger d-none errMsg EmailErr">
-                        </small>
+                        <input type="email" name="Email" maxlength="150" class="form-control Email float-left" required placeholder="Email" value="@Model.Email" disabled="disabled"/>
+                      
 
                     </div>
                 </div>
@@ -123,17 +121,16 @@
             <div class="col-sm-10 ml-2 row">
                 <div class="form-group  w-100 float-left">
                     <label for="Remarks" class="control-label">Remarks </label>
-                    <textarea type="text" name="Comments" maxlength="230" class="form-control Remarks float-left" required placeholder="Remarks">@Model.Comments</textarea>
+                    <textarea type="text" name="Comments" maxlength="230" class="form-control Remarks float-left" disabled="disabled" required placeholder="Remarks">@Model.Comments</textarea>
                 </div>
             </div>
             <div class="col-sm-12 mt-3 ml-2 row">
                 <div class="">
-                    <button type="submit" class=" btn btn-primary proceedToPayment">Back</button>
                     <a href="~/AllBookings/@Model.WorkshopId" class=" btn btn-secondary proceedToPayment">Back</a>
                 </div>
             </div>
             <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
-        </form>
+ 
     </div>
 
 
