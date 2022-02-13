@@ -4,6 +4,56 @@
     ViewData["Title"] = "Home page";
 }
 
+<style>
+
+    .btn {
+        @* background-color: #1c4450;*@
+        border: none;
+        outline: none;
+        color: white;
+        margin: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .table {
+        border-bottom: 0px !important;
+    }
+
+    .table th, .table td {
+        border: 1px !important;
+    }
+
+    .fixed-table-container {
+        border: 0px !important;
+    }
+
+    th {
+        height: 0px;
+        margin: 0 auto;
+    }
+    .MainInfo, #LessonSchedule {
+        width: 33%;
+        word-break: break-all;
+        display: inline-block;
+    }
+
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,242 +72,241 @@
     <link rel="stylesheet" href="~/css/HomePage.css" />
 </head>
 <body>
-
-    <div id="oichange">
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="text-center text-white">
-                            <!-- Page heading-->
-                            <h3 class="mb-5">Age is a question of mind over matter. If you don’t mind, it doesn’t matter.</h3>
-                            <!-- Signup form-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
-                            <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                <!-- Email address input-->
-                                <!-- Submit success message-->
-                                <!---->
-                                <!-- This is what your users will see when the form-->
-                                <!-- has successfully submitted-->
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                        <p>To activate this form, sign up at</p>
-                                        <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+    <div class="demo" style="width:100%;">
+        <div id="oichange">
+            <!-- Masthead-->
+            <header class="masthead">
+                <div class="container position-relative">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6">
+                            <div class="text-center text-white">
+                                <!-- Page heading-->
+                                <h3 class="mb-5">Age is a question of mind over matter. If you don’t mind, it doesn’t matter.</h3>
+                                <!-- Signup form-->
+                                <!-- * * * * * * * * * * * * * * *-->
+                                <!-- * * SB Forms Contact Form * *-->
+                                <!-- * * * * * * * * * * * * * * *-->
+                                <!-- This form is pre-integrated with SB Forms.-->
+                                <!-- To make this form functional, sign up at-->
+                                <!-- https://startbootstrap.com/solution/contact-forms-->
+                                <!-- to get an API token!-->
+                                <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                    <!-- Email address input-->
+                                    <!-- Submit success message-->
+                                    <!---->
+                                    <!-- This is what your users will see when the form-->
+                                    <!-- has successfully submitted-->
+                                    <div class="d-none" id="submitSuccessMessage">
+                                        <div class="text-center mb-3">
+                                            <div class="fw-bolder">Form submission successful!</div>
+                                            <p>To activate this form, sign up at</p>
+                                            <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Submit error message-->
-                                <!---->
-                                <!-- This is what your users will see when there is-->
-                                <!-- an error submitting the form-->
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            </form>
+                                    <!-- Submit error message-->
+                                    <!---->
+                                    <!-- This is what your users will see when there is-->
+                                    <!-- an error submitting the form-->
+                                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
-        <!-- Icons Grid-->
-        <section class="features-icons bg-light text-center">
-            <h1>About Youth At Heart</h1><br />
-            <div style="padding: 50px;">
-                Youth at Heart is an education platform set up by the YAT Team in 2021,
-                in consideration for the elderly with personal needs. From this website,
-                the elderly can smoothly navigate through useful features throughout
-                the website to satisfy their personal needs under different roles.
-                They are aslo able to get in contact with the business if they have any doubts.
-            </div>
-            <br />
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5ZM12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5ZM1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8Zm9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5Zm1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z" />
-                        </svg>
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div style="height: 15px;"></div>
-                            <h3>Benefit in many ways</h3>
-                            <p class="lead mb-0">Specially made for the elderly to be able to apply for workshops to learn from with ease, and also be able to set up their own workshops in order to earn extra income.</p>
+            </header>
+            <!-- Icons Grid-->
+            <section class="features-icons bg-light text-center">
+                <h1>About Youth At Heart</h1><br />
+                <div style="padding: 50px;">
+                    Youth at Heart is an education platform set up by the YAT Team in 2021,
+                    in consideration for the elderly with personal needs. From this website,
+                    the elderly can smoothly navigate through useful features throughout
+                    the website to satisfy their personal needs under different roles.
+                    They are aslo able to get in contact with the business if they have any doubts.
+                </div>
+                <br />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5ZM12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5ZM1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8Zm9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5Zm1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z" />
+                            </svg>
+                            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                <div style="height: 15px;"></div>
+                                <h3>Benefit in many ways</h3>
+                                <p class="lead mb-0">Specially made for the elderly to be able to apply for workshops to learn from with ease, and also be able to set up their own workshops in order to earn extra income.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg>
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div style="height: 15px;"></div>
-                            <h3>User Friendly Settings</h3>
-                            <p class="lead mb-0">Elderly friendly options have been applied on the website to help them understand the content better, such as language translation feature, font size feature and filter settings.</p>
+                        <div class="col-lg-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                                <div style="height: 15px;"></div>
+                                <h3>User Friendly Settings</h3>
+                                <p class="lead mb-0">Elderly friendly options have been applied on the website to help them understand the content better, such as language translation feature, font size feature and filter settings.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
-                            <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
-                        </svg>
-                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                            <div style="height: 15px;"></div>
-                            <h3>Personalized Customization</h3>
-                            <p class="lead mb-0">Elderly have customized settings to receive notifications that they prefer more to browse.</p>
+                        <div class="col-lg-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+                                <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                            </svg>
+                            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                                <div style="height: 15px;"></div>
+                                <h3>Personalized Customization</h3>
+                                <p class="lead mb-0">Elderly have customized settings to receive notifications that they prefer more to browse.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Testimonials-->
-        <section class="testimonials text-center bg-light">
-            <div class="container">
-                <h2 class="mb-5">Latest Workshops</h2>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            @{
-                                int number1 = @Model.allworkshops.Count;
+            <!-- Testimonials-->
+            <section class="testimonials text-center bg-light">
+                <div class="container">
+                    <h2 class="mb-5">Latest Workshops</h2>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                                @{
+                                    int number1 = @Model.allworkshops.Count;
 
-                                if (number1 == 0)
-                                {
-                                    <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    if (number1 == 0)
+                                    {
+                                        <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    }
+                                    if (number1 == 1)
+                                    {
+                                        int lastest1 = 0;
+
+                                        <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest1].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+
+                                    }
+                                    if (number1 == 2)
+                                    {
+                                        int lastest1 = 1;
+                                        <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest1].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+
+                                    }
+                                    if (number1 == 3)
+                                    {
+                                        int lastest1 = 2;
+                                        <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest1].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+
+                                    }
+                                    if (number1 > 3)
+                                    {
+                                        int lastest1 = number1;
+                                        <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest1].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+
+                                    }
                                 }
-                                if (number1 == 1)
-                                {
-                                    int lastest1 = 0;
-
-                                    <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest1].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-
-                                }
-                                if (number1 == 2)
-                                {
-                                    int lastest1 = 1;
-                                    <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest1].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-
-                                }
-                                if (number1 == 3)
-                                {
-                                    int lastest1 = 2;
-                                    <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest1].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-
-                                }
-                                if (number1 > 3)
-                                {
-                                    int lastest1 = number1;
-                                    <img src="/Image/@Model.allworkshops[lastest1].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest1].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest1].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest1].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-
-                                }
-                            }
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            @{
-                                int number2 = @Model.allworkshops.Count;
+                        <div class="col-lg-4">
+                            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                                @{
+                                    int number2 = @Model.allworkshops.Count;
 
-                                if (number2 == 0)
-                                {
-                                    <p class="font-weight-light mb-0">No Workshops at the moment.</p>
-                                }
-                                if (number2 == 1)
-                                {
-                                    <p class="font-weight-light mb-0">No Workshops at the moment.</p>
-                                }
-                                if (number2 == 2)
-                                {
-                                    int lastest2 = 0;
-                                    <img src="/Image/@Model.allworkshops[lastest2].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest2].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest2].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest2].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+                                    if (number2 == 0)
+                                    {
+                                        <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    }
+                                    if (number2 == 1)
+                                    {
+                                        <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    }
+                                    if (number2 == 2)
+                                    {
+                                        int lastest2 = 0;
+                                        <img src="/Image/@Model.allworkshops[lastest2].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest2].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest2].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest2].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
 
+                                    }
+                                    if (number2 == 3)
+                                    {
+                                        int lastest2 = 1;
+                                        <img src="/Image/@Model.allworkshops[lastest2].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest2].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest2].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest2].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+                                    }
+                                    if (number2 > 3)
+                                    {
+                                        int lastest2 = number2 - 1;
+                                        <img src="/Image/@Model.allworkshops[lastest2].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest2].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest2].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest2].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+                                    }
                                 }
-                                if (number2 == 3)
-                                {
-                                    int lastest2 = 1;
-                                    <img src="/Image/@Model.allworkshops[lastest2].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest2].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest2].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest2].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-                                }
-                                if (number2 > 3)
-                                {
-                                    int lastest2 = number2 - 1;
-                                    <img src="/Image/@Model.allworkshops[lastest2].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest2].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest2].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest2].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-                                }
-                            }
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            @{
-                                int number3 = @Model.allworkshops.Count;
+                        <div class="col-lg-4">
+                            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                                @{
+                                    int number3 = @Model.allworkshops.Count;
 
-                                if (number3 == 0)
-                                {
-                                    <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    if (number3 == 0)
+                                    {
+                                        <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    }
+                                    if (number3 == 1)
+                                    {
+                                        <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    }
+                                    if (number3 == 2)
+                                    {
+                                        <p class="font-weight-light mb-0">No Workshops at the moment.</p>
+                                    }
+                                    if (number3 == 3)
+                                    {
+                                        int lastest3 = 0;
+                                        <img src="/Image/@Model.allworkshops[lastest3].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest3].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest3].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest3].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+                                    }
+                                    if (number3 > 3)
+                                    {
+                                        int lastest3 = 0;
+                                        <img src="/Image/@Model.allworkshops[lastest3].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
+                                        <div style="height: 15px;"></div>
+                                        <h5>@Model.allworkshops[lastest3].wsName</h5>
+                                        <p class="font-weight-light mb-0">@Model.allworkshops[lastest3].wsMainInfo</p>
+                                        <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest3].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
+                                    }
                                 }
-                                if (number3 == 1)
-                                {
-                                    <p class="font-weight-light mb-0">No Workshops at the moment.</p>
-                                }
-                                if (number3 == 2)
-                                {
-                                    <p class="font-weight-light mb-0">No Workshops at the moment.</p>
-                                }
-                                if (number3 == 3)
-                                {
-                                    int lastest3 = 0;
-                                    <img src="/Image/@Model.allworkshops[lastest3].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest3].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest3].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest3].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-                                }
-                                if (number3 > 3)
-                                {
-                                    int lastest3 = 0;
-                                    <img src="/Image/@Model.allworkshops[lastest3].wsCoverImage" alt="..." style="width:200px; height: 150px;" />
-                                    <div style="height: 15px;"></div>
-                                    <h5>@Model.allworkshops[lastest3].wsName</h5>
-                                    <p class="font-weight-light mb-0">@Model.allworkshops[lastest3].wsMainInfo</p>
-                                    <a style="float: right;" class="btn btn-primary" href="/WorkshopListing/@Model.allworkshops[lastest3].wsId/Details"><i class="fas fa-shopping-cart"> Details </i></a>
-                                }
-                            }
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-
-        <!-- Call to Action-->
+        </div><!-- Call to Action-->
         <div style="height:100px;">
 
         </div>
@@ -271,8 +320,36 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
     </div>
 </body>
 
 </html>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#increase').click(function () {
+                modifyFontSize('increase');
+            });
+            $('#decrease').click(function () {
+                modifyFontSize('decrease');
+            });
+            $('#reset').click(function () {
+                modifyFontSize('reset');
+            })
+            function modifyFontSize(action) {
+                var divElement = $('.demo');
+                var currentFontSize = parseInt(divElement.css('font-size'));
+                if (action == 'increase')
+                    currentFontSize += 3;
+                else if (action == 'decrease')
+                    currentFontSize -= 3;
+                else
+                    currentFontSize = 16;
+                divElement.animate({ 'fontSize': currentFontSize }, 300);
+            }
+        });
+    </script>
+}
