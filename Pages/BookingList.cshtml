@@ -1,4 +1,4 @@
-﻿@model IList<YouthAtHeart.Models.Booking> 
+﻿@model IList<YouthAtHeart.Models.Booking>
 @{
 }
 
@@ -63,7 +63,7 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                    </tr >
+                    </tr>
                 </thead>
                 <tbody>
                     @{
@@ -72,44 +72,44 @@
                             int i = 1;
                             foreach (YouthAtHeart.Models.Booking sessionDetails in Model)
                             {
-                    <tr>
-                        <td style="vertical-align: middle;">
-                            @i
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.BookingId
-                        </td>
+                                <tr>
+                                    <td style="vertical-align: middle;">
+                                        @i
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.BookingId
+                                    </td>
 
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.CustomerId
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.WorkshopId
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.BookingAmount
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.FirstName
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.PhoneNumber
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.Email
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.NumberOfAttendees
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @sessionDetails.PaymentStatus
-                        </td>
-                        <td style="vertical-align: middle;">
-                            @*                                        <a href="../ViewBookingDetails/@sessionDetails.CartId" class="btn btn-outline-secondary" title="View Details & Update">Details </a>
-            <button onclick="confirmBooking(@sessionDetails.OrderItemId)" class="btn btn-s, btn-outline-primary" title="Confirm Order placement">Confirm Booking</button>
-            <button onclick="cancelBooking(@sessionDetails.OrderItemId)" class="btn btn-danger" title="Cancel booking and refund">Cancel Booking</button>*@
-                        </td>
-                    </tr>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.CustomerId
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.WorkshopId
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.BookingAmount
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.FirstName
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.PhoneNumber
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.Email
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.NumberOfAttendees
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @sessionDetails.PaymentStatus
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        @*                                        <a href="../ViewBookingDetails/@sessionDetails.CartId" class="btn btn-outline-secondary" title="View Details & Update">Details </a>
+                                            <button onclick="confirmBooking(@sessionDetails.OrderItemId)" class="btn btn-s, btn-outline-primary" title="Confirm Order placement">Confirm Booking</button>
+                                            <button onclick="cancelBooking(@sessionDetails.OrderItemId)" class="btn btn-danger" title="Cancel booking and refund">Cancel Booking</button>*@
+                                    </td>
+                                </tr>
                                 i = i + 1;
                             }
                         }
@@ -124,4 +124,8 @@
     </div>
 </div>
 
-
+<td style="vertical-align: middle;">
+    <a href="../ViewBookingDetails/@sessionDetails.CartId" class="btn btn-outline-secondary" title="View Details & Update">Details </a>
+    <button onclick="confirmBooking(@sessionDetails.OrderItemId)" class="btn btn-s, btn-outline-primary" title="Confirm Order placement">Confirm Booking</button>
+    <button onclick="cancelBooking(@sessionDetails.OrderItemId)" class="btn btn-danger" title="Cancel booking and refund">Cancel Booking</button>
+</td>
