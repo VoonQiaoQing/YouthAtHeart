@@ -1,14 +1,14 @@
 ﻿@model YouthAtHeart.Models.Booking
 @{ }
 
-<h5>Add Booking</h5>
+<h1>View Booking</h1>
 <div class="row">
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
     <div class="col-sm-4 float-left">
-        <div class=" p-2" >
+        <div class=" p-2" style="height: 100vh;overflow-y:scroll">
 
 
             <table class="w-100">
@@ -60,15 +60,18 @@
 
 
     <div class="col-sm-8 float-left">
-        <form method="post" action="~/AddBooking">
+        <form method="post" action="~/ViewBooking">
             @ViewData["message"].ToString()
+            <input type="hidden" name="BookingId" value="@Model.BookingId" />
+            <input type="hidden" name="CreatedDate" value="@Model.CreatedDate" />
+
+
             <div class="col-sm-12 pt-3 float-left row">
                 <div class="col-sm-5">
                     <div class="form-group float-left">
                         <label for="FirstName" class="control-label float-left">First Name </label>
                         <input type="text" name="FirstName" maxlength="70" class="FirstName form-control " required placeholder="First Name" value="@Model.FirstName" />
                         <small class="form-text text-danger d-none errMsg FirstNameErr">
-                            @Html.ValidationMessageFor(model => model.FirstName)
                         </small>
 
                     </div>
@@ -78,10 +81,10 @@
                         <label for="LastName" class="control-label float-left">Last Name </label>
                         <input type="text" name="LastName" maxlength="70" class="LastName form-control " required placeholder="Last Name" value="@Model.LastName" />
                         <small class="form-text text-danger d-none errMsg LastNameErr">
-                            @Html.ValidationMessageFor(model => model.LastName)
                         </small>
                     </div>
                 </div>
+
                 <div class="col-sm-2 float-left">
                     <div class="form-group ">
                         <label for="FirstName" class="control-label float-left">No.of.attendees </label>
@@ -93,7 +96,6 @@
                             <option value="5">5</option>
                         </select>
                         <small class="form-text text-danger d-none errMsg NumberOfAttendeesErr">
-                            @Html.ValidationMessageFor(model => model.Cvv)
                         </small>
                     </div>
                 </div>
@@ -104,7 +106,6 @@
                         <label for="PhoneNumber" class="control-label">Phone number </label>
                         <input type="number" name="PhoneNumber" maxlength="13" class="form-control  float-left PhoneNumber" required placeholder="Phone Number" value="@Model.PhoneNumber" />
                         <small class="form-text text-danger d-none errMsg PhoneNumberErr">
-                            @Html.ValidationMessageFor(model => model.PhoneNumber)
                         </small>
 
                     </div>
@@ -114,7 +115,6 @@
                         <label for="Email" class="control-label">E-mail Address </label>
                         <input type="email" name="Email" maxlength="150" class="form-control Email float-left" required placeholder="Email" value="@Model.Email" />
                         <small class="form-text text-danger d-none errMsg EmailErr">
-                            @Html.ValidationMessageFor(model => model.Email)
                         </small>
 
                     </div>
@@ -128,7 +128,8 @@
             </div>
             <div class="col-sm-12 mt-3 ml-2 row">
                 <div class="">
-                    <button type="submit" class=" btn btn-primary proceedToPayment">Proceed to Payment</button>
+                    <button type="submit" class=" btn btn-primary proceedToPayment">Back</button>
+                    <a href="~/AllBookings/@Model.WorkshopId" class=" btn btn-secondary proceedToPayment">Back</a>
                 </div>
             </div>
             <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
@@ -139,3 +140,6 @@
 
 
 </div>
+@section scripts {
+    <script> $('.NumberOfAttendees').val('@Model.NumberOfAttendees');</script>
+}
