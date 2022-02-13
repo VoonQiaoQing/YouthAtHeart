@@ -24,6 +24,8 @@ namespace YouthAtHeart.Models
         public string role { get; set; }
         public string age { get; set; }
 
+        public string preferred { get; set; }
+
         //[Required(ErrorMessage = "Your password does not match")]
         // public string confirmPass { get; set; }
     }

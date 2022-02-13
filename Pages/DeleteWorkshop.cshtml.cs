@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.FileProviders;
 using YouthAtHeart.Models;
 using YouthAtHeart.Services;
 
@@ -40,6 +42,16 @@ namespace YouthAtHeart.Pages
                 return NotFound();
             }
             DeleteAWorkshop = _svc.GetWorkshopById(id);
+
+            var coverImage = DeleteAWorkshop.wsCoverImage;
+            var envImage = DeleteAWorkshop.wsEnvImage;
+
+            var coverImagepath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image")).Root + $@"\{coverImage}";
+            var envImagepath = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Image")).Root + $@"\{envImage}";
+            
+            System.IO.File.Delete(coverImagepath);
+            System.IO.File.Delete(envImagepath);
+
             if (_svc.DeleteWorkshop(DeleteAWorkshop) == true)
             {
                 return RedirectToPage("WorkshopListing");
