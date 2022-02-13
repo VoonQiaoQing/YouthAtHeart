@@ -13,12 +13,21 @@ namespace YouthAtHeart.Pages
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public List<Test> alltest { get; set; }
+        public List<WorkshopInfo> allworkshops { get; set; }
+
+        [BindProperty]
+        public int lastest1 { get; set; }
+
+        [BindProperty]
+        public int lastest2 { get; set; }
+
+        [BindProperty]
+        public int lastest3 { get; set; }
 
         private readonly ILogger<IndexModel> _logger;
-        private readonly TestService _svc;
+        private readonly WorkshopInfoService _svc;
 
-        public IndexModel(ILogger<IndexModel> logger, TestService service)
+        public IndexModel(ILogger<IndexModel> logger, WorkshopInfoService service)
         {
             _logger = logger;
             _svc = service;
@@ -26,7 +35,38 @@ namespace YouthAtHeart.Pages
 
         public void OnGet()
         {
-            alltest = _svc.GetAllTest();
+            allworkshops = _svc.GetAllWorkshops();
+            int number = allworkshops.Count;
+            if (number == 0)
+            {
+                lastest1 = -1;
+                lastest2 = -1;
+                lastest3 = -1;
+            }
+            if (number == 1)
+            {
+                lastest1 = 0;
+                lastest2 = -1;
+                lastest3 = -1;
+            }
+            if (number == 2)
+            {
+                lastest1 = 1;
+                lastest2 = 0;
+                lastest3 = -1;
+            }
+            if (number == 3)
+            {
+                lastest1 = 2;
+                lastest2 = 1;
+                lastest3 = 0;
+            }
+            else
+            {
+                lastest1 = number;
+                lastest2 = number - 1;
+                lastest3 = number - 2;
+            }
         }
     }
 }
