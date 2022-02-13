@@ -18,6 +18,7 @@ namespace YouthAtHeart.Pages
         public string MyMessage { get; set; }
         public void OnGet()
         {
+
         }
         public IActionResult OnPost()
         {
