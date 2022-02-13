@@ -12,14 +12,14 @@ namespace YouthAtHeart.Models
         [Key]
         public string BookingId { get; set; }
 
-       // [Required(ErrorMessage = "Please Login to continue")]
+        // [Required(ErrorMessage = "Please Login to continue")]
         public int CustomerId { get; set; }
         public string WorkshopId { get; set; }
 
 
         [Required(ErrorMessage = "Error in Cart, Please try again")]
         [DataType(DataType.Currency)]
-        public decimal BookingAmount { get; set; }
+        public double? BookingAmount { get; set; }
 
         [Required(ErrorMessage = "First name is required")]
         [StringLength(75)]
@@ -39,7 +39,6 @@ namespace YouthAtHeart.Models
         [Required(ErrorMessage = "Email address required")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        public string Remarks { get; set; }
 
         [Required(ErrorMessage = "No.of attendees required")]
         [Range(1, 10, ErrorMessage = "Please Provide correct range")]
@@ -49,19 +48,14 @@ namespace YouthAtHeart.Models
 
         public DateTime CreatedDate { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
         public string NameOnCard { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
         public string CardNumber { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
         public string ExpiryDate { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
         public string Cvv { get; set; }
 
-        [Required(ErrorMessage = "This field is required")]
         public string Comments { get; set; }
 
         [NotMapped]
@@ -69,5 +63,4 @@ namespace YouthAtHeart.Models
 
 
     }
-} 
-        
+}
