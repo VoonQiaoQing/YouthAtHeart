@@ -57,14 +57,14 @@
                         '<div class="container">' +
                         '<div class="card-body" style="float: left;">' +
                         '<p class="card-text text-left"><img src="/Image/' + data.wsCoverImage + '" style="width:150px; height: 120px;"></p>' +
-                        '<i class="fas fa-info-circle" style="font-size:18px"> ' + data.wsPresentAttendees + "/" + data.wsTotalAttendees + '</i>' +
+                        '<i class="fas fa-info-circle" style="font-size:18px"> ' + data.wsPresentAttendees + "/" + data.wsTotalAttendees + ' signed up!</i>' +
                         '</div>' +
                         '<div class="card-body" >' +
                         '<div><p class="MainInfo" style="white-space: normal; width: 350px;">MainInfo' + data.wsMainInfo + '</p></div>' +
                         '<div>' +
                         '<div style="float: left; padding-right: 20px;"><br />' +
                         '<i id="Location" class="fas fa-map-marker-alt" style="width:15px; font-size:18px"></i> ' + data.wsLocationType + '<br />' +
-                        '<i id="Rating" class="fa fa-star-o" style="width:20px; font-size:18px"></i>' + data.wsRating + '<br />' +
+                        '<i id="Rating" class="fa fa-star-o" style="width:20px; font-size:18px"></i>' + data.wsRatingAvg + '(' + data.wsRatingAvg + ')' + '<br />' +
                         '<i id="NoOfLessons" class="fas fa-user-circle" style="width:20px; font-size:18px"></i>' + data.wsNoOfLessons + ' Lessons' + '<br />' +
                         '</div>' +
                         '<div id="LessonSchedule" style="white-space: normal; width: 250px;" float: right;"><strong>Lessons: </strong><br />' + data.wsLessonSchedule +
