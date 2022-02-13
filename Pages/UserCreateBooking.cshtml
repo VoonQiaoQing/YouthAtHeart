@@ -8,46 +8,46 @@
 
 
     <div class="col-sm-4 float-left">
-        <div class=" p-2">
+        <div class="col-sm-4 float-left">
+            <div class=" p-2 ss">
+                <div class="row col-sm-12">
+                    <img class="img-thumbnail " src="~/Image/@Model.workshopInfo.wsCoverImage" style="width:150px" />
+
+                </div>
+
+                <div class=" col-sm-6 float-left">
+                    <b> @Model.workshopInfo.wsName</b>
+
+                </div>
+                <div class=" col-sm-6 float-left">
+                    <div style=" word-wrap: break-word; width: 200px !important; word-break: break-all;"> Workshop Schedule:<b> @Model.workshopInfo.wsLessonSchedule</b></div>
+
+                </div>
+                <div class=" col-sm-6 float-left">
+                    <b>  @Model.workshopInfo.teacherId</b>
+
+                </div>
+                <div class=" col-sm-6 float-left">
+                    Location: <b> @Model.workshopInfo.wsLocationType</b>
+
+                </div>
 
 
-            <table class="w-100">
-                <tbody>
+                <div class=" col-sm-6 float-left">
+                    Location Details:  <b style=" word-wrap: break-word; width: 200px !important; word-break: break-all;">@Model.workshopInfo.wsLocationDetails</b>
 
-                    <tr>
-                        <td class="p-0">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td colspan="2" class="p-0 text-center">
-                                        <img class="img-thumbnail " src="~/Image/@Model.workshopInfo.wsCoverImage" style="width:150px" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b> @Model.workshopInfo.wsName</b></td>
-                                    <td> Teacher:<b> @Model.workshopInfo.teacherId</b></td>
-                                </tr>
-                                <tr>
-                                    <td> Location: <b> @Model.workshopInfo.wsLocationType</b></td>
-                                    <td style=" word-wrap: break-word; width: 200px !important; word-break: break-all;"> Workshop Schedule:<b> @Model.workshopInfo.wsLessonSchedule</b></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"> Location Details:  <b>@Model.workshopInfo.wsLocationDetails</b></td>
+                </div>
+                <div class=" col-sm-6 float-left">
+                    SessionCost :<b> @String.Format("{0:C}", Model.workshopInfo.wsPrice)</b>
 
-                                </tr>
-                                <tr>
-                                    <td colspan="1">SessionCost :<b> @String.Format("{0:C}", Model.workshopInfo.wsPrice)</b></td>
-                                    <td colspan="1"></td>
+                </div>
 
 
 
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
 
-                </tbody>
-            </table>
 
+
+            </div>
 
 
         </div>
@@ -60,7 +60,7 @@
 
 
     <div class="col-sm-8 float-left">
-        <form method="post" action="~/AddBooking">
+        <form method="post" action="~/UserCreateBooking">
             @ViewData["message"].ToString()
             <div class="col-sm-12 pt-3 float-left row">
                 <div class="col-sm-5">
