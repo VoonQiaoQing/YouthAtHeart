@@ -27,23 +27,52 @@ namespace YouthAtHeart.Pages
         {
             if (ModelState.IsValid)
             {
-                if (!_svc.UserExits(user.username))
+                if (user.username == "Admin")
                 {
-                    MyMessage = "This user did not have an account yet.";
-                    return Page();
-                }
-                else
-                {
-                    if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
+                    if (!_svc.UserExits("Admin"))
                     {
+                        user.username = "Admin";
+                        user.password = "adminPass123";
+                        user.role = "admin";
+                        _svc.AddUser(user);
                         HttpContext.Session.SetString("userName", user.username);
-                        // var sessionId = HttpContext.Session.Id;
-                        //HttpContext.Session.SetString("SSRole", user.role.ToString());
+                        HttpContext.Session.SetString("SSRole", user.role.ToString());
                         return RedirectToPage("Index");
                     }
                     else
                     {
-                        MyMessage = "Invalid username or password";
+                        if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
+                        {
+                            HttpContext.Session.SetString("userName", user.username);
+                            HttpContext.Session.SetString("SSRole", user.role.ToString());
+                            return RedirectToPage("Index");
+                        }
+                        else
+                        {
+                            MyMessage = "Invalid admin account.";
+                        }
+                    }
+                }
+                else
+                {
+                    if (!_svc.UserExits(user.username))
+                    {
+                        MyMessage = "This user did not have an account yet.";
+                        return Page();
+                    }
+                    else
+                    {
+                        if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
+                        {
+                            HttpContext.Session.SetString("userName", user.username);
+                            // var sessionId = HttpContext.Session.Id;
+                            //HttpContext.Session.SetString("SSRole", user.role.ToString());
+                            return RedirectToPage("Index");
+                        }
+                        else
+                        {
+                            MyMessage = "Invalid username or password";
+                        }
                     }
                 }
             }
