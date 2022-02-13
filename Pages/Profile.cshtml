@@ -143,10 +143,6 @@
                     </div>
                 </div>@**@
                  @{
-                     var sessionName = new Byte[20];
-                    string SSRole = "Student";
-                    bool roleCond = HttpContext.Session.TryGetValue("SSRole", out sessionName);
-                    
                 @if(roleCond)
                 {
                     SSRole = System.Text.Encoding.UTF8.GetString(sessionName);
