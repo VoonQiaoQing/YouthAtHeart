@@ -46,7 +46,7 @@ namespace YouthAtHeart.Controllers
             }
         }
         [HttpPost]
-        [Route("UserAddBooking")]
+        [Route("UserCreateBooking")]
         public IActionResult UserCreateBooking(Booking newbooking)
         {
             var userRole = HttpContext.Session.GetString("SSRole");
@@ -89,7 +89,7 @@ namespace YouthAtHeart.Controllers
         }
 
         [HttpPost]
-        [Route("UserAddBooking")]
+        [Route("ConfirmBookingPayment")]
         public IActionResult ConfirmBookingPayment(Booking newbooking)
         {
             var userRole = HttpContext.Session.GetString("SSRole");
@@ -122,10 +122,9 @@ namespace YouthAtHeart.Controllers
                 existingbookingdetails.Cvv = newbooking.Cvv;
                 existingbookingdetails.ExpiryDate = newbooking.ExpiryDate;
                 existingbookingdetails.Comments = newbooking.Comments;
-                context.Booking.Update(newbooking);
-                context.SaveChanges();
+                context.Booking.Update(existingbookingdetails); context.SaveChanges();
                 ViewData["username"] = existingbookingdetails.FirstName + " " + existingbookingdetails.LastName;
-                return View("~/Pages/UserCreateBookingPayment.cshtml", newbooking);
+                return View("~/Pages/BookingCompleted.cshtml", newbooking);
 
             }
 

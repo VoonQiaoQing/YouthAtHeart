@@ -45,8 +45,7 @@ namespace YouthAtHeart.Pages
                         if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
                         {
                             HttpContext.Session.SetString("userName", user.username);
-                            HttpContext.Session.SetString("SSRole", _svc.GetUserbyId(user.username).role.ToString());
-
+                            HttpContext.Session.SetString("SSRole", user.role.ToString());
                             return RedirectToPage("Index");
                         }
                         else
@@ -59,16 +58,18 @@ namespace YouthAtHeart.Pages
                 {
                     if (!_svc.UserExits(user.username))
                     {
-                     //   MyMessage = "This user did not have an account yet.";
-                  //      return Page();
-                    //}
-                //    else
-                 //   {
+                        MyMessage = "This user did not have an account yet.";
+                        return Page();
+                    }
+                    else
+                    {
                         if (_svc.GetUserbyId(user.username) != null && _svc.GetUserbyId(user.username).password == user.password)
                         {
                             HttpContext.Session.SetString("userName", user.username);
                             var sessionId = HttpContext.Session.Id;
+                            HttpContext.Session.SetString("SSRole", user.role.ToString());
                             HttpContext.Session.SetString("SSRole", _svc.GetUserbyId(user.username).role.ToString());
+
                             return RedirectToPage("Index");
                         }
                         else
