@@ -60,7 +60,7 @@
             <h5 class="float-left">Total Bookings for this Workshop</h5>
         </div>
         <div class="col-sm-2 float-left">
-            <a class='btn btn-info float-right' href="~/AddBooking/@Model.FirstOrDefault().WorkshopId">Add Booking</a>
+            <a class='btn btn-info float-right' href="~/AddBooking/@ViewBag.WorkshopId">Add Booking</a>
         </div>
     </div>
     <div class="row">
@@ -77,9 +77,9 @@
                             <span>Booking @i: @pagedetails.FirstName  @pagedetails.LastName  </span>
                         </div>
                         <div class="col-sm-4 float-right">
-                            <a class='btn btn-info' href="~/AddBooking/@Model.FirstOrDefault().BookingId">View</a>
-                            <a class='btn btn-warning' href="~/AddBooking/@Model.FirstOrDefault().BookingId">Edit</a>
-                            <a class='btn btn-danger' href="~/AddBooking/@Model.FirstOrDefault().BookingId">Delete</a>
+                            <a class='btn btn-info' href="~/ViewBooking/@pagedetails.BookingId">View</a>
+                            <a class='btn btn-warning' href="~/EditBooking/@pagedetails.BookingId">Edit</a>
+                            <a class='btn btn-danger' onclick="ConfirmDelete('@pagedetails.BookingId')"> Delete</a>
 
                         </div>
                     </div>
@@ -89,5 +89,17 @@
         }
     </div>
 </div>
+<script>function ConfirmDelete(bookingId)
+{
+  if(confirm("Are you sure you want to delete?")){
+      $.ajax({
+          url: "../DeleteBooking/" + bookingId,
+          type: 'GET',
+          success: function (res) {
+              alert(res.message);
+              window.location.reload();
 
+          }
+      }); }
+}</script>
 

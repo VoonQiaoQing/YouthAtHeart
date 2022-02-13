@@ -1,0 +1,128 @@
+﻿@model YouthAtHeart.Models.Booking
+@{ }
+
+<h5>Add Booking</h5>
+<div class="row">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <div class="col-sm-4 float-left">
+        <div class=" p-2">
+
+
+            <table class="w-100">
+                <tbody>
+
+                    <tr>
+                        <td class="p-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td colspan="2" class="p-0 text-center">
+                                        <img class="img-thumbnail " src="~/Image/@Model.workshopInfo.wsCoverImage" style="width:150px" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b> @Model.workshopInfo.wsName</b></td>
+                                    <td> Teacher:<b> @Model.workshopInfo.teacherId</b></td>
+                                </tr>
+                                <tr>
+                                    <td> Location: <b> @Model.workshopInfo.wsLocationType</b></td>
+                                    <td style=" word-wrap: break-word; width: 200px !important; word-break: break-all;"> Workshop Schedule:<b> @Model.workshopInfo.wsLessonSchedule</b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> Location Details:  <b>@Model.workshopInfo.wsLocationDetails</b></td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="1">SessionCost :<b> @String.Format("{0:C}", Model.workshopInfo.wsPrice)</b></td>
+                                    <td colspan="1"></td>
+
+
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="col-sm-8 float-left">
+        <form method="post" action="~/ConfirmBookingPayment">
+            @ViewData["message"].ToString()
+            <div class="col-sm-12 pt-3 float-left row">
+                <div class="col-sm-5">
+                    <div class="form-group float-left">
+                        <label for="NameOnCard" class="control-label float-left">Name on Card </label>
+                        <input type="text" name="NameOnCard" maxlength="70" class="NameOnCard form-control " required placeholder="Name on Card" value="@Model.NameOnCard" />
+                        <small class="form-text text-danger d-none errMsg NameOnCardrErr">
+                            @Html.ValidationMessageFor(model => model.NameOnCard)
+                        </small>
+
+                    </div>
+                </div>
+                <div class="col-sm-5 float-left">
+                    <div class="form-group ">
+                        <label for="CardNumber" class="control-label float-left">Card Number</label>
+                        <input type="text" name="CardNumber" maxlength="70" class="CardNumber form-control " required placeholder="Card Number" value="@Model.CardNumber" />
+                        <small class="form-text text-danger d-none errMsg CardNumberErr">
+                            @Html.ValidationMessageFor(model => model.CardNumber)
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 row ">
+                <div class="col-sm-5 float-left">
+                    <div class="form-group ">
+                        <label for="Cvv" class="control-label">CVV </label>
+                        <input type="number" name="Cvv" maxlength="13" class="form-control  float-left Cvv" required placeholder="CVV" value="@Model.Cvv" />
+                        <small class="form-text text-danger d-none errMsg CvvErr">
+                            @Html.ValidationMessageFor(model => model.Cvv)
+                        </small>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left">
+                    <div class="form-group float-left">
+                        <label for="ExpiryDate" class="control-label">Card Expiry Date </label>
+                        <input type="text" name="ExpiryDate" maxlength="150" class="form-control ExpiryDate float-left" required placeholder=" Card Expiry Date" value="@Model.ExpiryDate" />
+                        <small class="form-text text-danger d-none errMsg ExpiryDateErr">
+                            @Html.ValidationMessageFor(model => model.ExpiryDate)
+                        </small>
+
+                    </div>
+                    <div class="col-sm-10 ml-2 row">
+                        <div class="form-group  w-100 float-left">
+                            <label for="Comments" class="control-label">Comments </label>
+                        </div>
+                    </div>
+                    <textarea type="text" name="Comments" maxlength="230" class="form-control comments float-left" required placeholder="Comments">@Model.Comments</textarea>
+                </div>
+            </div>
+            <div class="col-sm-12 mt-3 ml-2 row">
+                <div class="">
+                    <button type="submit" class=" btn btn-primary proceedToPayment">Confirm Payment</button>
+                    <a href="../" class="btn btn-secondary proceedToPayment">Cancel</a>
+
+                </div>
+            </div>
+            <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
+        </form>
+    </div>
+
+
+
+
+</div>

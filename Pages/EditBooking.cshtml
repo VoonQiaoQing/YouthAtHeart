@@ -1,0 +1,150 @@
+﻿@model YouthAtHeart.Models.Booking
+@{ }
+
+<h1>Edit Booking</h1>
+<div class="row">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <div class="col-sm-4 float-left">
+        <div class=" p-2" style="height: 100vh;overflow-y:scroll">
+
+
+            <table class="w-100">
+                <tbody>
+
+                    <tr>
+                        <td class="p-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td colspan="2" class="p-0 text-center">
+                                        <img class="img-thumbnail " src="~/Image/@Model.workshopInfo.wsCoverImage" style="width:150px" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b> @Model.workshopInfo.wsName</b></td>
+                                    <td> Teacher:<b> @Model.workshopInfo.teacherId</b></td>
+                                </tr>
+                                <tr>
+                                    <td> Location: <b> @Model.workshopInfo.wsLocationType</b></td>
+                                    <td style=" word-wrap: break-word; width: 200px !important; word-break: break-all;"> Workshop Schedule:<b> @Model.workshopInfo.wsLessonSchedule</b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"> Location Details:  <b>@Model.workshopInfo.wsLocationDetails</b></td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="1">SessionCost :<b> @String.Format("{0:C}", Model.workshopInfo.wsPrice)</b></td>
+                                    <td colspan="1"></td>
+
+
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <div class="col-sm-8 float-left">
+        <form method="post" action="~/EditBooking">
+            @ViewData["message"].ToString()
+            <input type="hidden" name="BookingId" value="@Model.BookingId" />
+            <input type="hidden" name="CreatedDate" value="@Model.CreatedDate" />
+
+
+            <div class="col-sm-12 pt-3 float-left row">
+                <div class="col-sm-5">
+                    <div class="form-group float-left">
+                        <label for="FirstName" class="control-label float-left">First Name </label>
+                        <input type="text" name="FirstName" maxlength="70" class="FirstName form-control " required placeholder="First Name" value="@Model.FirstName" />
+                        <small class="form-text text-danger d-none errMsg FirstNameErr">
+                            @Html.ValidationMessageFor(model => model.FirstName)
+                        </small>
+
+                    </div>
+                </div>
+                <div class="col-sm-5 float-left">
+                    <div class="form-group ">
+                        <label for="LastName" class="control-label float-left">Last Name </label>
+                        <input type="text" name="LastName" maxlength="70" class="LastName form-control " required placeholder="Last Name" value="@Model.LastName" />
+                        <small class="form-text text-danger d-none errMsg LastNameErr">
+                            @Html.ValidationMessageFor(model => model.LastName)
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-sm-2 float-left">
+                    <div class="form-group ">
+                        <label for="FirstName" class="control-label float-left">No.of.attendees </label>
+                        <select class="form-control  NumberOfAttendees" name="NumberOfAttendees" id="NumberOfAttendees">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <small class="form-text text-danger d-none errMsg NumberOfAttendeesErr">
+                            @Html.ValidationMessageFor(model => model.Cvv)
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 row ">
+                <div class="col-sm-5 float-left">
+                    <div class="form-group ">
+                        <label for="PhoneNumber" class="control-label">Phone number </label>
+                        <input type="number" name="PhoneNumber" maxlength="13" class="form-control  float-left PhoneNumber" required placeholder="Phone Number" value="@Model.PhoneNumber" />
+                        <small class="form-text text-danger d-none errMsg PhoneNumberErr">
+                            @Html.ValidationMessageFor(model => model.PhoneNumber)
+                        </small>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left">
+                    <div class="form-group float-left">
+                        <label for="Email" class="control-label">E-mail Address </label>
+                        <input type="email" name="Email" maxlength="150" class="form-control Email float-left" required placeholder="Email" value="@Model.Email" />
+                        <small class="form-text text-danger d-none errMsg EmailErr">
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </small>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10 ml-2 row">
+                <div class="form-group  w-100 float-left">
+                    <label for="Remarks" class="control-label">Remarks </label>
+                    <textarea type="text" name="Comments" maxlength="230" class="form-control Remarks float-left" required placeholder="Remarks">@Model.Comments</textarea>
+                </div>
+            </div>
+            <div class="col-sm-12 mt-3 ml-2 row">
+                <div class="">
+                    <button type="submit" class=" btn btn-primary proceedToPayment">Update</button>
+                    <a href="~/AllBookings/@Model.WorkshopId" class=" btn btn-secondary proceedToPayment">Back</a>
+                </div>
+            </div>
+            <input type="hidden" name="WorkshopId" value="@Model.WorkshopId" />
+        </form>
+    </div>
+
+
+
+
+</div>
+@section scripts {
+    <script> $('.NumberOfAttendees').val('@Model.NumberOfAttendees');</script>
+}

@@ -3,33 +3,120 @@
 @{
     ViewData["Title"] = "FAQ";
 }
+
+<style>
+
+    .btn {
+        @* background-color: #1c4450;*@
+        border: none;
+        outline: none;
+        color: white;
+        margin: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .table {
+        border-bottom: 0px !important;
+    }
+
+    .table th, .table td {
+        border: 1px !important;
+    }
+
+    .fixed-table-container {
+        border: 0px !important;
+    }
+
+    th {
+@*        width: 1000px;*@
+        height: 0px;
+        margin: 0 auto;
+    }
+    .MainInfo, #LessonSchedule {
+        width: 33%;
+        word-break: break-all;
+        display: inline-block;
+    }
+
+</style>
+
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="~/css/button.css" />
-    </head>
-    <body>
+<head>
+    <link rel="stylesheet" href="~/css/button.css" />
+</head>
+<body>
+    <div class="demo" style="width:100%;">
         <H1>FAQ</H1>
 
         <p>Welcome to FAQ page, if you have more questions please press the button at the bottom to send.</p>
         @{ if (Model.AllQuestions != null)
             {
-            <a class="btn btn-primary" data-toggle="collapse" href="#Question" role="button" aria-expanded="false" aria-controls="collapse">
-                What is Youth at Heart?
-            </a>
+                @foreach (var item in Model.AllQuestions)
+                {
+                    <a class="btn btn-primary" data-toggle="collapse" href="#Question" role="button" aria-expanded="false" aria-controls="collapse">
+                        @item.Question
+                    </a>
+                    <br />
+                    <br />
 
-           <div class="collapse" id="Question">
-                <div class="card card-body">
-                    Youth at Heart is a student launched project aimed for Elderly to enjoy their free time while passing on their experience and learn new things by using our website to book workshops and attend them.
-                </div>
-           </div>
+                    <div class="collapse" id="Question">
+                        <div class="card card-body">
+                            Question is still waiting to be answered.
+                        </div>
+                    </div>
                 }
+            }
             <div class="getdown float-left">
                 <a href="/TestFAQ" class="btn btn-primary">
                     Click here to send your questions
                 </a>
             </div>
-            }
-    </body>
-        
+        }
+    </div>
+</body>
+
 </html>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#increase').click(function () {
+                modifyFontSize('increase');
+            });
+            $('#decrease').click(function () {
+                modifyFontSize('decrease');
+            });
+            $('#reset').click(function () {
+                modifyFontSize('reset');
+            })
+            function modifyFontSize(action) {
+                var divElement = $('.demo');
+                var currentFontSize = parseInt(divElement.css('font-size'));
+                if (action == 'increase')
+                    currentFontSize += 3;
+                else if (action == 'decrease')
+                    currentFontSize -= 3;
+                else
+                    currentFontSize = 16;
+                divElement.animate({ 'fontSize': currentFontSize }, 300);
+            }
+        });
+    </script>
+}

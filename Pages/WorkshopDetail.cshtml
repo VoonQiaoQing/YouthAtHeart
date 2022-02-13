@@ -3,6 +3,57 @@
 @{
 }
 
+<style>
+
+    .btn {
+        @* background-color: #1c4450;*@
+        border: none;
+        outline: none;
+        color: white;
+        margin: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .table {
+        border-bottom: 0px !important;
+    }
+
+    .table th, .table td {
+        border: 1px !important;
+    }
+
+    .fixed-table-container {
+        border: 0px !important;
+    }
+
+    th {
+@*        width: 1000px;*@
+        height: 0px;
+        margin: 0 auto;
+    }
+    .MainInfo, #LessonSchedule {
+        width: 33%;
+        word-break: break-all;
+        display: inline-block;
+    }
+
+</style>
+
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -11,58 +62,89 @@
 <a style="float: left;" class="btn btn-primary" href="/WorkshopListing"><i>Back</i></a>
 <br />
 <br />
-<p id="demo"></p>
-<div class="col-sm-14">
-    <div class="card text-dark bg-light">
-        <div class="card-header bg-primary text-warning"><h4 class="text-center">@Model.WorkshopDetail.wsName</h4></div>
-        <div class="container">
-            <div class="card-body" style="float: left;">
-                <p class="card-text text-left">
-                <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsCoverImage" style="width:200px; height: 150px;"></p>
-                <strong>What the Workshop look like!</strong>
-                <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsEnvImage" style="width: 200px; height: 150px; "></p>
-                </p>
-                <h6 class="card-title">
-                    <i class="fas fa-info-circle" style="font-size:18px">@Model.WorkshopDetail.wsPresentAttendees/@Model.WorkshopDetail.wsTotalAttendees signed up!</i>
-                </h6>
-            </div>
-
-            <div class="card-body" style="float: left; height: 400px;">
-                <div style="width: 400px;">
-                    <strong>Main Information: </strong><br />
-                    @Model.WorkshopDetail.wsMainInfo
+<div class="demo" style="width:100%;">
+    <div class="col-sm-14">
+        <div class="card text-dark bg-light">
+            <div class="card-header bg-primary text-warning"><h4 class="text-center">@Model.WorkshopDetail.wsName</h4></div>
+            <div class="container">
+                <div class="card-body" style="float: left;">
+                    <p class="card-text text-left">
+                    <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsCoverImage" style="width:200px; height: 150px;"></p>
+                    <strong>What the Workshop look like!</strong>
+                    <p class="card-text text-left"><img src="/Image/@Model.WorkshopDetail.wsEnvImage" style="width: 200px; height: 150px; "></p>
+                    </p>
+                    <h6 class="card-title">
+                        <i class="fas fa-info-circle" style="font-size:18px">@Model.WorkshopDetail.wsPresentAttendees/@Model.WorkshopDetail.wsTotalAttendees signed up!</i>
+                    </h6>
                 </div>
-                <br />
-                <div style="width: 400px;">
-                    <strong>Extra Information: </strong><br />
-                    @Model.WorkshopDetail.wsExtraInfo
+
+                <div class="card-body" style="float: left; height: 400px;">
+                    <div style="width: 400px;">
+                        <strong>Main Information: </strong><br />
+                        @Model.WorkshopDetail.wsMainInfo
+                    </div>
+                    <br />
+                    <div style="width: 400px;">
+                        <strong>Extra Information: </strong><br />
+                        @Model.WorkshopDetail.wsExtraInfo
+                    </div>
                 </div>
-            </div>
-            <div class="card-body">
-                <div style="width:350px; float:left; ">
-                    <strong>Registration Date: </strong><br />
-                    <p>@Model.WorkshopDetail.regStartDate - @Model.WorkshopDetail.regEndDate</p>
-                </div><br />
+                <div class="card-body">
+                    <div style="width:350px; float:left; ">
+                        <strong>Registration Date: </strong><br />
+                        <p>@Model.WorkshopDetail.regStartDate - @Model.WorkshopDetail.regEndDate</p>
+                    </div><br />
 
-                <div style="width:350px; float: left;">
-                    <strong>Location: </strong>
-                    <p>@Model.WorkshopDetail.wsLocationType</p>
-                </div><br />
+                    <div style="width:350px; float: left;">
+                        <strong>Location: </strong>
+                        <p>@Model.WorkshopDetail.wsLocationType</p>
+                    </div><br />
 
-                <div style="width:350px; float: left;">
-                    <strong>Location Details: </strong><br />
-                    <p>@Model.WorkshopDetail.wsLocationDetails</p>
-                </div><br />
+                    <div style="width:350px; float: left;">
+                        <strong>Location Details: </strong><br />
+                        <p>@Model.WorkshopDetail.wsLocationDetails</p>
+                    </div><br />
 
-                <div style="width:350px; float: left;">
-                    <strong>@Model.WorkshopDetail.wsNoOfLessons Lessons: </strong><br />
-                    <p>@Model.WorkshopDetail.wsLocationDetails</p>
-                </div><br />
-            </div>
+                    <div style="width:350px; float: left;">
+                        <strong>@Model.WorkshopDetail.wsNoOfLessons Lessons: </strong><br />
+                        <p>@Model.WorkshopDetail.wsLocationDetails</p>
+                    </div><br />
+                </div>
 
             </div>
             <div class="card-footer bg-primary border-warning text-center">
                 <a style="float: right;" class="btn btn-primary" href="/AddBooking/@Model.WorkshopDetail.wsId"><i class="fas fa-shopping-cart"> Book </i></a>
             </div>
         </div>
+    </div>
 </div>
+    @section Scripts
+{
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/workshopDatatable.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#increase').click(function () {
+                    modifyFontSize('increase');
+                });
+                $('#decrease').click(function () {
+                    modifyFontSize('decrease');
+                });
+                $('#reset').click(function () {
+                    modifyFontSize('reset');
+                })
+                function modifyFontSize(action) {
+                    var divElement = $('.demo');
+                    var currentFontSize = parseInt(divElement.css('font-size'));
+                    if (action == 'increase')
+                        currentFontSize += 3;
+                    else if (action == 'decrease')
+                        currentFontSize -= 3;
+                    else
+                        currentFontSize = 16;
+                    divElement.animate({ 'fontSize': currentFontSize }, 300);
+                }
+            });
+        </script>
+    }
