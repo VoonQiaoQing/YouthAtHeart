@@ -1,0 +1,242 @@
+﻿@page  "/MyWorkshops"
+@model YouthAtHeart.Pages.MyWorkshopsModel
+@{
+}
+<style>
+
+    .btn {
+        @* background-color: #1c4450;*@
+        border: none;
+        outline: none;
+        color: white;
+        margin: 5px;
+        text-align: center;
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        text-transform: uppercase;
+    }
+
+    .btn:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .table {
+        border-bottom: 0px !important;
+    }
+
+    .table th, .table td {
+        border: 1px !important;
+    }
+
+    .fixed-table-container {
+        border: 0px !important;
+    }
+
+    th {
+@*        width: 1000px;*@
+        height: 0px;
+        margin: 0 auto;
+    }
+    .MainInfo, #LessonSchedule {
+        width: 33%;
+        word-break: break-all;
+        display: inline-block;
+    }
+
+</style>
+
+<!-- https://codewithmukesh.com/blog/jquery-datatable-in-aspnet-core/ -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/script.js"></script> -->
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<div class="demo" style="width:100%;">
+
+    <div class="col-sm-3 float-left">
+        <div class="card" style="background-color: #ADD8E6;">
+            <h2 class=" mb-1 mt-4 text-gray-800 text-center ">Filters</h2>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Price Range</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>Min</label>
+                        <input type="text" class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>Max</label>
+                        <input type="text" class="form-control form-control-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Location</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="form-group pl-3 pr-3">
+                    <select id="projectcat1" class="form-control w-100">
+                        <option value=""></option>
+                        <option>Yishun</option>
+                        <option>Woodlands</option>
+                        <option>Bishan</option>
+                        <option>Novena</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Workshop Lessons</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>From:</label>
+                        <input type="date" class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>To:</label>
+                        <input type="date" class="form-control form-control-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Types</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="form-group pl-3 pr-3">
+                    <select id="projectcat2" class="form-control w-100">
+                        <option value=""></option>
+                        <option>Finance</option>
+                        <option>Technology</option>
+                        <option>Hobby</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3 "><u>Rating</u></b>
+            </div>
+            <div class="col-sm-12 pt-2">
+                <div class="form-group pl-3 pr-3">
+                    <select class="form-control w-100">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            @*                    <div class="col-sm-12 pt-2 mb-4" style=" padding-left: 32px; padding-right: 32px;">
+                    <button type="button" class="btn btn-outline-secondary btn-block">SUBMIT</button>
+                </div>*@
+        </div>
+    </div>
+
+    <div class="container" style="width: 1700px;">
+        <br />
+        <div style="width:90%; margin:0 auto;">
+            <p>
+                <a class='btn btn-success' asp-page="CreateWorkshop">Create a New Workshop</a>
+            </p>
+
+            <table id="workshopDatatable" class="table dt-responsive nowrap" width="100%" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th>wsId</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div style="height: 50px;"></div>
+        </div>
+    </div>
+</div>
+<div style="height: 50px;"></div>
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/myWorkshopsDatatable.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#increase').click(function () {
+                modifyFontSize('increase');
+            });
+            $('#decrease').click(function () {
+                modifyFontSize('decrease');
+            });
+            $('#reset').click(function () {
+                modifyFontSize('reset');
+            })
+            function modifyFontSize(action) {
+                var divElement = $('.demo');
+                var currentFontSize = parseInt(divElement.css('font-size'));
+                if (action == 'increase')
+                    currentFontSize += 3;
+                else if (action == 'decrease')
+                    currentFontSize -= 3;
+                else
+                    currentFontSize = 16;
+                divElement.animate({ 'fontSize': currentFontSize }, 300);
+            }
+        });
+
+        $(document).ready(function () {
+            var table = $("#workshopDatatable").DataTable();
+
+@*          wsId: "wsId",
+            wsName: "wsName",
+            wsCoverImage: "wsCoverImage",
+            wsEnvImage: "wsEnvImage",
+            wsMainInfo: "wsMainInfo",
+            wsExtraInfo: "wsExtraInfo",
+            wsType: "wsType",
+            wsLocationType: "wsLocationType",
+            wsLocationDetails: "wsLocationDetails",
+            wsNoOfLessons: "wsNoOfLessons",
+            wsLessonSchedule: "wsLessonSchedule",
+            regStartDate: "regStartDate",
+            regEndDate: "regEndDate",
+            firstLesDate: "firstLesDate",
+            endLesDate: "endLesDate",
+            wsPrice: "wsPrice",
+            wsPresentAttendees: "wsPresentAttendees",
+            wsTotalAttendees: "wsTotalAttendees",
+            wsRatingAvg: "wsRatingAvg",
+            wsRatingTotal: "wsRatingTotal",
+            dateCreated: "dateCreated",
+            dateUpdated: "dateUpdated",
+            teacherId: "teacherId",*@
+
+            $("#projectcat1").change(function () {
+                table.search(this.value).draw();
+                console.log('Groing for folter : ' + this.value);
+            });
+
+
+            $("#projectcat2").change(function () {
+                table.search(this.value).draw()
+                console.log('Groing for folter : ' + this.value);
+            });
+
+        });
+    </script>
+}
+
+
