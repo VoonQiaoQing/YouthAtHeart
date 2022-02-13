@@ -19,11 +19,11 @@ namespace YouthAtHeart.Pages
         }
         [BindProperty]
         public User MyUser { get; set; }
-        public IActionResult OnGet(string name)
+        public IActionResult OnGet(string id)
         {
-            if (name != null)
+            if (id != null)
             {
-                MyUser = _svc.GetUserbyId(name);
+                MyUser = _svc.GetUserbyId(id);
                 return Page();
             }
             else

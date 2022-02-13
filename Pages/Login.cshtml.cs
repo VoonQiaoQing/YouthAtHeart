@@ -32,6 +32,7 @@ namespace YouthAtHeart.Pages
                     if (!_svc.UserExits("Admin"))
                     {
                         user.username = "Admin";
+                        user.email = "admin@gmail.com";
                         user.password = "adminPass123";
                         user.role = "admin";
                         _svc.AddUser(user);
