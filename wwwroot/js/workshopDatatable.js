@@ -5,6 +5,7 @@
         "serverSide": true,
         "responsive": true,
         "filter": true,
+        "orderMulti": true,
         "searching": true,
         "ajax": {
             "url": 'api/WorkshopListing',
@@ -17,7 +18,7 @@
         "columnDefs": [{
             "targets": [0],
             "visible": false,
-            "searchable": false
+            "searchable": true
         }],
 
         "columns": [
@@ -48,9 +49,9 @@
                     dateCreated: "dateCreated",
                     dateUpdated: "dateUpdated",
                     teacherId: "teacherId",
-                },
+                }, "autoWidth": true,
                 "render": function (data, row) {
-                    return '<div class="col-sm-8">' +
+                    return '<div class="col-sm-12">' +
                         '<div class="card text-dark bg-light">' +
                         '<div class="card-header bg-primary text-warning"><div>' + '<p id="' + data.wsId + '">' + countDown(data.wsId, data.regEndDate) + '</p>' + '</div><h4 class="text-center">' + data.wsName + '</h4></div>' +
                                     '<div class="container">' +
@@ -73,7 +74,7 @@
                         '</div>' +
                         '<div style="height: 70px;" class="card-footer bg-primary border-warning text-center">' +
                         '<a style="float: right;" class="btn btn-primary" href="/AddBooking/' + data.wsId + '"><i class="fas fa-shopping-cart"> Book </i></a>' +
-                        '<a style="float: right;" href="#" class="btn btn-warning">Details</a>' +
+                        '<a style="float: right;" class="btn btn-warning" href="/WorkshopListing/' + data.wsId + '/Details" >Details</a>' +
                         '<a style="float: right;" class="btn btn-danger" href="/WorkshopListing/Delete/' + data.wsId + '">Delete</a>' +
                         '<a style="float: right;" class="btn btn-success" href="/WorkshopListing/Edit/' + data.wsId + '">Edit</a>' +
                         '<a style="float: right;" class="btn btn-primary" href="#">Manage Bookings</a>' +
