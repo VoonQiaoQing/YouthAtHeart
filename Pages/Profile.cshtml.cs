@@ -19,18 +19,17 @@ namespace YouthAtHeart.Pages
         }
         [BindProperty]
         public User MyUser { get; set; }
-        public IActionResult OnGet()
+        public IActionResult OnGet(string name)
         {
-            if (!String.IsNullOrEmpty(HttpContext.Session.GetString("userName")))
+            if (name != null)
             {
-                MyUser = _svc.GetUserbyId(HttpContext.Session.GetString("userName"));
-
+                MyUser = _svc.GetUserbyId(name);
+                return Page();
             }
             else
             {
                 return RedirectToPage("Index");
             }
-            return Page();
         }
     }
 }

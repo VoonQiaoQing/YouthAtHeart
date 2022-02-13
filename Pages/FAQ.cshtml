@@ -10,20 +10,26 @@
     </head>
     <body>
         <H1>FAQ</H1>
+
         <p>Welcome to FAQ page, if you have more questions please press the button at the bottom to send.</p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#Question" role="button" aria-expanded="false" aria-controls="collapse">
-            What is Youth at Heart?
-        </a>
-        <div class="collapse" id="Question">
-            <div class="card card-body">
-                Youth at Heart is a student launched project aimed for Elderly to enjoy their free time while passing on their experience and learn new things by using our website to book workshops and attend them.
-            </div>
-        </div>
-        <div class="getdown float-left">
-            <a href="/TestFAQ" class="btn btn-primary">
-                Click here to send your questions
+        @{ if (Model.AllQuestions != null)
+            {
+            <a class="btn btn-primary" data-toggle="collapse" href="#Question" role="button" aria-expanded="false" aria-controls="collapse">
+                What is Youth at Heart?
             </a>
-        </div>
+
+           <div class="collapse" id="Question">
+                <div class="card card-body">
+                    Youth at Heart is a student launched project aimed for Elderly to enjoy their free time while passing on their experience and learn new things by using our website to book workshops and attend them.
+                </div>
+           </div>
+                }
+            <div class="getdown float-left">
+                <a href="/TestFAQ" class="btn btn-primary">
+                    Click here to send your questions
+                </a>
+            </div>
+            }
     </body>
         
 </html>
