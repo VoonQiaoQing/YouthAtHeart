@@ -61,32 +61,97 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
 <div class="demo" style="width:100%;">
+
+    <div class="col-sm-3 float-left">
+        <div class="card" style="background-color: #ADD8E6;">
+            <h2 class=" mb-1 mt-4 text-gray-800 text-center ">Filters</h2>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Price Range</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>Min</label>
+                        <input type="text" class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>Max</label>
+                        <input type="text" class="form-control form-control-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Location</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="form-group pl-3 pr-3">
+                    <select id="projectcat1" class="form-control w-100">
+                        <option value=""></option>
+                        <option>efwefwefwefw</option>
+                        <option>12</option>
+                        <option>12</option>
+                        <option>12</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Workshop Lessons</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>From:</label>
+                        <input type="date" class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left">
+                    <div class="form-group">
+                        <label>To:</label>
+                        <input type="date" class="form-control form-control-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3"><u>Types</u></b>
+            </div>
+            <div class="col-sm-12  pt-2">
+                <div class="form-group pl-3 pr-3">
+                    <select id="projectcat2" class="form-control w-100">
+                        <option value=""></option>
+                        <option>Woodlands</option>
+                        <option>Novena</option>
+                        <option>12</option>
+                        <option>12</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <b class="pl-3 "><u>Rating</u></b>
+            </div>
+            <div class="col-sm-12 pt-2">
+                <div class="form-group pl-3 pr-3">
+                    <select class="form-control w-100">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            @*                    <div class="col-sm-12 pt-2 mb-4" style=" padding-left: 32px; padding-right: 32px;">
+                    <button type="button" class="btn btn-outline-secondary btn-block">SUBMIT</button>
+                </div>*@
+        </div>
+    </div>
+
     <div class="container" style="width: 1700px;">
         <br />
         <div style="width:90%; margin:0 auto;">
             <p>
                 <a class='btn btn-success' asp-page="CreateWorkshop">Create a New Workshop</a>
             </p>
-
-            <p>Change datatable filter value : </p>
-            <select id="projectcat1">
-                <option>test456</option>
-                <option>12</option>
-                <option>12</option>
-                <option>12</option>
-            </select>
-
-            <p>Change datatable filter value : </p>
-            <select id="projectcat2">
-                <option>Woodlands</option>
-                <option>Novena</option>
-                <option>12</option>
-                <option>12</option>
-            </select>
-
 
             <table id="workshopDatatable" class="table dt-responsive nowrap" width="100%" cellspacing="0" cellpadding="0">
                 <thead>
@@ -98,9 +163,12 @@
                 <tbody>
                 </tbody>
             </table>
+
+            <div style="height: 50px;"></div>
         </div>
     </div>
 </div>
+<div style="height: 50px;"></div>
 @section Scripts
 {
     <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
@@ -158,17 +226,15 @@
             teacherId: "teacherId",*@
 
             $("#projectcat1").change(function () {
-                console.log('Groing for folter : ' + this.value);
                 table.search(this.value).draw();
+                console.log('Groing for folter : ' + this.value);
             });
 
 
             $("#projectcat2").change(function () {
+                table.search(this.value).draw()
                 console.log('Groing for folter : ' + this.value);
-                table.search(this.value).draw();
             });
-
-
 
         });
     </script>

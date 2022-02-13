@@ -51,7 +51,7 @@
 
 <h1>Edit Workshop</h1>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -60,26 +60,27 @@
         <span asp-validation-for="EditAWorkshop.wsId" class="text-danger"></span>
     </div>
 
-@*    <div>
-        <label class="col-sm-2 col-form-label">CoverImage:</label>
-        <input asp-for="EditAWorkshop.wsCoverImage" />
-        <span asp-validation-for="EditAWorkshop.wsCoverImage" class="text-danger"></span>
-    </div>
-
     <div>
-        <label class="col-sm-2 col-form-label">EnvImage:</label>
-        <input asp-for="EditAWorkshop.wsEnvImage" />
-        <span asp-validation-for="EditAWorkshop.wsEnvImage" class="text-danger"></span>
-    </div>*@
+        <label class="col-sm-3 col-form-label"><strong>Current Cover Image</strong></label><br />
 
-    <div>
-        <label class="col-sm-2 col-form-label"><strong>Cover Image</strong></label><br />
-        <div style="padding-left: 10px;"><img id="imagePreview1" alt="your image" width="100" height="100" /></div><br />
+        <img src="/Image/@Model.EditAWorkshop.wsCoverImage" width="100" style="padding-left: 15px;" />
+
+        <br />
+        <label class="col-sm-2 col-form-label"><strong>New Cover Image</strong></label><br />
+
+        <div style="padding-left: 10px;"><img id="imagePreview1" alt="Cover Image" width="100" height="100" /></div><br />
         <input class="imageField" onchange="document.getElementById('imagePreview1').src = window.URL.createObjectURL(this.files[0])" type="file" id="CoverImage" asp-for="CoverImage" />
 
         <br />
-        <label class="col-sm-2 col-form-label"><strong>Environment Image</strong></label><br />
-        <div style="padding-left: 10px;"><img id="imagePreview2" alt="your image" width="100" height="100" /></div><br />
+
+        <label class="col-sm-3 col-form-label"><strong>Current Environment Image</strong></label><br />
+
+        <img src="/Image/@Model.EditAWorkshop.wsEnvImage" width="100" style="padding-left: 15px;" />
+
+        <br />
+        <label class="col-sm-2 col-form-label"><strong>New Environment Image</strong></label><br />
+
+        <div style="padding-left: 10px;"><img id="imagePreview2" alt="Environment Image" width="100" height="100" /></div><br />
         <input class="imageField" onchange="document.getElementById('imagePreview2').src = window.URL.createObjectURL(this.files[0])" type="file" id="EnvImage" asp-for="EnvImage" />
     </div>
 

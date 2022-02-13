@@ -43,27 +43,28 @@ namespace YouthAtHeart.Controllers
                 }
                 if (!string.IsNullOrEmpty(searchValue))
                 {
-                    customerData = customerData.Where(m => m.wsName.Contains(searchValue)
-                                                || m.wsMainInfo.Contains(searchValue)
-                                                || m.wsExtraInfo.Contains(searchValue)
-                                                || m.wsType.Contains(searchValue)
-                                                || m.wsLocationType.Contains(searchValue)
-                                                || m.wsLocationDetails.Contains(searchValue)
-                                                || m.wsLessonSchedule.Contains(searchValue)
+                    customerData = customerData.Where(m => m.wsName.Contains(searchValue.Trim())
+                                                || m.wsMainInfo.Contains(searchValue.Trim())
+                                                || m.wsExtraInfo.Contains(searchValue.Trim())
+                                                || m.wsType.Contains(searchValue.Trim())
+                                                || m.wsLocationType.Contains(searchValue.Trim())
+                                                || m.wsLocationDetails.Contains(searchValue.Trim())
+                                                || m.wsLessonSchedule.Contains(searchValue.Trim())
                                                 );
                 }
 
-                if (!string.IsNullOrEmpty(searchValue))
+/*                if (!string.IsNullOrEmpty(searchValue))
                 {
-                    customerData = customerData.Where(m => m.wsName.Contains(searchValue)
-                                                || m.wsMainInfo.Contains(searchValue)
-                                                || m.wsExtraInfo.Contains(searchValue)
-                                                || m.wsType.Contains(searchValue)
-                                                || m.wsLocationType.Contains(searchValue)
-                                                || m.wsLocationDetails.Contains(searchValue)
-                                                || m.wsLessonSchedule.Contains(searchValue)
+                    //customerData = customerData.Where(m => searchValue.Trim().Contains(m.wsName + m.wsLocationType));
+                    customerData = customerData.Where(m => (m.wsName.Trim() + m.wsLocationType.Trim()).Contains(searchValue.Trim())
+                                                || m.wsMainInfo.Contains(searchValue.Trim())
+                                                || m.wsExtraInfo.Contains(searchValue.Trim())
+                                                || m.wsType.Contains(searchValue.Trim())
+                                                || m.wsLocationType.Contains(searchValue.Trim())
+                                                || m.wsLocationDetails.Contains(searchValue.Trim())
+                                                || m.wsLessonSchedule.Contains(searchValue.Trim())
                                                 );
-                }
+                }*/
 
                 recordsTotal = customerData.Count();
                 var data = customerData.Skip(skip).Take(pageSize).ToList();

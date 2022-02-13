@@ -36,24 +36,6 @@ namespace YouthAtHeart.Pages
         {
             //ERROR SHOULD BE HERE
             allworkshops = _svc.GetAllWorkshops();
-
-
-            //foreach (var item in allworkshops)
-            //{
-
-            //}
-
-            //if(notbinded_allworkshops.Count == 0)
-            //{
-            //    notbinded_allworkshops.Append("")
-            //    allworkshops =;
-            //}
-            //else {
-            //    allworkshops = notbinded_allworkshops;
-            //}
-
-            //allworkshops = _svc.GetAllWorkshops();
-            //Guid guid = Guid.NewGuid();
         }
 
         public void OnPost()
