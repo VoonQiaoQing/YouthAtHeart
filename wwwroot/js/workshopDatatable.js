@@ -60,7 +60,7 @@
                         '<i class="fas fa-info-circle" style="font-size:18px"> ' + data.wsPresentAttendees + "/" + data.wsTotalAttendees + ' signed up!</i>' +
                         '</div>' +
                         '<div class="card-body" >' +
-                        '<div><p class="MainInfo" style="white-space: normal; width: 350px;">MainInfo' + data.wsMainInfo + '</p></div>' +
+                        '<div><p class="MainInfo" style="white-space: normal; width: 350px;">' + data.wsMainInfo + '</p></div>' +
                         '<div>' +
                         '<div style="float: left; padding-right: 20px;"><br />' +
                         '<i id="Location" class="fas fa-map-marker-alt" style="width:15px; font-size:18px"></i> ' + data.wsLocationType + '<br />' +
