@@ -35,38 +35,8 @@ namespace YouthAtHeart.Pages
 
         public void OnGet()
         {
-            allworkshops = _svc.GetAllWorkshops();
-            int number = allworkshops.Count;
-            if (number == 0)
-            {
-                lastest1 = -1;
-                lastest2 = -1;
-                lastest3 = -1;
-            }
-            if (number == 1)
-            {
-                lastest1 = 0;
-                lastest2 = -1;
-                lastest3 = -1;
-            }
-            if (number == 2)
-            {
-                lastest1 = 1;
-                lastest2 = 0;
-                lastest3 = -1;
-            }
-            if (number == 3)
-            {
-                lastest1 = 2;
-                lastest2 = 1;
-                lastest3 = 0;
-            }
-            else
-            {
-                lastest1 = number;
-                lastest2 = number - 1;
-                lastest3 = number - 2;
-            }
+            allworkshops = _svc.GetAllWorkshops().OrderBy(f => f.dateCreated).ToList();
+
         }
     }
 }
