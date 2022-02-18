@@ -19,7 +19,7 @@ namespace YouthAtHeart.Models
             wsRatingAvg = 0;
             wsRatingTotal = 0;
 
-            teacherId = "Temp Value";
+/*            teacherId = "Temp Value";*/
             
             wsPresentAttendees = 0;
 

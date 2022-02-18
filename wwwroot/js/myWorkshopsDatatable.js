@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#workshopDatatable").removeAttr('width').DataTable({
+    $("#myWorkshopsDatatable").removeAttr('width').DataTable({
         "drawCallback": countDown,
         "processing": true,
         "serverSide": true,
@@ -8,7 +8,7 @@
         "orderMulti": true,
         "searching": true,
         "ajax": {
-            "url": 'api/WorkshopListing',
+            "url": 'api/MyWorkshops',
             //DemoGrid/LoadData
             "type": "POST",
             "datatype": "json"
@@ -60,7 +60,7 @@
                         '<i class="fas fa-info-circle" style="font-size:18px"> ' + data.wsPresentAttendees + "/" + data.wsTotalAttendees + ' signed up!</i>' +
                         '</div>' +
                         '<div class="card-body" >' +
-                        '<div><p class="MainInfo" style="white-space: normal; width: 350px;">' + data.wsMainInfo + '</p></div>' +
+                        '<div><p class="MainInfo" style="white-space: normal; width: 450px;">' + data.wsMainInfo + '</p></div>' +
                         '<div>' +
                         '<div style="float: left; padding-right: 20px;"><br />' +
                         '<i id="Location" class="fas fa-map-marker-alt" style="width:15px; font-size:18px"></i> ' + data.wsLocationType + '<br />' +

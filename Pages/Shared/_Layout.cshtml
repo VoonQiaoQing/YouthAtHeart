@@ -32,7 +32,8 @@
     <header>
         <nav id="changecolorfornav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">YouthAtHeart</a>
+                <img src="/Image/yatlogo.png" style="width:75px; height: 50px;"><br />
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Youth At Heart</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -46,6 +47,7 @@
                         @{
                             var sessionName = new Byte[20];
                             string userName = "Guest";
+                            var userRole = Context.Session.GetString("SSRole");
                             bool usernameCond = Context.Session.TryGetValue("userName", out sessionName);
 
                             if (usernameCond)
@@ -57,7 +59,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="/WorkshopListing">Book for a Workshop</a>
-                                        <a class="dropdown-item" asp-page="/MyWorkshops" >My workshops</a>
+                                        <a class="dropdown-item" asp-page="/MyWorkshops">My workshops</a>
                                     </div>
                                 </li>
 
@@ -80,7 +82,17 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="/WorkshopListing">Book for a Workshop</a>
-                                        <a class="dropdown-item" href="/MyWorkshops">My workshops</a>
+                                        @if (userRole != null) //&& userRole == "admin"
+                                        {
+                                            @if (userRole == "admin")
+                                            {
+                                                <a class="dropdown-item" href="/MyWorkshops">My workshops</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="dropdown-item" href="/MyWorkshops">My workshops</a>
+                                            }
+                                        }
                                     </div>
                                 </li>
 
@@ -96,6 +108,7 @@
                                 </li>
 
                             }
+
 
 
                             <div class="buttons">

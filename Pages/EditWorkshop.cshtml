@@ -5,7 +5,7 @@
 }
 
 <style>
-    input {
+    input, select{
         box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 4px;
@@ -19,9 +19,9 @@
         transition: width 0.4s ease-in-out;
     }
 
-        input:focus {
-            width: 30%;
-        }
+    input:focus {
+        width: 30%;
+    }
 
     .button {
         background-color: #4CAF50;
@@ -43,10 +43,10 @@
         border: 2px solid #4CAF50;
     }
 
-        .button:hover {
-            background-color: #4CAF50;
-            color: white;
-        }
+    .button:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
 </style>
 
 <h1>Edit Workshop</h1>
@@ -61,61 +61,77 @@
     </div>
 
     <div>
+        <input type="hidden" asp-for="EditAWorkshop.teacherId" />
+        <span asp-validation-for="EditAWorkshop.teacherId" class="text-danger"></span>
+    </div>
+
+    <div>
+
+        <div>
+            <input type="hidden" asp-for="EditAWorkshop.wsCoverImage" />
+            <span asp-validation-for="EditAWorkshop.wsCoverImage" class="text-danger"></span>
+        </div>
+
+        <div>
+            <input type="hidden" asp-for="EditAWorkshop.wsEnvImage" />
+            <span asp-validation-for="EditAWorkshop.wsEnvImage" class="text-danger"></span>
+        </div>
+
         <label class="col-sm-3 col-form-label"><strong>Current Cover Image</strong></label><br />
 
-        <img src="/Image/@Model.EditAWorkshop.wsCoverImage" width="100" style="padding-left: 15px;" />
+        <img src="/Image/@Model.EditAWorkshop.wsCoverImage" width="200" height="125" style="padding-left: 15px;" />
 
         <br />
         <label class="col-sm-2 col-form-label"><strong>New Cover Image</strong></label><br />
 
-        <div style="padding-left: 10px;"><img id="imagePreview1" alt="Cover Image" width="100" height="100" /></div><br />
+        <div style="padding-left: 10px;"><img id="imagePreview1" alt="Cover Image" width="200" height="125" /></div><br />
         <input class="imageField" onchange="document.getElementById('imagePreview1').src = window.URL.createObjectURL(this.files[0])" type="file" id="CoverImage" asp-for="CoverImage" />
 
         <br />
 
         <label class="col-sm-3 col-form-label"><strong>Current Environment Image</strong></label><br />
 
-        <img src="/Image/@Model.EditAWorkshop.wsEnvImage" width="100" style="padding-left: 15px;" />
+        <img src="/Image/@Model.EditAWorkshop.wsEnvImage" width="200" height="125" style="padding-left: 15px;" />
 
         <br />
         <label class="col-sm-2 col-form-label"><strong>New Environment Image</strong></label><br />
 
-        <div style="padding-left: 10px;"><img id="imagePreview2" alt="Environment Image" width="100" height="100" /></div><br />
+        <div style="padding-left: 10px;"><img id="imagePreview2" alt="Environment Image" width="200" height="125" /></div><br />
         <input class="imageField" onchange="document.getElementById('imagePreview2').src = window.URL.createObjectURL(this.files[0])" type="file" id="EnvImage" asp-for="EnvImage" />
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Name:</label>
+        <label class="col-sm-2 col-form-label"><strong>Name</strong></label><br />
         <input asp-for="EditAWorkshop.wsName" />
         <span asp-validation-for="EditAWorkshop.wsName" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Main Information:</label>
+        <label class="col-sm-2 col-form-label"><strong>Main Information</strong></label><br />
         <input asp-for="EditAWorkshop.wsMainInfo" />
         <span asp-validation-for="EditAWorkshop.wsMainInfo" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Extra Information:</label>
+        <label class="col-sm-2 col-form-label"><strong>Extra Information</strong></label><br />
         <input asp-for="EditAWorkshop.wsExtraInfo" />
         <span asp-validation-for="EditAWorkshop.wsExtraInfo" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Workshop Type:</label>
+        <label class="col-sm-2 col-form-label"><strong>Workshop Type:</strong></label><br />
         @Html.DropDownList("EditAWorkshop.wsType", new SelectList(Enum.GetValues(typeof(Models.WorkshopType))), "--Select an option--")
         <span asp-validation-for="EditAWorkshop.wsType" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Location:</label>
+        <label class="col-sm-2 col-form-label"><strong>Location</strong></label><br />
         @Html.DropDownList("EditAWorkshop.wsLocationType", new SelectList(Enum.GetValues(typeof(Models.LocationType))), "--Select an option--")
         <span asp-validation-for="EditAWorkshop.wsLocationType" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Location Details:</label>
+        <label class="col-sm-2 col-form-label"><strong>Location Details</strong></label><br />
         <input asp-for="EditAWorkshop.wsLocationDetails" />
         <span asp-validation-for="EditAWorkshop.wsLocationDetails" class="text-danger"></span>
     </div>
@@ -129,49 +145,49 @@
 
 
     <div>
-        <label class="col-sm-2 col-form-label">Lesson Schedule:</label>
+        <label class="col-sm-2 col-form-label"><strong>Lesson Schedule</strong></label><br />
         <input asp-for="EditAWorkshop.wsLessonSchedule" />
         <span asp-validation-for="EditAWorkshop.wsLessonSchedule" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Registration Start Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>Registration Start Date</strong></label><br />
         <input asp-for="EditAWorkshop.regStartDate" />
         <span asp-validation-for="EditAWorkshop.regStartDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Registration End Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>Registration End Date</strong></label><br />
         <input asp-for="EditAWorkshop.regEndDate" />
         <span asp-validation-for="EditAWorkshop.regEndDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">First Lesson Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>First Lesson Date</strong></label><br />
         <input asp-for="EditAWorkshop.firstLesDate" />
         <span asp-validation-for="EditAWorkshop.firstLesDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Last Lesson Date:</label>
+        <label class="col-sm-2 col-form-label"><strong>Last Lesson Date</strong></label><br />
         <input asp-for="EditAWorkshop.endLesDate" />
         <span asp-validation-for="EditAWorkshop.endLesDate" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Price:</label>
+        <label class="col-sm-2 col-form-label"><strong>Price</strong></label><br />
         <input id="Salary" asp-for="EditAWorkshop.wsPrice" />
         <span asp-validation-for="EditAWorkshop.wsPrice" class="text-danger"></span>
     </div>
 
     <div>
-        <label class="col-sm-2 col-form-label">Total Attendees:</label>
+        <label class="col-sm-2 col-form-label"><strong>Total Attendees</strong></label><br />
         <input id="Salary" asp-for="EditAWorkshop.wsTotalAttendees" />
         <span asp-validation-for="EditAWorkshop.wsTotalAttendees" class="text-danger"></span>
     </div>
 
     <div class="col-sm-10">
-        <input id="update" type="submit" value="Submit" class="btn btn-primary" />
+        <input class="button" id="update" type="submit" value="Submit" class="btn btn-primary" />
     </div>
 </form>
 @section Scripts {
