@@ -81,9 +81,7 @@
                 </div>
                 
  
-                     //var sessionName = new Byte[20];
-                    //string SSRole = "Student";
-                    //bool roleCond = HttpContext.Session.TryGetValue("SSRole", out sessionName);
+                     
                     @{
                      var sessionName = new Byte[20];
                     string SSRole = "Student";
@@ -116,7 +114,7 @@
                         @if(SSRole == "admin")
                         {
                             <div class="row gutters-sm">
-                    <div class="card mb-3">
+                    <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="d-flex align-items-center mb-3">List of User Accounts</h4>

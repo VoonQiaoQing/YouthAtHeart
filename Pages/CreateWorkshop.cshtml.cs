@@ -104,7 +104,8 @@ namespace YouthAtHeart.Pages
                     }
                 }
 
-                if (_svc.AddWorkshop(CreateAWorkshop))
+                string teacherName = HttpContext.Session.GetString("userName");
+                if (_svc.AddWorkshop(CreateAWorkshop, teacherName))
                 {
                     // Create session
 

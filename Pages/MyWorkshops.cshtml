@@ -152,7 +152,7 @@
                 <a class='btn btn-success' asp-page="CreateWorkshop">Create a New Workshop</a>
             </p>
 
-            <table id="workshopDatatable" class="table dt-responsive nowrap" width="100%" cellspacing="0" cellpadding="0">
+            <table id="myWorkshopsDatatable" class="table dt-responsive nowrap" width="100%" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
                         <th>wsId</th>
@@ -198,7 +198,7 @@
         });
 
         $(document).ready(function () {
-            var table = $("#workshopDatatable").DataTable();
+            var table = $("#myWorkshopsDatatable").DataTable();
 
 @*          wsId: "wsId",
             wsName: "wsName",

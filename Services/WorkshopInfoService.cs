@@ -28,7 +28,7 @@ namespace YouthAtHeart.Services
             return _context.WorkshopInfo.Any(e => e.wsId == id);
         }
 
-        public bool AddWorkshop(WorkshopInfo newworkshop)
+        public bool AddWorkshop(WorkshopInfo newworkshop, string teacherName)
         {
             if (WorkshopExists(newworkshop.wsId))
             {
@@ -36,13 +36,8 @@ namespace YouthAtHeart.Services
             }
 
             Guid guid = Guid.NewGuid();
-            //string guidTostring = guid.ToString();
-
-            //CreateAWorkshop.wsId = guidTostring;
-            //WorkshopId = CreateAWorkshop.wsId;
-            //WorkshopId = guid.ToString();
-
             newworkshop.wsId = guid.ToString();
+            newworkshop.teacherId = teacherName;
 
             _context.Add(newworkshop);
             _context.SaveChanges();

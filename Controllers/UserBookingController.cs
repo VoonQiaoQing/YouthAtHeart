@@ -122,7 +122,15 @@ namespace YouthAtHeart.Controllers
                 existingbookingdetails.Cvv = newbooking.Cvv;
                 existingbookingdetails.ExpiryDate = newbooking.ExpiryDate;
                 existingbookingdetails.Comments = newbooking.Comments;
-                context.Booking.Update(existingbookingdetails); context.SaveChanges();
+
+                //Add these four lines to update bookings in workshop model
+                var WorkshopObject = context.WorkshopInfo.Where(x => x.wsId.Equals(newbooking.WorkshopId)).FirstOrDefault();
+                WorkshopObject.wsPresentAttendees = existingbookingdetails.NumberOfAttendees;
+                context.WorkshopInfo.Update(WorkshopObject);
+                context.SaveChanges();
+
+                context.Booking.Update(existingbookingdetails);
+                context.SaveChanges();
                 ViewData["username"] = existingbookingdetails.FirstName + " " + existingbookingdetails.LastName;
                 return View("~/Pages/BookingCompleted.cshtml", newbooking);
 

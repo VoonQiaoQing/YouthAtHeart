@@ -77,6 +77,8 @@ namespace YouthAtHeart.Controllers
                 newbooking.BookingId = Guid.NewGuid().ToString();
                 newbooking.CreatedDate = DateTime.Now;
 
+
+
                 context.Booking.Add(newbooking);
                 context.SaveChanges();
                 ViewData["message"] = "Booking has been created successfully.";
