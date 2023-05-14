@@ -1,0 +1,46 @@
+name: Markdown Alt Text Suggestor
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  suggest_alt_text:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Upload Markdown files to Azure Storage
+        run: |
+          az storage blob upload-batch \
+            --account-name markdownalt \
+            --account-key PkijUZCyKLq7jxv4nFUH8a0xJUv3dZY8O/kVXXHom9VUbDoUAFsrGAVRlvX6I59vpSSnEQ2eqne9+AStWePoTQ== \
+            --destination markdowntext \
+            --source . \
+            --pattern '*.md'
+
+      - name: Generate alt text suggestions
+        uses: YouthAtHeart/.github/workflows/main.yml@master
+
+      - name: Download updated Markdown files from Azure Storage
+        run: |
+          az storage blob download-batch \
+            --account-name markdownalt \
+            --account-key PkijUZCyKLq7jxv4nFUH8a0xJUv3dZY8O/kVXXHom9VUbDoUAFsrGAVRlvX6I59vpSSnEQ2eqne9+AStWePoTQ== \
+            --destination . \
+            --source markdowntext
+
+      - name: Commit changes to GitHub
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: "GitHub Actions"
+          author_email: "actions@github.com"
+          message: "Add suggested alt text for inline images"
+          add: "."
